@@ -1,0 +1,71 @@
+<loader>Titles::LoadTitles</loader>
+<dict>
+	<string name="name">techpriest</string>
+	
+	<dict name="inc-modifier">
+		<string name="class">Modifiers::Stats</string>
+		<int name="mana">10</int>
+	</dict>
+
+	<array name="titles">
+		<dict>
+			<string name="name">.titles.shared-0</string>
+		</dict>
+		<dict>
+			<string name="name">.titles.shared-1</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">5</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.shared-2a</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">10</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.techpriest-3</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">15</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.techpriest-4</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">20</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.techpriest-5</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">25</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.techpriest-6</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">30</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.techpriest-7</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">35</int>
+			</dict>
+		</dict>
+		<dict>
+			<string name="name">.titles.techpriest-8</string>
+			<dict name="modifier">
+				<string name="class">Modifiers::Stats</string>
+				<int name="mana">40</int>
+			</dict>
+		</dict>
+	</array>
+</dict>
