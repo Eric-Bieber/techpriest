@@ -1,29 +1,44 @@
 <unit netsync="none">
-	<behavior class="BeamProjectile">
-		<string name="anim">idle</string>
-		<string name="shoot-snd">event:/item/wand_of_chaos</string>
-		
-		<float name="speed">12</float>
-		<int name="ttl">10000</int>
-		<int name="length">100</int>
-		<bool name="blockable">false</bool>
-		<int name="penetration">1000</int>
+    <behavior class="ChargeLaserProjectile">
+        <string name="anim">idle</string>
 
-		<dict name="effect">
-			<string name="class">Damage</string>
-			<int name="magical">20</int>
-		</dict>
+        <string name="snd">event:/player/warlock/dagger</string>
+        <string name="hit-snd">event:/player/warlock/dagger-hit</string>
+        <string name="fx">players/warlock/trail_dagger.effect</string>
+        <string name="hit-fx">players/warlock/dagger_hit.effect</string>
+        <float name="speed-mul">0.75</float>
 
-		<dict name="effect-params">
-			<float name="height">2</float>
-		</dict>
-	</behavior>
-	<scenes>
-		<scene name="idle">
-			<effect src="./wand_of_chaos.effect" />
-			<collision static="false">
-				<circle projectile="true" radius="2" />
-			</collision>
-		</scene>
-	</scenes>
+        <bool name="play-fx-start">false</bool>
+        <int name="play-fx-count">1</int>
+
+        <int name="arc">0</int>
+        <int name="rays">8</int>
+        <int name="dist">300</int>
+        <int name="duration">1</int>
+
+        <array name="effects">
+            <dict>
+                <string name="class">Damage</string>
+                <int name="magical">20</int>
+            </dict>
+        </array>
+        
+        <dict name="effect-params">
+            <float name="height">3</float>
+            <float name="radius">22</float>
+        </dict>
+    </behavior>
+
+    <scenes>
+        <scene name="idle">
+            <collision static="false">
+                <circle projectile="true" radius="2" />
+            </collision>
+
+            <sprite looping="false" origin="16 16" layer="1" texture="players/gladiator/net.png" material="system/default.mats:projectile-player">
+                <frame time="30">0 0 32 32</frame>
+                <frame time="1000">0 64 32 32</frame>
+            </sprite>
+        </scene>
+    </scenes>
 </unit>
