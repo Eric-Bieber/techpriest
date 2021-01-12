@@ -1,0 +1,30 @@
+<effect looping="false" bounds="750 750" layer="20000">
+	<param name="angle" default="0" />
+	<param name="length" default="300" />
+	<param name="height" default="0" />
+	<param name="radius" default="22" />
+	
+	<sprite looping="false" origin="0 0.5" texture="./net_aim.png" material="effects/effects.mats:add-glowing"
+		angle="angle"
+		
+		pos-x="cos(angle)*9"
+		pos-y="sin(angle)*9-height"
+		
+		color-r="0.5"
+		color-g="0.5"
+		color-b="0.5"
+		
+		%// Beam slowly reaches farther forward
+		scale-x="(length+radius)/32*t"
+		color-a="t*15"
+		
+		%// Beam slowly becomes more visible and brighter
+		%//scale-x="(length+radius)/32"
+		%//color-a="t*15"
+
+		scale-y="1"
+		>
+		<frame time="2000" x="0" y="1" w="32" h="1" />
+		%//<frame time="2000" x="5" y="1" w="32" h="1" />
+	</sprite>	
+</effect>

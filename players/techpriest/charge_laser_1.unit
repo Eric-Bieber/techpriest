@@ -2,7 +2,7 @@
     <behavior class="ChargeLaserProjectile">
         <string name="anim">idle</string>
 
-        <string name="snd">event:/player/warlock/dagger</string>
+        <string name="snd">sound/techpriest.sbnk:chargeLaserShot</string>
         <string name="hit-snd">event:/player/warlock/dagger-hit</string>
         <string name="fx">players/warlock/trail_dagger.effect</string>
         <string name="hit-fx">players/warlock/dagger_hit.effect</string>

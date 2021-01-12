@@ -1,0 +1,8 @@
+<soundbank>
+  <sound category="sfx" name="chargeLaser" volume="1" is3d="false" looping="false">
+    <source res="sound/chargeLaser.wav" />
+  </sound>
+  <sound category="sfx" name="chargeLaserShot" volume="1" is3d="false" looping="false">
+    <source res="sound/chargeLaserShot.wav" />
+  </sound>
+</soundbank>
