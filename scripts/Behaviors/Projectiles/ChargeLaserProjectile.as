@@ -3,7 +3,6 @@ class ChargeLaserProjectile : RayProjectile
 	array<IEffect@>@ m_effectsLocal;
 
 	int m_dist;
-	float m_distMul;
 	int m_rays;
 	float m_angleDelta;
 	float m_angleOffset;
@@ -31,7 +30,14 @@ class ChargeLaserProjectile : RayProjectile
 	bool m_hitSomething = false;
 
 	SoundEvent@ m_sound;
-	
+
+	int m_distMin;
+	int m_distMax;
+
+	int m_damageMin;
+	int m_damageMax;	
+
+	float m_intensityLocal;
 
 	ChargeLaserProjectile(UnitPtr unit, SValue& params)
 	{
@@ -39,8 +45,12 @@ class ChargeLaserProjectile : RayProjectile
 		
 		@m_effectsLocal = LoadEffects(unit, params);
 		
-		m_dist = GetParamInt(unit, params, "dist", false, 10);
-		m_distMul = 1.0f;
+		m_distMin = GetParamInt(unit, params, "dist-min", false, 50);
+		m_distMax = GetParamInt(unit, params, "dist-max", false, 300);
+
+		m_damageMin = GetParamInt(unit, params, "damage-min", false, 20);
+		m_damageMax = GetParamInt(unit, params, "damage-max", false, 50);
+
 		m_rays = GetParamInt(unit, params, "rays", false, 4);
 
 		int arc = GetParamInt(unit, params, "arc", false, 45);
@@ -64,7 +74,8 @@ class ChargeLaserProjectile : RayProjectile
 	void Initialize(Actor@ owner, vec2 dir, float intensity, bool husk, Actor@ target, uint weapon) override
 	{
 		StartBeam(dir, false);
-		//StartBeam(target, true);
+		m_intensityLocal = intensity;
+		m_dist = lerp(m_distMin, m_distMax, m_intensityLocal);
 	}
 
 	void StartBeam(vec2 dir, bool husk)
@@ -81,14 +92,14 @@ class ChargeLaserProjectile : RayProjectile
 			m_fxCountC = m_fxCount;
 			
 			if (m_fxStart)
-				PlaySkillEffect(dir, { { "length", int(m_dist * m_distMul) } });
+				PlaySkillEffect(dir, { { "length", int(m_dist) } });
 		}
 	}
 
 	void Destroyed() override
 	{
 		// RayProjectile::Destroyed();
-		// ApplyEffects(m_destroyEffects, m_owner, m_unit, xy(m_unit.GetPosition()), GetDirection(), m_intensity, m_huskLocal);
+		// ApplyEffects(m_destroyEffects, m_owner, m_unit, xy(m_unit.GetPosition()), GetDirection(), m_intensityLocal, m_huskLocal);
 	}
 
 	void Collide(UnitPtr unit, vec2 pos, vec2 normal) override
@@ -119,7 +130,7 @@ class ChargeLaserProjectile : RayProjectile
 
 			vec2 ownerPos = xy(m_unit.GetPosition()) + vec2(0, -Tweak::PlayerCameraHeight);
 			vec2 rayDir = vec2(cos(m_angle), sin(m_angle));
-			vec2 rayPos = ownerPos + rayDir * int(m_dist * m_distMul);
+			vec2 rayPos = ownerPos + rayDir * int(m_dist);
 			array<RaycastResult>@ rayResults;
 			
 			if (m_rays > 1 && m_angleDelta == 0)
@@ -185,7 +196,17 @@ class ChargeLaserProjectile : RayProjectile
 				}
 				
 				vec2 dir = normalize(xy(m_unit.GetPosition()) - upos);
+
+				int damage = int(lerp(m_damageMin, m_damageMax, m_intensityLocal));
+				SValueBuilder b;
+				b.PushDictionary();
+				b.PushInteger("magical", int(damage));
+				b.PopDictionary();
+				m_effectsLocal.insertLast(Damage(m_unit, b.Build()));
+
 				ApplyEffects(m_effectsLocal, m_owner, unit, upos, dir, 1.0, m_huskLocal, 0, 0); // self/team/enemy dmg
+
+				m_effectsLocal.removeLast();
 
 				dictionary ePs = { { 'angle', m_angle } };
 				PlayEffect(m_hitFx, rayResults[i].point, ePs);

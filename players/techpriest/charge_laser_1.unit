@@ -13,15 +13,20 @@
 
         <int name="arc">0</int>
         <int name="rays">8</int>
-        <int name="dist">300</int>
         <int name="duration">1</int>
 
-        <array name="effects">
+        <int name="dist-min">20</int>
+        <int name="dist-max">300</int>
+
+        <int name="damage-min">20</int>
+        <int name="damage-max">100</int>
+
+        <!--<array name="effects">
             <dict>
                 <string name="class">Damage</string>
                 <int name="magical">20</int>
             </dict>
-        </array>
+        </array>-->
         
         <dict name="effect-params">
             <float name="height">3</float>
