@@ -15,16 +15,19 @@
 		color-b="0.5"
 		
 		%// Beam slowly reaches farther forward
-		scale-x="(length+radius)/32*t"
-		color-a="t*15"
+		%// scale-x="(length+radius)/32*t"
+		%// color-a="t*15"
 		
 		%// Beam slowly becomes more visible and brighter
-		%//scale-x="(length+radius)/32"
-		%//color-a="t*15"
+		scale-x="(length+radius)/32"
+		color-a="t*15"
 
 		scale-y="1"
 		>
-		<frame time="2000" x="0" y="1" w="32" h="1" />
-		%//<frame time="2000" x="5" y="1" w="32" h="1" />
+		%// Reaching beam
+		%//<frame time="2000" x="0" y="1" w="32" h="1" />
+
+		%// Infinite beam
+		<frame time="2000" x="5" y="1" w="32" h="1" />
 	</sprite>	
 </effect>

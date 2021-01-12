@@ -2,7 +2,6 @@ class ChargeLaserProjectile : RayProjectile
 {
 	array<IEffect@>@ m_effectsLocal;
 
-	int m_dist;
 	int m_rays;
 	float m_angleDelta;
 	float m_angleOffset;
@@ -31,6 +30,7 @@ class ChargeLaserProjectile : RayProjectile
 
 	SoundEvent@ m_sound;
 
+	int m_dist;
 	int m_distMin;
 	int m_distMax;
 
@@ -45,8 +45,11 @@ class ChargeLaserProjectile : RayProjectile
 		
 		@m_effectsLocal = LoadEffects(unit, params);
 		
-		m_distMin = GetParamInt(unit, params, "dist-min", false, 50);
-		m_distMax = GetParamInt(unit, params, "dist-max", false, 300);
+		m_dist = GetParamInt(unit, params, "dist", false, 50);
+
+		// FOR GROWING LASER
+		// m_distMin = GetParamInt(unit, params, "dist-min", false, 50);
+		// m_distMax = GetParamInt(unit, params, "dist-max", false, 300);
 
 		m_damageMin = GetParamInt(unit, params, "damage-min", false, 20);
 		m_damageMax = GetParamInt(unit, params, "damage-max", false, 50);
@@ -75,7 +78,9 @@ class ChargeLaserProjectile : RayProjectile
 	{
 		StartBeam(dir, false);
 		m_intensityLocal = intensity;
-		m_dist = lerp(m_distMin, m_distMax, m_intensityLocal);
+
+		// FOR GROWING LASER
+		//m_dist = lerp(m_distMin, m_distMax, m_intensityLocal);
 	}
 
 	void StartBeam(vec2 dir, bool husk)

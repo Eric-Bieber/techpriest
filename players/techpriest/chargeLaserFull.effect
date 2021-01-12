@@ -19,7 +19,7 @@
 		
 		scale-x="(length+radius)/32"
 		scale-y="1"
-	>
+		>
 		<frame time="500" x="5" y="1" w="32" h="1" />
 	</sprite>
 	

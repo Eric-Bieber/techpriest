@@ -15,18 +15,15 @@
         <int name="rays">8</int>
         <int name="duration">1</int>
 
+        %// FOR INF RANGE LASER
+        <int name="dist">300</int>
+
+        <!--%// FOR GROWING LASER
         <int name="dist-min">20</int>
-        <int name="dist-max">300</int>
+        <int name="dist-max">300</int>-->
 
         <int name="damage-min">20</int>
         <int name="damage-max">100</int>
-
-        <!--<array name="effects">
-            <dict>
-                <string name="class">Damage</string>
-                <int name="magical">20</int>
-            </dict>
-        </array>-->
         
         <dict name="effect-params">
             <float name="height">3</float>
