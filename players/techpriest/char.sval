@@ -5,7 +5,7 @@
 		<string>players/techpriest/blast_wave.sval</string>
 		<string>players/techpriest/meteor_shower.sval</string>
 		
-		<string>players/techpriest/combustion.sval</string>
+		<string>players/techpriest/incense_candles.sval</string>
 		<string>players/techpriest/flame_shield.sval</string>
 		<string>players/techpriest/mech_arms.sval</string>
 	</array>

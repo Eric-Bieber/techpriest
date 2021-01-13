@@ -1,0 +1,58 @@
+<unit layer="-1">
+	<behavior class="DangerAreaBehavior">
+		<int name="freq">800</int>
+		<int name="ttl">5000</int>
+
+        <!--<array name="effects">
+            <dict>
+                <string name="class">Modifiers::Speed</string>
+                <float name="attack-mul">2</float>
+        </dict>
+            <dict>
+                <string name="class">Modifiers::Speed</string>
+                <float name="movement-mul">2</float>
+            </dict>
+        </array>-->
+        
+        <!--<array name="modifiers">
+            <dict>
+                <string name="class">Modifiers::Speed</string>
+                <float name="attack-mul">1.40</float>
+            </dict>
+            <dict>
+                <string name="class">Modifiers::Regen</string>
+                <float name="health">4</float>
+            </dict>
+        </array>-->
+
+        <!--<array name="effects">
+            --><!--<dict name="modifier">
+                <string name="class">Modifiers::Regen</string>
+                <float name="health">4</float>
+            </dict>--><!--
+            
+            --><!--<dict name="modifier">
+                <string name="class">Modifiers::Speed</string>
+                <float name="attack-mul">1.1</float>
+            </dict>
+            <dict name="modifier">
+                <string name="class">Modifiers::Speed</string>
+                <float name="movement-mul">2</float>
+            </dict>--><!--
+		</array>-->
+	</behavior>
+
+
+	<scenes start="visible">
+		<scene name="shared">
+			<collision static="true">
+				<circle offset="0 0" shoot-through="true" aim-through="true" radius="28" sensor="true" />
+			</collision>
+		</scene>
+	
+		<scene name="visible">
+			<scene src="shared" />
+			<effect src="./incense_candles.effect" />
+		</scene>
+	</scenes>
+</unit>

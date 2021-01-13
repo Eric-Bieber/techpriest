@@ -33,9 +33,9 @@
 	<string name="skills.techpriest.summon-captain.2">The techpriest summons a powerful Skeleton Captain with 600 Health, 25 armor and 15 resistance.</string>
 	<string name="skills.techpriest.summon-captain.3">The techpriest summons a powerful Skeleton Captain with 800 Health, 50 armor and 20 resistance.</string>
 	
-	<string name="skills.techpriest.death-armor">Death Armor</string>
-	<string name="skills.techpriest.death-armor.create">techpriest passively blocks damage and poisons nearby enemies.</string>
-	<string name="skills.techpriest.death-armor.1">The techpriest blocks 10 Hybrid Damage and poisons all nearby enemies with 4 Magical damage for 4 seconds. 5 seconds cooldown.</string>
+	<string name="skills.techpriest.incense_candles">Incense Candles</string>
+	<string name="skills.techpriest.incense_candles.create">Drops a candle</string>
+	<string name="skills.techpriest.incense_candles.1">The techpriest blocks 10 Hybrid Damage and poisons all nearby enemies with 4 Magical damage for 4 seconds. 5 seconds cooldown.</string>
 	<string name="skills.techpriest.death-armor.2">The techpriest blocks 20 Hybrid Damage and poisons all nearby enemies with 6 Magical damage for 4 seconds. 5 seconds cooldown.</string>
 	<string name="skills.techpriest.death-armor.3">The techpriest blocks 30 Hybrid Damage and poisons all nearby enemies with 8 Magical damage for 4 seconds. 5 seconds cooldown.</string>
 	<string name="skills.techpriest.death-armor.4">The techpriest blocks 40 Hybrid Damage and poisons all nearby enemies with 10 Magical damage for 4 seconds. 5 seconds cooldown.</string>
