@@ -30,17 +30,9 @@
             <float name="radius">22</float>
         </dict>
     </behavior>
-
     <scenes>
-        <scene name="idle">
-            <collision static="false">
-                <circle projectile="true" radius="2" />
-            </collision>
-
-            <sprite looping="false" origin="16 16" layer="1" texture="players/gladiator/net.png" material="system/default.mats:projectile-player">
-                <frame time="30">0 0 32 32</frame>
-                <frame time="1000">0 64 32 32</frame>
-            </sprite>
-        </scene>
-    </scenes>
+		<scene>
+			
+		</scene>
+	</scenes>
 </unit>

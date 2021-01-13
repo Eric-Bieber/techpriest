@@ -9,19 +9,23 @@
 		<null />
 		
 		<!-- Level 1 -->
-		<dict>
+        <dict>
             <string name="class">Skills::PassiveSkill</string>
             <array name="modifiers">
                 <dict>
-                    <string name="class">Modifiers::IncenseTriggerEffect</string>
-                    <string name="unit-area">players/techpriest/incense_candles_area_1.unit</string>
+                    <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
                     <float name="chance">1</float>
-                    <bool name="target-self">true</bool>
-                    <!--<dict name="effect">
-						<string name="class">Heal</string>
-						<int name="heal">5</int>
-					</dict>-->
+                    <bool name="target-self">false</bool>
+                    <array name="effects">
+                        <dict name="effect">
+                            <string name="class">SpawnUnit</string>
+                            <string name="unit">players/techpriest/incense_candles_area_1.unit</string>
+                            <bool name="safe-spawn">false</bool>
+                            <int name="spawn-dist">0</int>
+                            <vec2 name="offset">0 0</vec2>
+                        </dict>
+                    </array>
                 </dict>
             </array>
 		</dict>

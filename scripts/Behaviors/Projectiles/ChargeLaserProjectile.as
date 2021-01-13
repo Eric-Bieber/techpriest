@@ -81,6 +81,8 @@ class ChargeLaserProjectile : RayProjectile
 
 		// FOR GROWING LASER
 		//m_dist = lerp(m_distMin, m_distMax, m_intensityLocal);
+
+		RayProjectile::Initialize(owner, dir, intensity, husk, target, weapon);
 	}
 
 	void StartBeam(vec2 dir, bool husk)

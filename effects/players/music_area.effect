@@ -1,0 +1,99 @@
+<effect bounds="100 100" layer="-1" looping="true">	
+	<param name="old_ttl" default="10000" />
+	<param name="ttl" default="2000" />
+	<param name="radius" default="10" />
+	<param name="angle" default="0" />
+	
+	
+
+<variation>	
+	<sprite origin="8 8" loopback="1000" looping="true" texture="./notes.png" material="effects/effects.mats:lightning"
+	
+		num-sprites="1"
+		
+		scale-x="max(t - max((t - 0.8) * 5, 0),0)"
+		scale-y="max(t - max((t - 0.8) * 5, 0),0)"
+		pos-x="(rand(29*u+67*i)-0.5)*14* saturate(t*2+0.33)"
+		pos-y="(rand(23*u+97*i)-0.5)*14* saturate(t*2+0.33) - 5"
+		color-a="0.05"
+	
+	>
+		<frame time="100">0 0 16 16</frame>
+		<frame time="100">16 0 16 16</frame>
+		<frame time="100">32 0 16 16</frame>
+		<frame time="100">48 0 16 16</frame>
+				
+	</sprite>
+
+</variation>
+
+
+
+<variation>	
+	<sprite origin="8 8" loopback="1000" looping="true" texture="./notes.png" material="effects/effects.mats:lightning"
+	
+		num-sprites="1"
+		
+		scale-x="max(t - max((t - 0.8) * 5, 0),0)"
+		scale-y="max(t - max((t - 0.8) * 5, 0),0)"
+		pos-x="(rand(29*u+67*i)-0.5)*14* saturate(t*2+0.33)"
+		pos-y="(rand(23*u+97*i)-0.5)*14* saturate(t*2+0.33) - 5"
+		color-a="0.05"
+	
+	>
+		<frame time="100">0 16 16 16</frame>
+		<frame time="100">16 16 16 16</frame>
+		<frame time="100">32 16 16 16</frame>
+		<frame time="100">48 16 16 16</frame>
+				
+	</sprite>
+
+</variation>
+
+
+
+<variation>	
+	<sprite origin="8 8" loopback="1000" looping="true" texture="./notes.png" material="effects/effects.mats:lightning"
+	
+		num-sprites="1"
+		
+		scale-x="max(t - max((t - 0.8) * 5, 0),0)"
+		scale-y="max(t - max((t - 0.8) * 5, 0),0)"
+		pos-x="(rand(29*u+67*i)-0.5)*14* saturate(t*2+0.33)"
+		pos-y="(rand(23*u+97*i)-0.5)*14* saturate(t*2+0.33) - 5"
+		color-a="0.05"
+	
+	>
+		<frame time="100">0 32 16 16</frame>
+		<frame time="100">16 32 16 16</frame>
+		<frame time="100">32 32 16 16</frame>
+		<frame time="100">48 32 16 16</frame>
+				
+	</sprite>
+
+</variation>
+
+
+
+<variation>	
+	<sprite origin="8 8" loopback="1000" looping="true" texture="./notes.png" material="effects/effects.mats:lightning"
+	
+		num-sprites="1"
+		
+		scale-x="max(t - max((t - 0.8) * 5, 0),0)"
+		scale-y="max(t - max((t - 0.8) * 5, 0),0)"
+		pos-x="(rand(29*u+67*i)-0.5)*14* saturate(t*2+0.33)"
+		pos-y="(rand(23*u+97*i)-0.5)*14* saturate(t*2+0.33) - 5"
+		color-a="0.05"
+	
+	>
+		<frame time="100">0 48 16 16</frame>
+		<frame time="100">16 48 16 16</frame>
+		<frame time="100">32 48 16 16</frame>
+		<frame time="100">48 48 16 16</frame>
+				
+	</sprite>
+
+</variation>
+
+</effect>
