@@ -7,8 +7,8 @@
         </array>
         
         <bool name="debuff">false</bool>
-        <int name="duration">5000</int>
-        <float name="speed-mul">2</float>
+        <int name="duration">500</int>
+        %//<float name="speed-mul">2</float>
 
         <array name="modifiers">
             <dict>
@@ -21,6 +21,6 @@
             </dict>
         </array>
 
-        <string name="icon">doodads/special/icons/weakness.unit</string>
+        %//<string name="icon">doodads/special/icons/weakness.unit</string>
     </dict>
 </svals>
