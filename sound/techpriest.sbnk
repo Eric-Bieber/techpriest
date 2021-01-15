@@ -5,4 +5,10 @@
   <sound category="sfx" name="chargeLaserShot" volume="1" is3d="false" looping="false">
     <source res="sound/chargeLaserShot.wav" />
   </sound>
+  <sound category="sfx" name="techpriesthurt" volume="1" is3d="false" looping="false">
+    <source res="sound/techpriesthurt.wav" />
+  </sound>
+  <sound category="sfx" name="techpriestdeath" volume="1" is3d="false" looping="false">
+    <source res="sound/techpriestdeath.wav" />
+  </sound>
 </soundbank>

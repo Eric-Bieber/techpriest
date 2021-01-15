@@ -59,29 +59,22 @@
         <dict>
             <string name="class">Skills::MeleeSwing</string>
 
-            <int name="cooldown">300</int>
+            <int name="cooldown">1000</int>
             <int name="castpoint">0</int>
 
             <string name="fx">effects/players/techpriest_attack_slash.effect</string>
             <string name="snd">event:/player/paladin/sword_swing</string>
             <string name="hit-snd">event:/player/paladin/sword_hit</string>
-            <!--<string name="anim">attack 8</string>-->
-            <float name="speed-mul">0.15</float>
+            <string name="anim">attack 8</string>
+            <float name="speed-mul">0.5</float>
 
-            %//<int name="range">35</int>
-
-            %//<int name="mana-cost">0</int>
-            %//<int name="stamina-cost">3</int>
-            %//<int name="health-cost">0</int>
-
-
-            <int name="arc">180</int>
+            <int name="arc">210</int>
             <int name="rays">7</int>
-            <int name="dist">26</int>
-            <int name="duration">60</int>
+            <int name="dist">30</int>
+            <int name="duration">120</int>
             <dict name="effect">
                 <string name="class">Damage</string>
-                <int name="physical">22</int>
+                <int name="physical">20</int>
             </dict>
         </dict>
 
@@ -89,29 +82,22 @@
         <dict>
             <string name="class">Skills::MeleeSwing</string>
 
-            <int name="cooldown">300</int>
+            <int name="cooldown">1000</int>
             <int name="castpoint">0</int>
 
             <string name="fx">effects/players/techpriest_attack_slash.effect</string>
             <string name="snd">event:/player/paladin/sword_swing</string>
             <string name="hit-snd">event:/player/paladin/sword_hit</string>
-            <!--<string name="anim">attack 8</string>-->
-            <float name="speed-mul">0.20</float>
+            <string name="anim">attack 8</string>
+            <float name="speed-mul">0.5</float>
 
-            %//<int name="range">35</int>
-
-            %//<int name="mana-cost">0</int>
-            %//<int name="stamina-cost">3</int>
-            %//<int name="health-cost">0</int>
-
-
-            <int name="arc">180</int>
+            <int name="arc">210</int>
             <int name="rays">7</int>
-            <int name="dist">26</int>
-            <int name="duration">60</int>
+            <int name="dist">30</int>
+            <int name="duration">120</int>
             <dict name="effect">
                 <string name="class">Damage</string>
-                <int name="physical">25</int>
+                <int name="physical">20</int>
             </dict>
         </dict>
 
@@ -119,29 +105,22 @@
         <dict>
             <string name="class">Skills::MeleeSwing</string>
 
-            <int name="cooldown">300</int>
+            <int name="cooldown">1000</int>
             <int name="castpoint">0</int>
 
             <string name="fx">effects/players/techpriest_attack_slash.effect</string>
             <string name="snd">event:/player/paladin/sword_swing</string>
             <string name="hit-snd">event:/player/paladin/sword_hit</string>
-            <!--<string name="anim">attack 8</string>-->
-            <float name="speed-mul">0.25</float>
+            <string name="anim">attack 8</string>
+            <float name="speed-mul">0.5</float>
 
-            %//<int name="range">35</int>
-
-            %//<int name="mana-cost">0</int>
-            %//<int name="stamina-cost">3</int>
-            %//<int name="health-cost">0</int>
-
-
-            <int name="arc">180</int>
+            <int name="arc">210</int>
             <int name="rays">7</int>
-            <int name="dist">26</int>
-            <int name="duration">60</int>
+            <int name="dist">30</int>
+            <int name="duration">120</int>
             <dict name="effect">
                 <string name="class">Damage</string>
-                <int name="physical">28</int>
+                <int name="physical">20</int>
             </dict>
         </dict>
 
@@ -155,23 +134,16 @@
             <string name="fx">effects/players/techpriest_attack_slash.effect</string>
             <string name="snd">event:/player/paladin/sword_swing</string>
             <string name="hit-snd">event:/player/paladin/sword_hit</string>
-            <!--<string name="anim">attack 8</string>-->
-            <float name="speed-mul">0.30</float>
+            <string name="anim">attack 8</string>
+            <float name="speed-mul">0.5</float>
 
-            %//<int name="range">35</int>
-
-            %//<int name="mana-cost">0</int>
-            %//<int name="stamina-cost">3</int>
-            %//<int name="health-cost">0</int>
-
-
-            <int name="arc">180</int>
+            <int name="arc">210</int>
             <int name="rays">7</int>
-            <int name="dist">26</int>
-            <int name="duration">60</int>
+            <int name="dist">30</int>
+            <int name="duration">120</int>
             <dict name="effect">
                 <string name="class">Damage</string>
-                <int name="physical">31</int>
+                <int name="physical">20</int>
             </dict>
         </dict>
     </array>
