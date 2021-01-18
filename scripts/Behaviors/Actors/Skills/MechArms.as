@@ -17,6 +17,8 @@ namespace Skills
 		UnitPtr m_target;
 		UnitPtr m_beam;
 
+		float targetDir;
+
 		SoundInstance@ m_sndI;
 
 		MechArm(int index, MechArms@ skill)
@@ -64,7 +66,31 @@ namespace Skills
 			int layerOffset = 0;
 			if (m_offset.y < 0)
 				layerOffset = -1;
-			scene.AddScene(m_skill.m_orbFx, 0, m_offset, layerOffset, 0);
+
+			auto input = GetInput();
+			auto aimDir = input.AimDir;
+			float dir = atan(aimDir.y, aimDir.x);
+
+			if (m_index == 0) {
+				auto sceneTempLeft = GetArmScene(m_skill.left_arm);
+				if (dir > -180 && dir < 0) 
+					scene.AddScene(sceneTempLeft, 0, vec2(-2, -3), 1, 0);
+				else if (dir > 0 && dir < 180) 
+					scene.AddScene(sceneTempLeft, 0, vec2(-2, -3), -1, 0);
+			}
+			else if (m_index == 1) {
+				auto sceneTempRight = GetArmScene(m_skill.right_arm);
+				if (dir > -180 && dir < 0) 
+					scene.AddScene(sceneTempRight, 0, vec2(1, -3), 1, 0);
+				if (dir > 0 && dir < 180) 
+					scene.AddScene(sceneTempRight, 0, vec2(1, -3), -1, 0);
+			}
+		}
+
+		UnitScene@ GetArmScene(AnimString@ anim) {
+			string sceneName = anim.GetSceneName(targetDir); 
+			auto prod = Resources::GetUnitProducer("players/techpriest/mech_arms.unit");
+			return prod.GetUnitScene(sceneName);
 		}
 
 		void Update(int dt)
@@ -180,8 +206,9 @@ namespace Skills
 			{
 				m_intervalC += m_skill.m_effectInterval;
 				vec2 targetPos = GetTargetPosition();
-				vec2 targetDir = normalize(targetPos - orbPos);
-				ApplyEffects(m_skill.m_effects, m_skill.m_owner, m_target, targetPos, targetDir, 1.0f, m_skill.m_owner.IsHusk());
+				vec2 targetDirection = normalize(targetPos - orbPos);
+				targetDir = atan(targetDirection.y, targetDirection.x);
+				ApplyEffects(m_skill.m_effects, m_skill.m_owner, m_target, targetPos, targetDirection, 1.0f, m_skill.m_owner.IsHusk());
 			}
 		}
 
@@ -221,8 +248,11 @@ namespace Skills
 
 		float m_orbDistance;
 		int m_orbRange;
-		UnitScene@ m_orbFx;
+		UnitScene@ m_downFx;
 		UnitScene@ m_orbBeamFx;
+
+		AnimString@ left_arm;
+		AnimString@ right_arm;
 
 		SoundEvent@ m_snd;
 
@@ -241,8 +271,11 @@ namespace Skills
 
 			m_orbDistance = GetParamFloat(unit, params, "orb-distance");
 			m_orbRange = GetParamInt(unit, params, "orb-range");
-			@m_orbFx = Resources::GetEffect(GetParamString(unit, params, "orb-fx"));
+			@m_downFx = Resources::GetEffect(GetParamString(unit, params, "orb-fx"));
 			@m_orbBeamFx = Resources::GetEffect(GetParamString(unit, params, "orb-beam-fx"));
+
+			@left_arm = AnimString(GetParamString(unit, params, "left-arm-anim"));
+			@right_arm = AnimString(GetParamString(unit, params, "right-arm-anim"));
 
 			@m_snd = Resources::GetSoundEvent(GetParamString(unit, params, "orb-snd"));
 
@@ -262,6 +295,9 @@ namespace Skills
 		void Update(int dt, bool walking) override
 		{
 			m_tmNow += dt;
+			auto input = GetInput();
+			auto aimDir = input.AimDir;
+			print(aimDir);
 
 			for (uint i = 0; i < m_orbs.length(); i++)
 				m_orbs[i].Update(dt);

@@ -1,0 +1,213 @@
+<unit netsync="position" slot="actor">
+	<scenes start="idle-left idle-right">
+        <!--Idle anims-->
+        <scene name="idle-left">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--Attack anims-->
+        <scene name="attack-left-0">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-7">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-6">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-5">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-4">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-3">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-2">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-left-1">
+            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-0">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-7">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-6">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-5">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-4">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-3">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-2">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="attack-right-1">
+            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+	</scenes>
+</unit>
+
+<!--<unit netsync="position" slot="actor">
+    <scenes start="idle-left-0 idle-left-1 idle-left-2 idle-left-3 idle-left-4 idle-left-5 idle-left-6 idle-left-7">
+        <scene name="idle-left-0">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-7">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-6">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-5">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-4">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-3">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-2">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-left-1">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-0">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-7">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-6">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-5">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-4">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-3">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-2">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="idle-right-1">
+            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+    </scenes>
+</unit>-->
