@@ -34,7 +34,7 @@ namespace Skills
 			return xy(m_skill.m_owner.m_unit.GetPosition());
 		}
 
-		vec2 GetOrbPosition()
+		vec2 GetArmPosition()
 		{
 			return xy(m_skill.m_owner.m_unit.GetPosition()) + m_offset;
 		}
@@ -48,17 +48,17 @@ namespace Skills
 
 		float GetOrbBeamDirection()
 		{
-			vec2 orbPos = GetOrbPosition();
+			vec2 armPos = GetArmPosition();
 			vec2 actorPos = GetTargetPosition();
-			vec2 dir = normalize(actorPos - orbPos);
+			vec2 dir = normalize(actorPos - armPos);
 			return atan(dir.y, dir.x);
 		}
 
 		float GetOrbBeamLength()
 		{
-			vec2 orbPos = GetOrbPosition();
+			vec2 armPos = GetArmPosition();
 			vec2 actorPos = GetTargetPosition();
-			return dist(orbPos, actorPos);
+			return dist(armPos, actorPos);
 		}
 
 		void RefreshScene(CustomUnitScene@ scene)
@@ -71,20 +71,183 @@ namespace Skills
 			auto aimDir = input.AimDir;
 			float dir = atan(aimDir.y, aimDir.x);
 
+			// Left
 			if (m_index == 0) {
-				auto sceneTempLeft = GetArmScene(m_skill.left_arm);
-				if (dir > -180 && dir < 0) 
-					scene.AddScene(sceneTempLeft, 0, vec2(-2, -3), 1, 0);
-				else if (dir > 0 && dir < 180) 
+				// S
+				if (dir >= 1.18 && dir < 1.96) {
+					auto sceneTempLeft = GetArmScene(m_skill.S_Left);
 					scene.AddScene(sceneTempLeft, 0, vec2(-2, -3), -1, 0);
+				}
+
+				// SW
+				if (dir >= 1.96 && dir < 2.75) {
+					auto sceneTempLeft = GetArmScene(m_skill.SW_Left);
+					scene.AddScene(sceneTempLeft, 0, vec2(-2, -6), -1, 0);
+				}
+				
+				// W
+				if (dir >= 2.75 || dir < -2.75) {
+					auto sceneTempLeft = GetArmScene(m_skill.W_Left);
+					scene.AddScene(sceneTempLeft, 0, vec2(3, -3), 1, 0);
+				}
+
+				// NW
+				if (dir >= -2.75 && dir < -1.96) {
+					auto sceneTempLeft = GetArmScene(m_skill.NW_Left);
+					scene.AddScene(sceneTempLeft, 0, vec2(0, -2), 1, 0);
+				}
+
+				// N
+				if (dir >= -1.96 && dir < -1.18) {
+					auto sceneTempLeft = GetArmScene(m_skill.N_Left);
+					scene.AddScene(sceneTempLeft, 0, vec2(-2, -3), 1, 0);
+				}
+
+				// NE
+				if (dir >= -1.18 && dir < -.38) {
+					auto sceneTempLeft = GetArmScene(m_skill.NE_Left);
+					scene.AddScene(sceneTempLeft, 0, vec2(-2, -2), 1, 0);
+				}
+
+				// SE
+				if (dir >= .38 && dir < 1.18) {
+					auto sceneTempLeft = GetArmScene(m_skill.SE_Left);
+					scene.AddScene(sceneTempLeft, 0, vec2(0, -3), -1, 0);
+				}
 			}
+			// Right
 			else if (m_index == 1) {
-				auto sceneTempRight = GetArmScene(m_skill.right_arm);
-				if (dir > -180 && dir < 0) 
-					scene.AddScene(sceneTempRight, 0, vec2(1, -3), 1, 0);
-				if (dir > 0 && dir < 180) 
+				// S
+				if (dir >= 1.18 && dir < 1.96) {
+					auto sceneTempRight = GetArmScene(m_skill.S_Right);
 					scene.AddScene(sceneTempRight, 0, vec2(1, -3), -1, 0);
+				}
+
+				// SW
+				if (dir >= 1.96 && dir < 2.75) {
+					auto sceneTempRight = GetArmScene(m_skill.SW_Right);
+					scene.AddScene(sceneTempRight, 0, vec2(2, -2), -1, 0);
+				}
+				
+				// E
+				if (dir >= -.38 && dir < .38) {
+					auto sceneTempRight = GetArmScene(m_skill.E_Right);
+					scene.AddScene(sceneTempRight, 0, vec2(-3, -3), 1, 0);
+				}
+
+				// NW
+				if (dir >= -2.75 && dir < -1.96) {
+					auto sceneTempRight = GetArmScene(m_skill.NW_Right);
+					scene.AddScene(sceneTempRight, 0, vec2(1, -2), 1, 0);
+				}
+
+				// N
+				if (dir >= -1.96 && dir < -1.18) {
+					auto sceneTempRight = GetArmScene(m_skill.N_Right);
+					scene.AddScene(sceneTempRight, 0, vec2(1, -3), 1, 0);
+				}
+
+				// NE
+				if (dir >= -1.18 && dir < -.38) {
+					auto sceneTempRight = GetArmScene(m_skill.NE_Right);
+					scene.AddScene(sceneTempRight, 0, vec2(-1, -2), 1, 0);
+				}
+
+				// SE
+				if (dir >= .38 && dir < 1.18) {
+					auto sceneTempRight = GetArmScene(m_skill.SE_Right);
+					scene.AddScene(sceneTempRight, 0, vec2(2, -6), -1, 0);
+				}				
 			}
+		}
+
+	    vec2 findOffset(float dir) {
+			vec2 tempOffset;
+			// Left
+			if (m_index == 0) {
+				// S
+				if (dir >= 1.18 && dir < 1.96) {
+					tempOffset = vec2(-6, -12);
+				}
+
+				// SW
+				if (dir >= 1.96 && dir < 2.75) {
+					tempOffset = vec2(-6, -12);
+				}
+				
+				// W
+				if (dir >= 2.75 || dir < -2.75) {
+					tempOffset = vec2(3, -11);
+				}
+
+				// NW
+				if (dir >= -2.75 && dir < -1.96) {
+					tempOffset = vec2(-6, -7);
+				}
+
+				// N
+				if (dir >= -1.96 && dir < -1.18) {
+					tempOffset = vec2(-7, -12);
+				}
+
+				// NE
+				if (dir >= -1.18 && dir < -.38) {
+					tempOffset = vec2(-8, -10);
+				}
+
+				// E
+				if (dir >= -.38 && dir < .38) {
+					tempOffset = vec2(-1, -11);
+				}
+
+				// SE
+				if (dir >= .38 && dir < 1.18) {
+					tempOffset = vec2(-7, -11);
+				}
+			}
+			// Right
+			else if (m_index == 1) {
+				// S
+				if (dir >= 1.18 && dir < 1.96) {
+					tempOffset = vec2(6, -12);
+				}
+
+				// SW
+				if (dir >= 1.96 && dir < 2.75) {
+					tempOffset = vec2(8, -9);
+				}
+
+				// W
+				if (dir >= 2.75 || dir < -2.75) {
+					tempOffset = vec2(-1, -11);
+				}
+
+				// NW
+				if (dir >= -2.75 && dir < -1.96) {
+					tempOffset = vec2(7, -10);
+				}
+
+				// N
+				if (dir >= -1.96 && dir < -1.18) {
+					tempOffset = vec2(5, -12);
+				}
+
+				// NE
+				if (dir >= -1.18 && dir < -.38) {
+					tempOffset = vec2(4, -7);
+				}
+
+				// E
+				if (dir >= -.38 && dir < .38) {
+					tempOffset = vec2(-5, -11);
+				}
+
+				// SE
+				if (dir >= .38 && dir < 1.18) {
+					tempOffset = vec2(6, -12);
+				}				
+			}
+			return tempOffset;
 		}
 
 		UnitScene@ GetArmScene(AnimString@ anim) {
@@ -124,28 +287,20 @@ namespace Skills
 				}
 			}
 
-			// Find offset of orb from player
-			float angle = (m_index / float(m_skill.m_numOrbs)) * PI * 2;
-			angle += m_skill.m_tmNow / 1000.0f;
-			vec2 dir = vec2(cos(angle), sin(angle));
+			auto input = GetInput();
+			auto aimDir = input.AimDir;
+			float dir = atan(aimDir.y, aimDir.x);
+			
+			m_offset = findOffset(dir);
 
-			float distance;
-			vec2 ownerPos = GetOwnerPosition();
-			auto rayRes = g_scene.Raycast(ownerPos, ownerPos + dir * m_skill.m_orbDistance, ~0, RaycastType::Shot);
-			if (rayRes.length() > 0)
-				distance = max(0.0f, dist(ownerPos, rayRes[0].point) - 4.0f);
-			else
-				distance = m_skill.m_orbDistance;
-			m_offset = dir * distance;
-
-			vec2 orbPos = GetOrbPosition();
+			vec2 armPos = GetArmPosition();
 
 			if (!m_overrideTargetSet)
 			{
 				// Find closest unit
-				float closestDistance = (m_skill.m_orbRange * m_skill.m_orbRange) + 1.0f;
+				float closestDistance = (m_skill.m_armRange * m_skill.m_armRange) + 1.0f;
 
-				array<UnitPtr>@ results = g_scene.FetchActorsWithOtherTeam(m_skill.m_owner.Team, orbPos, m_skill.m_orbRange);
+				array<UnitPtr>@ results = g_scene.FetchActorsWithOtherTeam(m_skill.m_owner.Team, armPos, m_skill.m_armRange);
 				for (uint i = 0; i < results.length(); i++)
 				{
 					Actor@ actor = cast<Actor>(results[i].GetScriptBehavior());
@@ -153,7 +308,7 @@ namespace Skills
 						continue;
 
 					bool canSee = true;
-					auto canSeeRes = g_scene.Raycast(orbPos, xy(results[i].GetPosition()), ~0, RaycastType::Shot);
+					auto canSeeRes = g_scene.Raycast(armPos, xy(results[i].GetPosition()), ~0, RaycastType::Shot);
 					for (uint j = 0; j < canSeeRes.length(); j++)
 					{
 						UnitPtr canSeeUnit = canSeeRes[j].FetchUnit(g_scene);
@@ -171,7 +326,7 @@ namespace Skills
 						continue;
 
 					vec2 actorPos = xy(results[i].GetPosition());
-					float d = distsq(orbPos, actorPos);
+					float d = distsq(armPos, actorPos);
 					if (d < closestDistance)
 					{
 						newTarget = results[i];
@@ -190,8 +345,8 @@ namespace Skills
 				BeamStop();
 			else if (m_beam.IsValid())
 			{
-				m_sndI.SetPosition(xyz(orbPos));
-				m_beam.SetPosition(xyz(orbPos));
+				m_sndI.SetPosition(xyz(armPos));
+				m_beam.SetPosition(xyz(armPos));
 				auto beamBehavior = cast<EffectBehavior>(m_beam.GetScriptBehavior());
 				if (beamBehavior !is null)
 				{
@@ -206,7 +361,7 @@ namespace Skills
 			{
 				m_intervalC += m_skill.m_effectInterval;
 				vec2 targetPos = GetTargetPosition();
-				vec2 targetDirection = normalize(targetPos - orbPos);
+				vec2 targetDirection = normalize(targetPos - armPos);
 				targetDir = atan(targetDirection.y, targetDirection.x);
 				ApplyEffects(m_skill.m_effects, m_skill.m_owner, m_target, targetPos, targetDirection, 1.0f, m_skill.m_owner.IsHusk());
 			}
@@ -214,15 +369,15 @@ namespace Skills
 
 		void BeamStart()
 		{
-			vec2 orbPos = GetOrbPosition();
+			vec2 armPos = GetArmPosition();
 
 			dictionary ePs = {
 				{ 'angle', GetOrbBeamDirection() },
 				{ 'length', GetOrbBeamLength() }
 			};
-			m_beam = PlayEffect(m_skill.m_orbBeamFx, orbPos, ePs);
+			m_beam = PlayEffect(m_skill.m_orbBeamFx, armPos, ePs);
 
-			@m_sndI = m_skill.m_snd.PlayTracked(xyz(orbPos));
+			@m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
 
 			auto behavior = cast<EffectBehavior>(m_beam.GetScriptBehavior());
 			behavior.m_looping = true;
@@ -244,15 +399,33 @@ namespace Skills
 
 	class MechArms : Skill
 	{
-		int m_numOrbs;
+		int m_numArms;
 
-		float m_orbDistance;
-		int m_orbRange;
+		int m_armRange;
 		UnitScene@ m_downFx;
 		UnitScene@ m_orbBeamFx;
 
-		AnimString@ left_arm;
-		AnimString@ right_arm;
+		AnimString@ S_Left;
+		AnimString@ S_Right;
+
+		AnimString@ SW_Left;
+		AnimString@ SW_Right;
+
+		AnimString@ W_Left;
+
+		AnimString@ NW_Left;
+		AnimString@ NW_Right;
+
+		AnimString@ N_Left;
+		AnimString@ N_Right;
+
+		AnimString@ NE_Left;
+		AnimString@ NE_Right;
+		
+		AnimString@ E_Right;
+
+		AnimString@ SE_Left;
+		AnimString@ SE_Right;
 
 		SoundEvent@ m_snd;
 
@@ -261,52 +434,75 @@ namespace Skills
 		array<IEffect@>@ m_effects;
 		int m_effectInterval;
 
-		array<MechArm@> m_orbs;
+		array<MechArm@> m_arms;
 
 		MechArms(UnitPtr unit, SValue& params)
 		{
 			super(unit);
 
-			m_numOrbs = GetParamInt(unit, params, "num-orbs");
+			m_numArms = GetParamInt(unit, params, "num-arms");
 
-			m_orbDistance = GetParamFloat(unit, params, "orb-distance");
-			m_orbRange = GetParamInt(unit, params, "orb-range");
+			m_armRange = GetParamInt(unit, params, "arm-range");
 			@m_downFx = Resources::GetEffect(GetParamString(unit, params, "orb-fx"));
 			@m_orbBeamFx = Resources::GetEffect(GetParamString(unit, params, "orb-beam-fx"));
 
-			@left_arm = AnimString(GetParamString(unit, params, "left-arm-anim"));
-			@right_arm = AnimString(GetParamString(unit, params, "right-arm-anim"));
+			// South
+			@S_Left = AnimString(GetParamString(unit, params, "S_Left"));
+			@S_Right = AnimString(GetParamString(unit, params, "S_Right"));
+
+			// South West
+			@SW_Left = AnimString(GetParamString(unit, params, "SW_Left"));
+			@SW_Right = AnimString(GetParamString(unit, params, "SW_Right"));
+
+			// West
+			@W_Left = AnimString(GetParamString(unit, params, "W_Left"));
+
+			// North West
+			@NW_Left = AnimString(GetParamString(unit, params, "NW_Left"));
+			@NW_Right = AnimString(GetParamString(unit, params, "NW_Right"));
+
+			// North
+			@N_Left = AnimString(GetParamString(unit, params, "N_Left"));
+			@N_Right = AnimString(GetParamString(unit, params, "N_Right"));
+
+			// North East
+			@NE_Left = AnimString(GetParamString(unit, params, "NE_Left"));
+			@NE_Right = AnimString(GetParamString(unit, params, "NE_Right"));
+
+			// East
+			@E_Right = AnimString(GetParamString(unit, params, "E_Right"));
+
+			// South East
+			@SE_Left = AnimString(GetParamString(unit, params, "SE_Left"));
+			@SE_Right = AnimString(GetParamString(unit, params, "SE_Right"));
 
 			@m_snd = Resources::GetSoundEvent(GetParamString(unit, params, "orb-snd"));
 
 			@m_effects = LoadEffects(unit, params);
 			m_effectInterval = GetParamInt(unit, params, "effect-interval");
 
-			for (int i = 0; i < m_numOrbs; i++)
-				m_orbs.insertLast(MechArm(m_orbs.length(), this));
+			for (int i = 0; i < m_numArms; i++)
+				m_arms.insertLast(MechArm(m_arms.length(), this));
 		}
 
 		void RefreshScene(CustomUnitScene@ scene) override
 		{
-			for (uint i = 0; i < m_orbs.length(); i++)
-				m_orbs[i].RefreshScene(scene);
+			for (uint i = 0; i < m_arms.length(); i++)
+				m_arms[i].RefreshScene(scene);
 		}
 
 		void Update(int dt, bool walking) override
 		{
 			m_tmNow += dt;
-			auto input = GetInput();
-			auto aimDir = input.AimDir;
-			print(aimDir);
 
-			for (uint i = 0; i < m_orbs.length(); i++)
-				m_orbs[i].Update(dt);
+			for (uint i = 0; i < m_arms.length(); i++)
+				m_arms[i].Update(dt);
 		}
 		
 		void OnDestroy() override
 		{
-			for (uint i = 0; i < m_orbs.length(); i++)
-				m_orbs[i].BeamStop();
+			for (uint i = 0; i < m_arms.length(); i++)
+				m_arms[i].BeamStop();
 		}
 	}
 }

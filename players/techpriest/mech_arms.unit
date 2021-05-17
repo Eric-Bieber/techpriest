@@ -1,213 +1,718 @@
 <unit netsync="position" slot="actor">
-	<scenes start="idle-left idle-right">
-        <!--Idle anims-->
-        <scene name="idle-left">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+	<scenes start="idle-left idle-right idle-SW-left idle-SW-right idle-W-right">
+        <!--Idle anims, possibly useless-->        
+        <!--<scene name="idle-S-left">
+            <sprite looping="true" origin="8 11" texture="./SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">0 0 16 16</frame>
             </sprite>
         </scene>
-
-        <scene name="idle-right">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        
+        <scene name="idle-S-right">
+            <sprite looping="true" origin="8 11" texture="./SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">0 0 16 16</frame>
             </sprite>
         </scene>
+        
+        <scene name="idle-SW-left">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+        
+        <scene name="idle-SW-right">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+        
+        <scene name="idle-W-right">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>-->
 
+        
         <!--Attack anims-->
-        <scene name="attack-left-0">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <!--Dont judge my shitty implementation I'm not going for modder of the year lol-->
+        
+        <!--================================================ South ================================================-->
+        <scene name="s-left-0">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">32 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-7">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-7">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">16 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-6">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-6">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">0 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-5">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-5">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">48 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-4">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-4">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">32 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-3">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-3">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">16 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-2">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-2">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">0 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-left-1">
-            <sprite looping="true" origin="8 11" texture="./left_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-left-1">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
                 <frame time="100">48 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-0">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-0">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">32 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-7">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-7">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">16 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-6">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-6">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">0 16 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-5">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-5">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">48 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-4">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-4">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">32 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-3">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-3">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">16 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-2">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-2">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">0 0 16 16</frame>
             </sprite>
         </scene>
 
-        <scene name="attack-right-1">
-            <sprite looping="true" origin="3 10" texture="./right_arm_south.png" material="effects/effects.mats:default">
+        <scene name="s-right-1">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
                 <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+    
+        <!--================================================ South West ================================================-->
+        <scene name="sw-left-0">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-7">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-6">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-5">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-4">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-3">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-2">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-left-1">
+            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-0">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-7">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-6">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-5">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-4">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-3">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-2">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="sw-right-1">
+            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--================================================ West ================================================-->
+        <scene name="w-left-0">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-7">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-6">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-5">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-4">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-3">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-2">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="w-left-1">
+            <sprite looping="true" origin="9 12" texture="./MechArms/W_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--================================================ North West ================================================-->
+        <scene name="nw-left-0">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-7">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-6">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-5">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-4">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-3">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-2">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-left-1">
+            <sprite looping="true" origin="11 11" texture="./MechArms/NW_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-0">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-7">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-6">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-5">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-4">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-3">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-2">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="nw-right-1">
+            <sprite looping="true" origin="5 12" texture="./MechArms/NW_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--================================================ North ================================================-->
+        <scene name="n-left-0">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-7">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-6">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-5">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-4">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-3">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-2">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-left-1">
+            <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-0">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-7">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-6">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-5">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-4">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-3">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-2">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="n-right-1">
+            <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--================================================ North East ================================================-->
+        <scene name="ne-left-0">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-7">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-6">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-5">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-4">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-3">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-2">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-left-1">
+            <sprite looping="true" origin="12 12" texture="./MechArms/NE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-0">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-7">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-6">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-5">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-4">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-3">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-2">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="ne-right-1">
+            <sprite looping="true" origin="6 11" texture="./MechArms/NE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--================================================ East ================================================-->
+        <scene name="e-right-0">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-7">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-6">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-5">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-4">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-3">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-2">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="e-right-1">
+            <sprite looping="true" origin="8 12" texture="./MechArms/E_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <!--================================================ South East ================================================-->
+        <scene name="se-left-0">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-7">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-6">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-5">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-4">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-3">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-2">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-left-1">
+            <sprite looping="true" origin="14 11" texture="./MechArms/SE_Left.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-0">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-7">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-6">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-5">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-4">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">16 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-3">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">0 0 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-2">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">48 16 16 16</frame>
+            </sprite>
+        </scene>
+
+        <scene name="se-right-1">
+            <sprite looping="true" origin="7 11" texture="./MechArms/SE_Right.png" material="effects/effects.mats:default">
+                <frame time="100">32 16 16 16</frame>
             </sprite>
         </scene>
 	</scenes>
 </unit>
-
-<!--<unit netsync="position" slot="actor">
-    <scenes start="idle-left-0 idle-left-1 idle-left-2 idle-left-3 idle-left-4 idle-left-5 idle-left-6 idle-left-7">
-        <scene name="idle-left-0">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-7">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-6">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-5">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-4">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-3">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-2">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-left-1">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-0">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-7">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-6">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-5">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-4">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-3">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-2">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-
-        <scene name="idle-right-1">
-            <sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
-            </sprite>
-        </scene>
-    </scenes>
-</unit>-->

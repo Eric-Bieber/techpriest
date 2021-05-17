@@ -1,5 +1,0 @@
-<effect looping="true" layer="1">
-	<sprite looping="true" origin="8 13" texture="./mech_arms.png" material="effects/effects.mats:default">
-		<frame time="100">0 0 16 16</frame>
-	</sprite>
-</effect>
