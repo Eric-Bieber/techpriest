@@ -161,6 +161,11 @@ namespace Skills
 			}
 		}
 
+        UnitPtr ProduceProjectile(vec2 shootPos, int id = 0)
+		{
+			return m_skill.m_projectile.Produce(g_scene, xyz(shootPos), id);
+		}
+
 	    vec2 findOffset(float dir) {
 			vec2 tempOffset;
 			// Left
@@ -262,30 +267,6 @@ namespace Skills
 
 			// Check if we should override the target
 			auto owner = cast<PlayerBase>(m_skill.m_owner);
-			if (owner !is null)
-			{
-				Skills::ShootBeam@ skillBeam = null;
-				for (uint i = 0; i < owner.m_skills.length(); i++)
-				{
-					auto s = cast<Skills::ShootBeam>(owner.m_skills[i]);
-					if (s is null)
-						continue;
-
-					@skillBeam = s;
-					break;
-				}
-
-				if (skillBeam !is null)
-				{
-					m_overrideTargetSet = skillBeam.m_isUnitHit;
-
-					if (m_overrideTargetSet)
-					{
-						m_overrideTarget = skillBeam.m_unitHitPos;
-						newTarget = skillBeam.m_unitHit;
-					}
-				}
-			}
 
 			auto input = GetInput();
 			auto aimDir = input.AimDir;
@@ -339,21 +320,25 @@ namespace Skills
 			UnitPtr prevTarget = m_target;
 			m_target = newTarget;
 
-			if (!prevTarget.IsValid() && newTarget.IsValid())
-				BeamStart();
-			else if (prevTarget.IsValid() && !newTarget.IsValid())
-				BeamStop();
-			else if (m_beam.IsValid())
-			{
-				m_sndI.SetPosition(xyz(armPos));
-				m_beam.SetPosition(xyz(armPos));
-				auto beamBehavior = cast<EffectBehavior>(m_beam.GetScriptBehavior());
-				if (beamBehavior !is null)
-				{
-					beamBehavior.SetParam("angle", GetOrbBeamDirection());
-					beamBehavior.SetParam("length", GetOrbBeamLength());
-				}
-			}
+            vec2 targetPos = GetTargetPosition();
+			vec2 targetDirection = normalize(targetPos - armPos);
+            vec2 shootPos = GetArmPosition() + targetDirection;
+
+			if (!prevTarget.IsValid() && newTarget.IsValid()) {
+				auto proj = ProduceProjectile(shootPos);
+				if (!proj.IsValid())
+					return;
+				
+				auto p = cast<IProjectile>(proj.GetScriptBehavior());
+				if (p is null)
+					return;
+				
+				p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
+
+				auto pp = cast<Projectile>(p);
+				if (pp !is null)
+					pp.m_liveRangeSq *= m_skill.m_armRange;
+            }
 
 			// Maybe apply effects
 			m_intervalC -= dt;
@@ -404,6 +389,7 @@ namespace Skills
 		int m_armRange;
 		UnitScene@ m_downFx;
 		UnitScene@ m_orbBeamFx;
+        UnitProducer@ m_projectile;
 
 		AnimString@ S_Left;
 		AnimString@ S_Right;
@@ -443,8 +429,10 @@ namespace Skills
 			m_numArms = GetParamInt(unit, params, "num-arms");
 
 			m_armRange = GetParamInt(unit, params, "arm-range");
-			@m_downFx = Resources::GetEffect(GetParamString(unit, params, "orb-fx"));
-			@m_orbBeamFx = Resources::GetEffect(GetParamString(unit, params, "orb-beam-fx"));
+			// @m_downFx = Resources::GetEffect(GetParamString(unit, params, "orb-fx"));
+			// @m_orbBeamFx = Resources::GetEffect(GetParamString(unit, params, "orb-beam-fx"));
+            @m_snd = Resources::GetSoundEvent(GetParamString(unit, params, "snd"));
+            @m_projectile = Resources::GetUnitProducer(GetParamString(unit, params, "projectile"));
 
 			// South
 			@S_Left = AnimString(GetParamString(unit, params, "S_Left"));
@@ -475,8 +463,6 @@ namespace Skills
 			// South East
 			@SE_Left = AnimString(GetParamString(unit, params, "SE_Left"));
 			@SE_Right = AnimString(GetParamString(unit, params, "SE_Right"));
-
-			@m_snd = Resources::GetSoundEvent(GetParamString(unit, params, "orb-snd"));
 
 			@m_effects = LoadEffects(unit, params);
 			m_effectInterval = GetParamInt(unit, params, "effect-interval");

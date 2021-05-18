@@ -15,9 +15,11 @@
 			<int name="num-arms">2</int>
 
 			<int name="arm-range">70</int>
-			<string name="orb-fx">players/techpriest/mech_arms1.effect</string>
-			<string name="orb-beam-fx">effects/players/priest_orb_beam.effect</string>
-			<string name="orb-snd">event:/player/priest/orb_beam</string>
+			<!-- <string name="orb-fx">players/techpriest/mech_arms1.effect</string>
+		    <string name="orb-beam-fx">effects/players/priest_orb_beam.effect</string>
+			<string name="orb-snd">event:/player/priest/orb_beam</string>-->
+            <string name="projectile">players/sorcerer/shard_1.unit</string>
+            <string name="snd">event:/player/sorcerer/shard_shoot</string>
 
             <string name="S_Left">s-left 8</string>
             <string name="S_Right">s-right 8</string>
