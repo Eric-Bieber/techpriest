@@ -15,7 +15,7 @@ namespace Skills
 		bool m_overrideTargetSet;
 
 		UnitPtr m_target;
-		UnitPtr m_beam;
+		UnitPtr m_fire;
 
 		float targetDir;
 
@@ -322,7 +322,7 @@ namespace Skills
 
             vec2 targetPos = GetTargetPosition();
 			vec2 targetDirection = normalize(targetPos - armPos);
-            vec2 shootPos = GetArmPosition() + targetDirection;
+            vec2 shootPos = GetArmPosition();
 
 			// Maybe apply effects
 			
@@ -339,6 +339,8 @@ namespace Skills
                         return;
                     
                     p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
+                    m_fire = PlayEffect(m_skill.m_firefx, armPos);
+                    auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
 
                     auto pp = cast<Projectile>(p);
                     if (pp !is null)
@@ -354,6 +356,7 @@ namespace Skills
                     if (m_skill.m_buff_fire != null) {
                         cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_fire, 1.0f, false));
                     }
+                    @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
                 }
 			} else {
                 m_intervalC = m_skill.m_effectInterval;
@@ -377,20 +380,20 @@ namespace Skills
 				{ 'angle', GetOrbBeamDirection() },
 				{ 'length', GetOrbBeamLength() }
 			};
-			m_beam = PlayEffect(m_skill.m_orbBeamFx, armPos, ePs);
+			m_fire = PlayEffect(m_skill.m_orbBeamFx, armPos, ePs);
 
 			@m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
 
-			auto behavior = cast<EffectBehavior>(m_beam.GetScriptBehavior());
+			auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
 			behavior.m_looping = true;
 		}
 
 		void BeamStop()
 		{
-			if (m_beam.IsValid())
-				m_beam.Destroy();
+			if (m_fire.IsValid())
+				m_fire.Destroy();
 
-			m_beam = UnitPtr();
+			m_fire = UnitPtr();
 
 			if (m_sndI !is null)
 				m_sndI.Stop();
@@ -404,7 +407,7 @@ namespace Skills
 		int m_numArms;
 
 		int m_armRange;
-		UnitScene@ m_downFx;
+		UnitScene@ m_firefx;
 		UnitScene@ m_orbBeamFx;
         UnitProducer@ m_projectile;
 
@@ -447,9 +450,8 @@ namespace Skills
 			m_numArms = GetParamInt(unit, params, "num-arms");
 
 			m_armRange = GetParamInt(unit, params, "arm-range");
-			// @m_downFx = Resources::GetEffect(GetParamString(unit, params, "orb-fx"));
-			// @m_orbBeamFx = Resources::GetEffect(GetParamString(unit, params, "orb-beam-fx"));
-            @m_snd = Resources::GetSoundEvent(GetParamString(unit, params, "snd"));
+			@m_firefx = Resources::GetEffect(GetParamString(unit, params, "fire-fx"));
+            @m_snd = Resources::GetSoundEvent(GetParamString(unit, params, "fire-snd"));
             @m_projectile = Resources::GetUnitProducer(GetParamString(unit, params, "projectile"));
 
 			// South

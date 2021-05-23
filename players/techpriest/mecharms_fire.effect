@@ -1,0 +1,14 @@
+<effect looping="false" layer="1000">
+	<sprite looping="false" origin="0 0" texture="./mecharms_laser.png" material="system/default.mats:glow-both-bright"
+		color-r="1"
+		color-g="1"
+		color-b="1"
+		color-a="1"
+	>
+		<frame time="50">0 0 2 2</frame>
+		<frame time="50">4 0 4 4</frame>
+		<frame time="50">10 0 6 6</frame>
+		<frame time="50">17 0 6 6</frame>
+		<frame time="25">24 0 6 6</frame>
+	</sprite>
+</effect>
