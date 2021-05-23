@@ -324,33 +324,50 @@ namespace Skills
 			vec2 targetDirection = normalize(targetPos - armPos);
             vec2 shootPos = GetArmPosition() + targetDirection;
 
-			if (!prevTarget.IsValid() && newTarget.IsValid()) {
-				auto proj = ProduceProjectile(shootPos);
-				if (!proj.IsValid())
-					return;
-				
-				auto p = cast<IProjectile>(proj.GetScriptBehavior());
-				if (p is null)
-					return;
-				
-				p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
-
-				auto pp = cast<Projectile>(p);
-				if (pp !is null)
-					pp.m_liveRangeSq *= m_skill.m_armRange;
-            }
-
 			// Maybe apply effects
-			m_intervalC -= dt;
-			if (m_intervalC <= 0)
-			{
-				m_intervalC += m_skill.m_effectInterval;
-				vec2 targetPos = GetTargetPosition();
-				vec2 targetDirection = normalize(targetPos - armPos);
-				targetDir = atan(targetDirection.y, targetDirection.x);
-				ApplyEffects(m_skill.m_effects, m_skill.m_owner, m_target, targetPos, targetDirection, 1.0f, m_skill.m_owner.IsHusk());
-			}
+			
+			if (inRange()) {
+                m_intervalC -= dt;
+                if (m_intervalC <= 0)
+			    {
+                    auto proj = ProduceProjectile(shootPos);
+                    if (!proj.IsValid())
+                        return;
+                    
+                    auto p = cast<IProjectile>(proj.GetScriptBehavior());
+                    if (p is null)
+                        return;
+                    
+                    p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
+
+                    auto pp = cast<Projectile>(p);
+                    if (pp !is null)
+                        pp.m_liveRangeSq *= m_skill.m_armRange;
+
+                    m_intervalC += m_skill.m_effectInterval;
+                    vec2 targetPos = GetTargetPosition();
+                    vec2 targetDirection = normalize(targetPos - armPos);
+                    targetDir = atan(targetDirection.y, targetDirection.x);
+                    if (m_skill.m_buff_stun != null) {
+                        cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_stun, 1.0f, false));
+                    }
+                    if (m_skill.m_buff_fire != null) {
+                        cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_fire, 1.0f, false));
+                    }
+                }
+			} else {
+                m_intervalC = m_skill.m_effectInterval;
+            }
 		}
+
+        bool inRange() {
+            bool inRange = false;
+            vec2 targetPos = GetTargetPosition();
+            vec2 ownerPos = GetOwnerPosition();
+            float distance = dist(ownerPos, targetPos);
+            inRange = distance <= 70;
+            return inRange;
+        }
 
 		void BeamStart()
 		{
@@ -417,7 +434,8 @@ namespace Skills
 
 		int m_tmNow;
 
-		array<IEffect@>@ m_effects;
+		ActorBuffDef@ m_buff_stun;
+        ActorBuffDef@ m_buff_fire;
 		int m_effectInterval;
 
 		array<MechArm@> m_arms;
@@ -464,7 +482,8 @@ namespace Skills
 			@SE_Left = AnimString(GetParamString(unit, params, "SE_Left"));
 			@SE_Right = AnimString(GetParamString(unit, params, "SE_Right"));
 
-			@m_effects = LoadEffects(unit, params);
+			@m_buff_stun = LoadActorBuff(GetParamString(unit, params, "buff-stun", true));
+            @m_buff_fire = LoadActorBuff(GetParamString(unit, params, "buff-fire", true));
 			m_effectInterval = GetParamInt(unit, params, "effect-interval");
 
 			for (int i = 0; i < m_numArms; i++)

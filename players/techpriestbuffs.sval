@@ -23,4 +23,35 @@
 
         %//<string name="icon">doodads/special/icons/weakness.unit</string>
     </dict>
+
+    <dict name="laser-stun">
+        <array name="tags">
+            <string>stun</string>
+        </array>
+        <int name="duration">200</int>
+        <bool name="debuff">true</bool>
+
+        <string name="icon">doodads/special/icons/stun.unit</string>
+        <float name="speed-mul">0</float>
+        <bool name="disarm">true</bool>
+    </dict>
+
+    <dict name="laser-fire">
+        <array name="tags">
+            <string>burning</string>
+        </array>
+
+        <int name="duration">1500</int>
+        <bool name="debuff">true</bool>
+
+        <string name="icon">doodads/special/icons/burn.unit</string>
+
+        <dict name="tick">
+            <int name="freq">500</int>
+            <dict name="effect">
+                <string name="class">CombustionDamage</string>
+                <int name="magical">2</int>
+            </dict>
+        </dict>
+    </dict>
 </svals>
