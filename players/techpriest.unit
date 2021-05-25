@@ -1,7 +1,7 @@
 <unit netsync="position" slot="actor">
 	<scenes start="idle-0 idle-1 idle-2 idle-3 idle-4 idle-5 idle-6 idle-7">
 		<scene name="idle-0">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
+			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:bright-noxray">
 				<frame>0 0 24 24</frame>
 			</sprite>
 		</scene>
