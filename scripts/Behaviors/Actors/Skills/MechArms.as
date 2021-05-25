@@ -1,7 +1,5 @@
 namespace Skills
 {
-	//PhysicsBody@ bdy = m_unit.GetPhysicsBody();
-	//bdy.GetLinearVelocity()
 	class MechArm
 	{
 		int m_index;
@@ -44,21 +42,6 @@ namespace Skills
 			if (m_overrideTargetSet)
 				return m_overrideTarget;
 			return xy(m_target.GetPosition());
-		}
-
-		float GetOrbBeamDirection()
-		{
-			vec2 armPos = GetArmPosition();
-			vec2 actorPos = GetTargetPosition();
-			vec2 dir = normalize(actorPos - armPos);
-			return atan(dir.y, dir.x);
-		}
-
-		float GetOrbBeamLength()
-		{
-			vec2 armPos = GetArmPosition();
-			vec2 actorPos = GetTargetPosition();
-			return dist(armPos, actorPos);
 		}
 
 		void RefreshScene(CustomUnitScene@ scene)
@@ -172,84 +155,84 @@ namespace Skills
 			if (m_index == 0) {
 				// S
 				if (dir >= 1.18 && dir < 1.96) {
-					tempOffset = vec2(-6, -12);
+					tempOffset = vec2(-9, -13);
 				}
 
 				// SW
 				if (dir >= 1.96 && dir < 2.75) {
-					tempOffset = vec2(-6, -12);
+					tempOffset = vec2(-8, -14);
 				}
 				
 				// W
 				if (dir >= 2.75 || dir < -2.75) {
-					tempOffset = vec2(3, -11);
+					tempOffset = vec2(-1, -13);
 				}
 
 				// NW
 				if (dir >= -2.75 && dir < -1.96) {
-					tempOffset = vec2(-6, -7);
+					tempOffset = vec2(-8, -10);
 				}
 
 				// N
 				if (dir >= -1.96 && dir < -1.18) {
-					tempOffset = vec2(-7, -12);
+					tempOffset = vec2(-10, -14);
 				}
 
 				// NE
 				if (dir >= -1.18 && dir < -.38) {
-					tempOffset = vec2(-8, -10);
+					tempOffset = vec2(-10, -12);
 				}
 
 				// E
 				if (dir >= -.38 && dir < .38) {
-					tempOffset = vec2(-1, -11);
+					tempOffset = vec2(-3, -15);
 				}
 
 				// SE
 				if (dir >= .38 && dir < 1.18) {
-					tempOffset = vec2(-7, -11);
+					tempOffset = vec2(-9, -13);
 				}
 			}
 			// Right
 			else if (m_index == 1) {
 				// S
 				if (dir >= 1.18 && dir < 1.96) {
-					tempOffset = vec2(6, -12);
+					tempOffset = vec2(4, -13);
 				}
 
 				// SW
 				if (dir >= 1.96 && dir < 2.75) {
-					tempOffset = vec2(8, -9);
+					tempOffset = vec2(4, -12);
 				}
 
 				// W
 				if (dir >= 2.75 || dir < -2.75) {
-					tempOffset = vec2(-1, -11);
+					tempOffset = vec2(-3, -15);
 				}
 
 				// NW
 				if (dir >= -2.75 && dir < -1.96) {
-					tempOffset = vec2(7, -10);
+					tempOffset = vec2(2, -13);
 				}
 
 				// N
 				if (dir >= -1.96 && dir < -1.18) {
-					tempOffset = vec2(5, -12);
+					tempOffset = vec2(3, -14);
 				}
 
 				// NE
 				if (dir >= -1.18 && dir < -.38) {
-					tempOffset = vec2(4, -7);
+					tempOffset = vec2(1, -9);
 				}
 
 				// E
 				if (dir >= -.38 && dir < .38) {
-					tempOffset = vec2(-5, -11);
+					tempOffset = vec2(-5, -13);
 				}
 
 				// SE
 				if (dir >= .38 && dir < 1.18) {
-					tempOffset = vec2(6, -12);
+					tempOffset = vec2(2, -14);
 				}				
 			}
 			return tempOffset;
@@ -341,23 +324,23 @@ namespace Skills
                     p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
                     m_fire = PlayEffect(m_skill.m_firefx, armPos);
                     auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
+                    behavior.m_looping = true;
 
                     auto pp = cast<Projectile>(p);
                     if (pp !is null)
                         pp.m_liveRangeSq *= m_skill.m_armRange;
 
                     m_intervalC += m_skill.m_effectInterval;
-                    vec2 targetPos = GetTargetPosition();
-                    vec2 targetDirection = normalize(targetPos - armPos);
                     targetDir = atan(targetDirection.y, targetDirection.x);
-                    if (m_skill.m_buff_stun != null) {
+                    if (m_skill.m_buff_stun !is null) {
                         cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_stun, 1.0f, false));
                     }
-                    if (m_skill.m_buff_fire != null) {
+                    if (m_skill.m_buff_fire !is null) {
                         cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_fire, 1.0f, false));
                     }
                     @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
                 }
+                m_fire.SetPosition(xyz(armPos));
 			} else {
                 m_intervalC = m_skill.m_effectInterval;
             }
@@ -371,35 +354,6 @@ namespace Skills
             inRange = distance <= 70;
             return inRange;
         }
-
-		void BeamStart()
-		{
-			vec2 armPos = GetArmPosition();
-
-			dictionary ePs = {
-				{ 'angle', GetOrbBeamDirection() },
-				{ 'length', GetOrbBeamLength() }
-			};
-			m_fire = PlayEffect(m_skill.m_orbBeamFx, armPos, ePs);
-
-			@m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
-
-			auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
-			behavior.m_looping = true;
-		}
-
-		void BeamStop()
-		{
-			if (m_fire.IsValid())
-				m_fire.Destroy();
-
-			m_fire = UnitPtr();
-
-			if (m_sndI !is null)
-				m_sndI.Stop();
-				
-			@m_sndI = null;
-		}
 	}
 
 	class MechArms : Skill
@@ -504,12 +458,6 @@ namespace Skills
 
 			for (uint i = 0; i < m_arms.length(); i++)
 				m_arms[i].Update(dt);
-		}
-		
-		void OnDestroy() override
-		{
-			for (uint i = 0; i < m_arms.length(); i++)
-				m_arms[i].BeamStop();
 		}
 	}
 }

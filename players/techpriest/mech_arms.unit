@@ -1,40 +1,7 @@
 <unit netsync="position" slot="actor">
-	<scenes start="idle-left idle-right idle-SW-left idle-SW-right idle-W-right">
-        <!--Idle anims, possibly useless-->        
-        <!--<scene name="idle-S-left">
-            <sprite looping="true" origin="8 11" texture="./SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-        
-        <scene name="idle-S-right">
-            <sprite looping="true" origin="8 11" texture="./SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-        
-        <scene name="idle-SW-left">
-            <sprite looping="true" origin="4 10" texture="./MechArms/SW_Left.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-        
-        <scene name="idle-SW-right">
-            <sprite looping="true" origin="10 11" texture="./MechArms/SW_Right.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>
-        
-        <scene name="idle-W-right">
-            <sprite looping="true" origin="9 12" texture="./MechArms/W_Right.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
-            </sprite>
-        </scene>-->
-
-        
+	<scenes start="idle-left idle-right idle-SW-left idle-SW-right idle-W-right">        
         <!--Attack anims-->
         <!--Dont judge my shitty implementation I'm not going for modder of the year lol-->
-        
         <!--================================================ South ================================================-->
         <scene name="s-left-0">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
@@ -378,97 +345,97 @@
         <!--================================================ North ================================================-->
         <scene name="n-left-0">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">16 16 16 16</frame>
+                <frame time="100">32 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-7">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
+                <frame time="100">16 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-6">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">48 0 16 16</frame>
+                <frame time="100">0 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-5">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">32 0 16 16</frame>
+                <frame time="100">48 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-4">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">16 0 16 16</frame>
+                <frame time="100">32 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-3">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
+                <frame time="100">16 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-2">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">48 16 16 16</frame>
+                <frame time="100">0 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-left-1">
             <sprite looping="true" origin="8 11" texture="./MechArms/SN_Left.png" material="effects/effects.mats:default">
-                <frame time="100">32 16 16 16</frame>
+                <frame time="100">48 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-0">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">16 16 16 16</frame>
+                <frame time="100">32 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-7">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">0 16 16 16</frame>
+                <frame time="100">16 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-6">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">48 0 16 16</frame>
+                <frame time="100">0 16 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-5">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">32 0 16 16</frame>
+                <frame time="100">48 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-4">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">16 0 16 16</frame>
+                <frame time="100">32 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-3">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">0 0 16 16</frame>
+                <frame time="100">16 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-2">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">48 16 16 16</frame>
+                <frame time="100">0 0 16 16</frame>
             </sprite>
         </scene>
 
         <scene name="n-right-1">
             <sprite looping="true" origin="3 10" texture="./MechArms/SN_Right.png" material="effects/effects.mats:default">
-                <frame time="100">32 16 16 16</frame>
+                <frame time="100">48 16 16 16</frame>
             </sprite>
         </scene>
 

@@ -11,7 +11,7 @@
   <sound category="sfx" name="techpriestdeath" volume="1" is3d="false" looping="false">
     <source res="sound/techpriestdeath.wav" />
   </sound>
-  <sound category="sfx" name="mecharms_fire" volume=".4" is3d="false" looping="false">
+  <sound category="sfx" name="mecharms_fire" volume=".8" is3d="false" looping="false">
     <source res="sound/mecharms_fire.wav" />
   </sound>
 </soundbank>
