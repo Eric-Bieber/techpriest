@@ -259,90 +259,92 @@ namespace Skills
 
 			vec2 armPos = GetArmPosition();
 
-			if (!m_overrideTargetSet)
-			{
-				// Find closest unit
-				float closestDistance = (m_skill.m_armRange * m_skill.m_armRange) + 1.0f;
+            if (m_skill.m_canFire == true) {
+                if (!m_overrideTargetSet)
+                {
+                    // Find closest unit
+                    float closestDistance = (m_skill.m_armRange * m_skill.m_armRange) + 1.0f;
 
-				array<UnitPtr>@ results = g_scene.FetchActorsWithOtherTeam(m_skill.m_owner.Team, armPos, m_skill.m_armRange);
-				for (uint i = 0; i < results.length(); i++)
-				{
-					Actor@ actor = cast<Actor>(results[i].GetScriptBehavior());
-					if (!actor.IsTargetable())
-						continue;
+                    array<UnitPtr>@ results = g_scene.FetchActorsWithOtherTeam(m_skill.m_owner.Team, armPos, m_skill.m_armRange);
+                    for (uint i = 0; i < results.length(); i++)
+                    {
+                        Actor@ actor = cast<Actor>(results[i].GetScriptBehavior());
+                        if (!actor.IsTargetable())
+                            continue;
 
-					bool canSee = true;
-					auto canSeeRes = g_scene.Raycast(armPos, xy(results[i].GetPosition()), ~0, RaycastType::Shot);
-					for (uint j = 0; j < canSeeRes.length(); j++)
-					{
-						UnitPtr canSeeUnit = canSeeRes[j].FetchUnit(g_scene);
-						if (canSeeUnit == results[i])
-							break;
+                        bool canSee = true;
+                        auto canSeeRes = g_scene.Raycast(armPos, xy(results[i].GetPosition()), ~0, RaycastType::Shot);
+                        for (uint j = 0; j < canSeeRes.length(); j++)
+                        {
+                            UnitPtr canSeeUnit = canSeeRes[j].FetchUnit(g_scene);
+                            if (canSeeUnit == results[i])
+                                break;
 
-						auto canSeeActor = cast<Actor>(canSeeUnit.GetScriptBehavior());
-						if (canSeeActor is m_skill.m_owner)
-							continue;
+                            auto canSeeActor = cast<Actor>(canSeeUnit.GetScriptBehavior());
+                            if (canSeeActor is m_skill.m_owner)
+                                continue;
 
-						canSee = false;
-						break;
-					}
-					if (!canSee)
-						continue;
+                            canSee = false;
+                            break;
+                        }
+                        if (!canSee)
+                            continue;
 
-					vec2 actorPos = xy(results[i].GetPosition());
-					float d = distsq(armPos, actorPos);
-					if (d < closestDistance)
-					{
-						newTarget = results[i];
-						closestDistance = d;
-					}
-				}
-			}
-
-			// Start, stop, or update beam
-			UnitPtr prevTarget = m_target;
-			m_target = newTarget;
-
-            vec2 targetPos = GetTargetPosition();
-			vec2 targetDirection = normalize(targetPos - armPos);
-            vec2 shootPos = GetArmPosition();
-
-			// Maybe apply effects
-			
-			if (inRange()) {
-                m_intervalC -= dt;
-                if (m_intervalC <= 0)
-			    {
-                    auto proj = ProduceProjectile(shootPos);
-                    if (!proj.IsValid())
-                        return;
-                    
-                    auto p = cast<IProjectile>(proj.GetScriptBehavior());
-                    if (p is null)
-                        return;
-                    
-                    p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
-                    m_fire = PlayEffect(m_skill.m_firefx, armPos);
-                    auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
-                    behavior.m_looping = true;
-
-                    auto pp = cast<Projectile>(p);
-                    if (pp !is null)
-                        pp.m_liveRangeSq *= m_skill.m_armRange;
-
-                    m_intervalC += m_skill.m_effectInterval;
-                    targetDir = atan(targetDirection.y, targetDirection.x);
-                    if (m_skill.m_buff_stun !is null) {
-                        cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_stun, 1.0f, false));
+                        vec2 actorPos = xy(results[i].GetPosition());
+                        float d = distsq(armPos, actorPos);
+                        if (d < closestDistance)
+                        {
+                            newTarget = results[i];
+                            closestDistance = d;
+                        }
                     }
-                    if (m_skill.m_buff_fire !is null) {
-                        cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_fire, 1.0f, false));
-                    }
-                    @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
                 }
-                m_fire.SetPosition(xyz(armPos));
-			} else {
-                m_intervalC = m_skill.m_effectInterval;
+
+                // Start, stop, or update beam
+                UnitPtr prevTarget = m_target;
+                m_target = newTarget;
+
+                vec2 targetPos = GetTargetPosition();
+                vec2 targetDirection = normalize(targetPos - armPos);
+                vec2 shootPos = GetArmPosition();
+
+                // Maybe apply effects
+                
+                if (inRange()) {
+                    m_intervalC -= dt;
+                    if (m_intervalC <= 0)
+                    {
+                        auto proj = ProduceProjectile(shootPos);
+                        if (!proj.IsValid())
+                            return;
+                        
+                        auto p = cast<IProjectile>(proj.GetScriptBehavior());
+                        if (p is null)
+                            return;
+                        
+                        p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
+                        m_fire = PlayEffect(m_skill.m_firefx, armPos);
+                        auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
+                        behavior.m_looping = true;
+
+                        auto pp = cast<Projectile>(p);
+                        if (pp !is null)
+                            pp.m_liveRangeSq *= m_skill.m_armRange;
+
+                        m_intervalC += m_skill.m_effectInterval;
+                        targetDir = atan(targetDirection.y, targetDirection.x);
+                        if (m_skill.m_buff_stun !is null) {
+                            cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_stun, 1.0f, false));
+                        }
+                        if (m_skill.m_buff_fire !is null) {
+                            cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_fire, 1.0f, false));
+                        }
+                        @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
+                    }
+                    m_fire.SetPosition(xyz(armPos));
+                } else {
+                    m_intervalC = m_skill.m_effectInterval;
+                }
             }
 		}
 
@@ -359,6 +361,8 @@ namespace Skills
 	class MechArms : Skill
 	{
 		int m_numArms;
+
+        bool m_canFire = true;
 
 		int m_armRange;
 		UnitScene@ m_firefx;
