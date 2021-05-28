@@ -22,13 +22,13 @@
             <string name="snd">event:/player/priest/beam</string>
             <float name="speed-mul">1</float>
             <bool name="blocking">false</bool>
-            <int name="spins">1</int>
+            <int name="spins">3</int>
             <int name="duration">4</int>
             <int name="per-revolution">360</int>
             <int name="proj-delay">20</int>
 
             <float name="distance">100</float>
-            <int name="interval">25</int>
+            <int name="interval">350</int>
 
             <dict name="effect">
                 <string name="class">Explode</string>

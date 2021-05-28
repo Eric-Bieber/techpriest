@@ -39,6 +39,7 @@ namespace Skills
 		int m_interval;
 		int m_intervalC;
 
+        int m_totalSpins;
         int m_spins;
 
         int m_duration;
@@ -46,12 +47,19 @@ namespace Skills
 
         int m_perRev;
         int m_projsShot;
+        
+        vec2 m_offsetArm;
+        int m_numArms; 
+
+        bool m_canUseAbility = false;
 
 		array<BeamRayResult2> m_unitsHit;
 
 		UnitPtr m_unitHit;
 		bool m_isUnitHit;
 		vec2 m_unitHitPos;
+
+        vec2 m_target;
 
 		MyShootBeam(UnitPtr unit, SValue& params)
 		{
@@ -62,7 +70,7 @@ namespace Skills
 
 			@m_hitSnd = Resources::GetSoundEvent(GetParamString(unit, params, "hit-snd", false));
 			m_hitFx = GetParamString(unit, params, "hit-fx", false);
-            m_spins = GetParamInt(unit, params, "spins", false, 1);
+            m_totalSpins = GetParamInt(unit, params, "spins", false, 1);
             m_duration = GetParamInt(unit, params, "duration", false, 480);
             m_perRev = GetParamInt(unit, params, "per-revolution", false, 16);
 
@@ -97,16 +105,19 @@ namespace Skills
 
 		void DoActivate(SValueBuilder@ builder, vec2 target) override
 		{
-			StartSpin(false);
-            print("Activated");
+			if (checkNumArms()) {
+                StartSpin(false, target);
+            }
 		}
 
 		void NetDoActivate(SValue@ param, vec2 target) override
 		{
-			StartSpin(true);
+            if (checkNumArms()) {
+                StartSpin(true, target);
+            }
 		}
 
-        void StartSpin(bool husk)
+        void StartSpin(bool husk, vec2 target)
 		{
 			if (m_durationC > 0)
 				return;
@@ -114,18 +125,47 @@ namespace Skills
 			m_durationC = m_duration;
 			m_animCountdown = m_duration - m_castpoint;
 			m_projsShot = 0;
-			// find the offset here
-
-            print("Starting spin!");
+            m_target = target;
+            m_spins = 0;
 		}
+
+        vec2 GetArmPosition()
+		{
+			return xy(m_owner.m_unit.GetPosition()) + m_offsetArm;
+		}
+
+        vec2 findOffset(int index) {
+            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_owner).m_skills[6]);
+            if (mechArms !is null) {
+                return mechArms.m_arms[index].m_offset;
+            }
+            return vec2(0,0);
+        }
+
+        bool checkNumArms() {
+            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_owner).m_skills[6]);
+            if (mechArms !is null) {
+                m_numArms = mechArms.m_arms.length();
+                if (m_numArms > 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
         
 		void DoUpdate(int dt) override
 		{
 			if (m_durationC <= 0) {
                 return;
             }
-            
+
             if (m_projsShot >= 360) {
+                m_spins++;
+                m_durationC = m_duration;
+                m_projsShot = 0;
+            }
+            
+            if (m_spins == m_totalSpins) {
                 StopBeam();
                 return;
             }
@@ -136,12 +176,19 @@ namespace Skills
 			{
                 m_durationC += m_duration;
 
-                vec2 pos = xy(m_owner.m_unit.GetPosition());
-                float angle = ((2 * PI / m_perRev) * m_projsShot++);
+                m_offsetArm = findOffset(0);
+                float angle = ((2 * PI / m_perRev) * m_projsShot++) + atan(m_target.y, m_target.x);
                 vec2 shootDir = vec2(cos(angle), sin(angle));
-                vec3 projPos = xyz(pos + shootDir * m_distance);
                 
                 HandleBeam(dt, shootDir, false);
+
+                if (m_numArms > 1) {
+                    m_offsetArm = findOffset(1);
+                    angle = ((2 * PI / m_perRev) * (m_projsShot - 1)) + atan(m_target.y, m_target.x);
+                    shootDir = vec2(cos(angle), sin(angle));
+                    
+                    HandleBeam(dt, shootDir, false);
+                }
             }
 		}
 
@@ -170,7 +217,7 @@ namespace Skills
 				}
 			}
 
-			vec2 pos = xy(m_owner.m_unit.GetPosition());
+			vec2 pos = GetArmPosition();
 			vec2 posEndpoint = pos + target * m_distance;
 
 			float posDirAngle = atan(target.y, target.x) + PI / 2;
@@ -226,7 +273,7 @@ namespace Skills
 						{ 'angle', m_holdDir },
 						{ 'length', m_holdLength }
 					};
-					m_unitBeamFx = PlayEffect(m_fx, xy(uPos), ePs);
+					m_unitBeamFx = PlayEffect(m_fx, pos, ePs);
 
 					if (m_sound !is null)
 					{
@@ -289,7 +336,7 @@ namespace Skills
 			if (!m_unitBeamFx.IsValid())
 				return true;
 
-			vec3 uPos = m_owner.m_unit.GetInterpolatedPosition(idt);
+			vec3 uPos = m_owner.m_unit.GetInterpolatedPosition(idt) + vec3(m_offsetArm.x, m_offsetArm.y, 1);
 
 			m_beamSndI.SetPosition(uPos);
 			m_unitBeamFx.SetPosition(uPos);
