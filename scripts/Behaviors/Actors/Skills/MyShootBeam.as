@@ -41,6 +41,12 @@ namespace Skills
 
         int m_spins;
 
+        int m_duration;
+		int m_durationC;
+
+        int m_perRev;
+        int m_projsShot;
+
 		array<BeamRayResult2> m_unitsHit;
 
 		UnitPtr m_unitHit;
@@ -56,7 +62,9 @@ namespace Skills
 
 			@m_hitSnd = Resources::GetSoundEvent(GetParamString(unit, params, "hit-snd", false));
 			m_hitFx = GetParamString(unit, params, "hit-fx", false);
-            m_interval = GetParamInt(unit, params, "spins", false, 1);
+            m_spins = GetParamInt(unit, params, "spins", false, 1);
+            m_duration = GetParamInt(unit, params, "duration", false, 480);
+            m_perRev = GetParamInt(unit, params, "per-revolution", false, 16);
 
 			@m_effects = LoadEffects(unit, params);
 			@m_effectsTeam = LoadEffects(unit, params, "team-");
@@ -82,25 +90,59 @@ namespace Skills
             auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_owner).m_skills[6]);
             if (mechArms !is null) {
                 mechArms.m_canFire = true;
-                print("not null");
             }
-            print("null");
         }
 		
 		TargetingMode GetTargetingMode(int &out size) override { return TargetingMode::Channeling; }
 
-		void Hold(int dt, vec2 target) override
+		void DoActivate(SValueBuilder@ builder, vec2 target) override
 		{
-			HandleBeam(dt, target, false);
-
-			ActiveSkill::Hold(dt, target);
+			StartSpin(false);
+            print("Activated");
 		}
 
-		void NetHold(int dt, vec2 target) override
+		void NetDoActivate(SValue@ param, vec2 target) override
 		{
-			HandleBeam(dt, target, true);
+			StartSpin(true);
+		}
 
-			ActiveSkill::NetHold(dt, target);
+        void StartSpin(bool husk)
+		{
+			if (m_durationC > 0)
+				return;
+
+			m_durationC = m_duration;
+			m_animCountdown = m_duration - m_castpoint;
+			m_projsShot = 0;
+			// find the offset here
+
+            print("Starting spin!");
+		}
+        
+		void DoUpdate(int dt) override
+		{
+			if (m_durationC <= 0) {
+                return;
+            }
+            
+            if (m_projsShot >= 360) {
+                StopBeam();
+                return;
+            }
+				
+			m_durationC -= dt;
+        
+            while (m_durationC <= 0)
+			{
+                m_durationC += m_duration;
+
+                vec2 pos = xy(m_owner.m_unit.GetPosition());
+                float angle = ((2 * PI / m_perRev) * m_projsShot++);
+                vec2 shootDir = vec2(cos(angle), sin(angle));
+                vec3 projPos = xyz(pos + shootDir * m_distance);
+                
+                HandleBeam(dt, shootDir, false);
+            }
 		}
 
 		void HandleBeam(int dt, vec2 target, bool husk)
@@ -232,23 +274,15 @@ namespace Skills
 			DestroyBeam();
 		}
 
-		void Release(vec2 target) override
-		{
-			ActiveSkill::Release(target);
-			DestroyBeam();
+        void StopBeam() {
+            DestroyBeam();
+
+            m_projsShot = 0;
+            m_durationC = 0;
 
 			m_isUnitHit = false;
             reActivateArms();
-		}
-
-		void NetRelease(vec2 target) override
-		{
-			ActiveSkill::NetRelease(target);
-			DestroyBeam();
-
-			m_isUnitHit = false;
-            reActivateArms();
-		}
+        }
 
 		bool PreRender(int idt) override
 		{

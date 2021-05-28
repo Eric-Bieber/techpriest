@@ -23,6 +23,9 @@
             <float name="speed-mul">1</float>
             <bool name="blocking">false</bool>
             <int name="spins">1</int>
+            <int name="duration">4</int>
+            <int name="per-revolution">360</int>
+            <int name="proj-delay">20</int>
 
             <float name="distance">100</float>
             <int name="interval">25</int>
