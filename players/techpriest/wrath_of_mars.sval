@@ -18,7 +18,7 @@
             <int name="mana-cost">0</int>
 
             <string name="anim">channeling 8</string>
-            <string name="fx">wrath_of_mars_beam.effect</string>
+            <string name="fx">effects/players/priest_beam.effect</string>
             <string name="snd">event:/player/priest/beam</string>
             <float name="speed-mul">1</float>
             <bool name="blocking">false</bool>
