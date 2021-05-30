@@ -38,6 +38,8 @@ namespace Skills
         int m_index;
 		WrathOfMars@ m_skill;
 
+        LaserUpgrade@ m_laserUpgrade;
+
 		array<BeamRayResult2> m_unitsHit;
 
 		UnitPtr m_unitHit;
@@ -53,14 +55,14 @@ namespace Skills
 		}
 
         void stopArmsFiring() {
-            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_skill.m_owner).m_skills[6]);
+            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_skill.m_owner).m_skills[5]);
             if (mechArms !is null) {
                 mechArms.m_canFire = false;
             }
         }
 
         void reActivateArms() {
-            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_skill.m_owner).m_skills[6]);
+            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_skill.m_owner).m_skills[5]);
             if (mechArms !is null) {
                 mechArms.m_canFire = true;
             }
@@ -82,9 +84,18 @@ namespace Skills
 		{
 			return xy(m_skill.m_owner.m_unit.GetPosition()) + m_offsetArm;
 		}
+        
+        bool checkLaserUpgrade() {
+            auto laserUpgrade = cast<Skills::LaserUpgrade>(cast<PlayerBase>(m_skill.m_owner).m_skills[6]);
+            if (laserUpgrade !is null) {
+                @m_laserUpgrade = laserUpgrade;
+                return true;
+            }
+            return false;
+        }
 
         vec2 findOffset(int index) {
-            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_skill.m_owner).m_skills[6]);
+            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_skill.m_owner).m_skills[5]);
             if (mechArms !is null) {
                 return mechArms.m_arms[index].m_offset;
             }
@@ -159,13 +170,13 @@ namespace Skills
 
 			m_unitsHit.removeRange(0, m_unitsHit.length());
 			DoBeamRay(1, pos, posEndpoint);
-			// DoBeamRay(2, pos - posDir, posEndpoint - posDir);
-			// DoBeamRay(3, pos + posDir, posEndpoint + posDir);
+			DoBeamRay(2, pos - posDir, posEndpoint - posDir);
+			DoBeamRay(3, pos + posDir, posEndpoint + posDir);
 
 			vec2 posHit = posEndpoint;
-
+            
 			m_isUnitHit = false;
-			float length;
+			float length = dist(pos, posHit);
 		
 			m_unitsHit.sortAsc();
 			for (uint i = 0; i < m_unitsHit.length(); i++)
@@ -187,13 +198,10 @@ namespace Skills
 					if(res.m_unit.GetCollisionTeam() == 0)
 						break;
 				}
-				
-
 			}
 
 			float facing = atan(target.y, target.x);
-			length = dist(pos, posHit);
-
+            
 			if (!m_unitBeamFx.IsValid())
 			{
 				if (intervalTrigger)
@@ -227,7 +235,7 @@ namespace Skills
 				m_holdLength = m_holdLengthNext;
 
 				m_holdDirNext = facing;
-				m_holdLengthNext = dist(pos, pos + target * m_skill.m_distance);
+				m_holdLengthNext = dist(pos, posHit);
 
 				// deal with 360 to 0 wrapping
 				if (abs(m_holdDirNext - m_holdDir) > PI / 2.0)
@@ -302,11 +310,18 @@ namespace Skills
 
 			auto actor = cast<Actor>(unit.GetScriptBehavior());
 
-			if (withEffects)
-				ApplyEffects(m_skill.m_effects, m_skill.m_owner, unit, upos, m_holdDir, 1, false);
-
-			if (actor !is null && actor.Team != m_skill.m_owner.Team)
-				return true;
+			if (withEffects) {
+                ApplyEffects(m_skill.m_effects, m_skill.m_owner, unit, upos, m_holdDir, 1, false);
+            }
+				
+			if (actor !is null && actor.Team != m_skill.m_owner.Team) {
+                if (m_laserUpgrade !is null || checkLaserUpgrade()) {
+                    for (uint i = 0; i < m_laserUpgrade.m_buffs.length(); i++) {
+                        cast<Actor>(unit.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[i], 1.0f, false));
+                    }
+                }
+                return true;
+            }	
 
 			return (cast<IDamageTaker>(unit.GetScriptBehavior()) is null);
 		}

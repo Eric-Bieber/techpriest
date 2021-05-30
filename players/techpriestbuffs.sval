@@ -28,7 +28,7 @@
         <array name="tags">
             <string>stun</string>
         </array>
-        <int name="duration">200</int>
+        <int name="duration">400</int>
         <bool name="debuff">true</bool>
 
         <string name="icon">doodads/special/icons/stun.unit</string>
@@ -50,7 +50,26 @@
             <int name="freq">500</int>
             <dict name="effect">
                 <string name="class">CombustionDamage</string>
-                <int name="magical">2</int>
+                <int name="magical">4</int>
+            </dict>
+        </dict>
+    </dict>
+
+    <dict name="laser-fire-2">
+        <array name="tags">
+            <string>burning</string>
+        </array>
+
+        <int name="duration">3000</int>
+        <bool name="debuff">true</bool>
+
+        <string name="icon">doodads/special/icons/burn.unit</string>
+
+        <dict name="tick">
+            <int name="freq">500</int>
+            <dict name="effect">
+                <string name="class">CombustionDamage</string>
+                <int name="magical">8</int>
             </dict>
         </dict>
     </dict>

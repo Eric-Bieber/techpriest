@@ -6,8 +6,8 @@
         <string>players/techpriest/wrath_of_mars.sval</string>
 		
 		<string>players/techpriest/incense_candles.sval</string>
-		<string>players/techpriest/flame_shield.sval</string>
 		<string>players/techpriest/mech_arms.sval</string>
+		<string>players/techpriest/laser_upgrade.sval</string>
 	</array>
 
 	<int name="face-y">120</int>

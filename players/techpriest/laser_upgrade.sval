@@ -1,0 +1,25 @@
+<dict>
+	<string name="name">.skills.techpriest.incense_candles</string>
+	<array name="icon">
+		<string>gui/icons_skills.png</string>
+		<int>100</int><vec4>48 120 24 24</vec4>
+	</array>
+
+	<array name="skills">
+		<null />
+		
+		<!-- Level 1 -->
+        <dict>
+            <string name="class">Skills::LaserUpgrade</string>
+            <string name="buff-0">players/techpriestbuffs.sval:laser-fire</string>
+		</dict>
+		
+		<!-- Level 2 -->
+        <dict>
+            <string name="class">Skills::LaserUpgrade</string>
+            
+            <string name="buff-0">players/techpriestbuffs.sval:laser-fire-2</string>
+            <string name="buff-1">players/techpriestbuffs.sval:laser-stun</string>
+        </dict>
+	</array>
+</dict>

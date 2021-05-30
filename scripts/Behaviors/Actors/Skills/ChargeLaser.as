@@ -10,12 +10,14 @@ namespace Skills
 		UnitProducer@ m_prod;
 		string m_fxCharged;
 
-		float m_dist;
+		int m_distance;
 
 		bool m_pressOk = false;
 
 		UnitPtr m_chargeFx;
 		UnitPtr m_chargeFullFx;
+
+        float m_length;
 
 		EffectBehavior@ m_chargeFxBehavior;
 		EffectBehavior@ m_chargeFxFullBehavior;
@@ -33,7 +35,7 @@ namespace Skills
 			@m_prod = Resources::GetUnitProducer(GetParamString(unit, params, "unit"));
 			m_fxCharged = GetParamString(unit, params, "fx-charged", false, "");
 
-			m_dist = GetParamFloat(unit, params, "dist", false, 1.0f);
+			m_distance = GetParamInt(unit, params, "distance", false, 200);
 		}
 
 		float GetMoveSpeedMul() override
@@ -206,7 +208,7 @@ namespace Skills
 		UnitPtr DoShoot(float charge, vec2 target, int id = 0)
 		{
 			vec2 shootPos = xy(m_owner.m_unit.GetPosition());
-			shootPos += target * m_dist;
+			shootPos += target;
 
 			UnitPtr unit = m_prod.Produce(g_scene, xyz(shootPos), id);
 
@@ -222,11 +224,79 @@ namespace Skills
 			if (m_isActive)
 				m_animCountdown += dt;
 
-			if (m_chargeFxBehavior !is null)
-				m_chargeFxBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+			if (m_chargeFxBehavior !is null) {
+                vec2 pos = xy(m_owner.m_unit.GetPosition());
+                vec2 posEndpoint = pos + m_target * m_distance;
+                auto ray = g_scene.Raycast(pos, posEndpoint, ~0, RaycastType::Shot);
+
+                vec2 posHit = posEndpoint;
+                array<BeamRayResult2> m_unitsHit;
+                for (uint i = 0; i < ray.length(); i++)
+                {
+                    UnitPtr unit = ray[i].FetchUnit(g_scene);
+
+                    BeamRayResult2 result;
+                    result.m_distSq = int(distsq(pos, ray[i].point));
+                    result.m_point = ray[i].point;
+                    result.m_unit = unit;
+                    m_unitsHit.insertLast(result);
+                }
+
+                bool m_isUnitHit = false;
+                m_length = dist(pos, posHit);
+                m_unitsHit.sortAsc();
+                for (uint i = 0; i < m_unitsHit.length(); i++)
+                {
+                    Skills::BeamRayResult2@ res = m_unitsHit[i];
+                    
+                    if (checkHitUnit(res.m_unit)) {
+                        posHit = res.m_point;
+
+                        if (m_isUnitHit == false)
+                        {
+                            m_length = dist(pos, posHit);
+                        }
+                        
+                        m_isUnitHit = true;							
+                            
+                        if(res.m_unit.GetCollisionTeam() == 0)
+                            break;
+                    }
+                }
+
+                m_chargeFxBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+                m_chargeFxBehavior.SetParam("length", m_length);
+            }
+				
 
 			if (m_chargeFxFullBehavior !is null) 
 				m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
 		}
+        
+        bool checkHitUnit(UnitPtr unit)
+		{
+			auto actor = cast<Actor>(unit.GetScriptBehavior());
+
+			if (actor !is null && actor.Team != m_owner.Team) {
+                return true;
+            }	
+
+			return (cast<IDamageTaker>(unit.GetScriptBehavior()) is null);
+		}
+
+        bool PreRender(int idt) override
+		{
+            if (!m_chargeFx.IsValid())
+                return true;
+
+            vec3 uPos = m_owner.m_unit.GetInterpolatedPosition(idt);
+            m_chargeFx.SetPosition(uPos);
+
+            float mul = idt / 33.0f;
+            m_chargeFxBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+            m_chargeFxBehavior.SetParam("length", m_length);
+
+            return false;
+        } 
 	}
 }

@@ -29,7 +29,7 @@
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
-            <float name="dist">4</float>
+            <float name="distance">500</float>
         </dict>
 
         <!-- Level 2 -->

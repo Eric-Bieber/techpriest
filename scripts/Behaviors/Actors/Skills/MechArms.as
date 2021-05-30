@@ -17,6 +17,8 @@ namespace Skills
 
 		float targetDir;
 
+        LaserUpgrade@ m_laserUpgrade;
+
 		SoundInstance@ m_sndI;
 
 		MechArm(int index, MechArms@ skill)
@@ -333,11 +335,11 @@ namespace Skills
 
                         m_intervalC += m_skill.m_effectInterval;
                         targetDir = atan(targetDirection.y, targetDirection.x);
-                        if (m_skill.m_buff_stun !is null) {
-                            cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_stun, 1.0f, false));
-                        }
-                        if (m_skill.m_buff_fire !is null) {
-                            cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_skill.m_buff_fire, 1.0f, false));
+
+                        if (m_laserUpgrade !is null || checkLaserUpgrade()) {
+                            for (uint i = 0; i < m_laserUpgrade.m_buffs.length(); i++) {
+                                cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[i], 1.0f, false));
+                            }
                         }
                         @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
                     }
@@ -347,6 +349,22 @@ namespace Skills
                 }
             }
 		}
+
+        bool checkLaserUpgrade() {
+            auto laserUpgrade = cast<Skills::LaserUpgrade>(cast<PlayerBase>(m_skill.m_owner).m_skills[6]);
+            if (laserUpgrade !is null) {
+                @m_laserUpgrade = laserUpgrade;
+                return true;
+            }
+            return false;
+        }
+
+        // bnb for above
+        // if (checkLaserUpgrade()) {
+        //     for (uint i = 0; i < m_laserUpgrade.m_buffs.length(); i++) {
+        //         cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[i], 1.0f, false));
+        //     }
+        // }
 
         bool inRange() {
             bool inRange = false;
@@ -394,9 +412,6 @@ namespace Skills
 		SoundEvent@ m_snd;
 
 		int m_tmNow;
-
-		ActorBuffDef@ m_buff_stun;
-        ActorBuffDef@ m_buff_fire;
 		int m_effectInterval;
 
 		array<MechArm@> m_arms;
@@ -442,8 +457,6 @@ namespace Skills
 			@SE_Left = AnimString(GetParamString(unit, params, "SE_Left"));
 			@SE_Right = AnimString(GetParamString(unit, params, "SE_Right"));
 
-			@m_buff_stun = LoadActorBuff(GetParamString(unit, params, "buff-stun", true));
-            @m_buff_fire = LoadActorBuff(GetParamString(unit, params, "buff-fire", true));
 			m_effectInterval = GetParamInt(unit, params, "effect-interval");
 
 			for (int i = 0; i < m_numArms; i++)

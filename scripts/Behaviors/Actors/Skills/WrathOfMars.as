@@ -64,7 +64,7 @@ namespace Skills
 		}
 
         bool checkNumArms() {
-            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_owner).m_skills[6]);
+            auto mechArms = cast<Skills::MechArms>(cast<PlayerBase>(m_owner).m_skills[5]);
             if (mechArms !is null) {
                 m_numArms = mechArms.m_arms.length();
                 if (m_numArms > 0) {

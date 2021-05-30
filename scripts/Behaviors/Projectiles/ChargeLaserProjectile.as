@@ -47,10 +47,6 @@ class ChargeLaserProjectile : RayProjectile
 		
 		m_dist = GetParamInt(unit, params, "dist", false, 50);
 
-		// FOR GROWING LASER
-		// m_distMin = GetParamInt(unit, params, "dist-min", false, 50);
-		// m_distMax = GetParamInt(unit, params, "dist-max", false, 300);
-
 		m_damageMin = GetParamInt(unit, params, "damage-min", false, 20);
 		m_damageMax = GetParamInt(unit, params, "damage-max", false, 50);
 

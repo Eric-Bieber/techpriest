@@ -42,13 +42,6 @@
             <string name="SE_Right">se-right 8</string>
 
 			<int name="effect-interval">350</int>
-
-            <string name="buff-stun">players/techpriestbuffs.sval:laser-stun</string>
-            <string name="buff-fire">players/techpriestbuffs.sval:laser-fire</string>
-			<!--<dict name="effect">
-				<string name="class">Damage</string>
-				<int name="magical">8</int>
-			</dict>-->
 		</dict>
 		
 		<!-- Level 2 -->
