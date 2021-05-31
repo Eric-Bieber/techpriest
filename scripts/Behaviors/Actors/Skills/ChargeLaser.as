@@ -108,9 +108,12 @@ namespace Skills
 			if (m_holdFrame != -1)
 				m_owner.m_unit.SetUnitSceneTime(m_holdFrame);
 
+            if (m_tmCharge >= m_tmChargeMax && m_chargeFx.IsValid()) {
+                m_chargeFx.Destroy();
+            }
+
 			m_cooldownC = m_cooldown;
-			m_target = target;
-			
+			m_target = target;			
 
 			if (m_tmCharge < m_tmChargeMax && m_tmCharge + g_wallDelta >= m_tmChargeMax)
 			{

@@ -4,7 +4,7 @@
 
         <string name="snd">sound/techpriest.sbnk:chargeLaserShot</string>
         <string name="hit-snd">event:/player/warlock/dagger-hit</string>
-        <string name="fx">players/warlock/trail_dagger.effect</string>
+        <string name="fx">players/techpriest/charge_laser_beam.effect</string>
         <string name="hit-fx">players/warlock/dagger_hit.effect</string>
         <float name="speed-mul">0.75</float>
 
@@ -13,17 +13,13 @@
 
         <int name="arc">0</int>
         <int name="rays">8</int>
-        <int name="duration">1</int>
+        <int name="duration">.1</int>
 
         <int name="dist">1000</int>
+        <int name="ttl">200</int>
 
         <int name="damage-min">20</int>
         <int name="damage-max">100</int>
-        
-        <dict name="effect-params">
-            <float name="height">3</float>
-            <float name="radius">22</float>
-        </dict>
     </behavior>
     <scenes>
 		<scene>

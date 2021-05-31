@@ -37,6 +37,13 @@ class ChargeLaserProjectile : RayProjectile
 	int m_damageMin;
 	int m_damageMax;	
 
+    UnitPtr m_beamFx;
+    EffectBehavior@ m_beamFxBehavior;
+
+    int timeToDie;
+
+    vec2 endPoint;
+
 	float m_intensityLocal;
 
 	ChargeLaserProjectile(UnitPtr unit, SValue& params)
@@ -75,9 +82,6 @@ class ChargeLaserProjectile : RayProjectile
 		StartBeam(dir, false);
 		m_intensityLocal = intensity;
 
-		// FOR GROWING LASER
-		//m_dist = lerp(m_distMin, m_distMax, m_intensityLocal);
-
 		RayProjectile::Initialize(owner, dir, intensity, husk, target, weapon);
 	}
 
@@ -86,6 +90,7 @@ class ChargeLaserProjectile : RayProjectile
 		if (m_raysC <= 0)
 		{
 			m_raysC = m_rays;
+            timeToDie = 200;
 			m_swingsC = m_swings;
 			m_intervalC = 0;
 			m_angleStart = atan(dir.y, dir.x) + m_angleOffset;
@@ -109,19 +114,22 @@ class ChargeLaserProjectile : RayProjectile
 	{
 	}
 
-	void Collide(UnitPtr unit, vec2 pos, vec2 normal, Fixture@ fxSelf, Fixture@ fxOther)
-	{
-		// if (fxSelf.GetIndex() == 0)
-		// 	HitUnit(unit, pos, normal, m_selfDmg, true);
-		// else
-		//HitUnit(unit, pos, normal, m_selfDmg, false, false);
-	}
-
 	void Update(int dt) override
 	{
-		if (m_raysC <= 0)
-			return;
+        if (m_beamFx.IsValid()) {
+            timeToDie -= dt;
 
+            if (timeToDie < 0) {
+                print("Destroying");
+                m_beamFx.Destroy();
+                m_beamFx = UnitPtr();
+
+				@m_beamFxBehavior = null;
+            }
+        }
+
+		if (m_raysC <= 0)
+			return;        
 		
 		m_intervalC -= dt;
 		while (m_intervalC <= 0)
@@ -144,7 +152,7 @@ class ChargeLaserProjectile : RayProjectile
 			else
 				@rayResults = g_scene.Raycast(ownerPos, rayPos, ~0, m_destroyProjectiles ? RaycastType::Any : RaycastType::Shot);
 			
-			vec2 endPoint = rayPos;
+			endPoint = rayPos;
 
 			for (uint i = 0; i < rayResults.length(); i++)
 			{
@@ -252,23 +260,17 @@ class ChargeLaserProjectile : RayProjectile
 		if (m_fx == "")
 			return;
 		
-		ePs["angle"] = atan(dir.y, dir.x);
-		PlayEffect(m_fx, xy(m_unit.GetPosition()), ePs);
+        float length = dist(xy(m_owner.m_unit.GetPosition()), endPoint);
+        ePs = { 
+            { 'angle', atan(dir.y, dir.x) },
+            { 'length', length } 
+        };
+		m_beamFx = PlayEffect(m_fx, xy(m_unit.GetPosition()), ePs);
+        @m_beamFxBehavior = cast<EffectBehavior>(m_beamFx.GetScriptBehavior());
 	}
 	
 	bool HitUnit(UnitPtr unit, vec2 pos, vec2 normal, float selfDmg, bool bounce, bool collide = true) override
 	{
-		// if (!unit.IsValid())
-		// 	return true;
-
-		// auto dt = cast<IDamageTaker>(unit.GetScriptBehavior());
-		// if (dt !is null && dt.Impenetrable())
-		// {
-		// 	m_unit.Destroy();
-		// 	return false;
-		// }
-		
-		//return RayProjectile::HitUnit(unit, pos, normal, selfDmg, bounce, collide);
 		return m_hitSomething;
 	}
 }
