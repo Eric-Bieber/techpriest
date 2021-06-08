@@ -15,7 +15,9 @@
 
             <string name="unit">players/techpriest/charge_laser_1.unit</string>
             <string name="fx">players/techpriest/chargeLaser.effect</string>
-            <string name="fx-charged">players/techpriest/chargeLaserFull.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
             <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
             <string name="anim">attack 8</string>
@@ -29,7 +31,7 @@
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
-            <float name="distance">500</float>
+            <int name="distance">500</int>
         </dict>
 
         <!-- Level 2 -->

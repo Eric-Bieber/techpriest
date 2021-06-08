@@ -3,26 +3,62 @@ class LaserProjectile : RayProjectile
 	int m_bounceTTLAdd;
 	uint m_lastBounceTime;
 
+    Skills::LaserUpgrade@ m_laserUpgrade;
+    AnimString@ m_laser_lvl2;
+    AnimString@ m_laser_lvl3;
+
 	LaserProjectile(UnitPtr unit, SValue& params)
 	{
 		super(unit, params);
-		
+
 		m_bounceTTLAdd = GetParamInt(unit, params, "bounce-ttl-add", false, 0);
+        @m_laser_lvl2 = AnimString(GetParamString(unit, params, "anim-lvl2"));
+        @m_laser_lvl3 = AnimString(GetParamString(unit, params, "anim-lvl3"));
 	}
 
     void Collide(UnitPtr unit, vec2 pos, vec2 normal) override
 	{
-		m_unit.Destroy();
+        HitUnit(unit, pos, normal, m_selfDmg, m_bounceOnCollide);
+	}
+
+    bool checkLaserUpgrade() {
+        auto laserUpgrade = cast<Skills::LaserUpgrade@>(cast<PlayerBase>(m_owner).m_skills[6]);
+        if (laserUpgrade !is null) {
+            @m_laserUpgrade = laserUpgrade;
+            return true;
+        }
+        return false;
+    }
+
+    void SetDirection(vec2 dir) override
+	{
+		m_dir = dir;
+		float ang = atan(dir.y, dir.x);
+        if (checkLaserUpgrade()) {
+            if (m_laserUpgrade.upgradeNum == 1) {
+                m_unit.SetUnitScene(m_laser_lvl2.GetSceneName(ang), false);
+		        SetScriptParams(ang, m_speed);
+                return;
+            }
+            if (m_laserUpgrade.upgradeNum == 2) {
+                m_unit.SetUnitScene(m_laser_lvl3.GetSceneName(ang), false);
+		        SetScriptParams(ang, m_speed);
+                return;
+            }
+        } else {
+            m_unit.SetUnitScene(m_anim.GetSceneName(ang), false);
+		    SetScriptParams(ang, m_speed);
+        }
 	}
 
     void Initialize(Actor@ owner, vec2 dir, float intensity, bool husk, Actor@ target, uint weapon) override
 	{
+        @m_owner = owner;
 		SetDirection(dir);
 		m_husk = husk;
 		m_intensity = intensity;
 		PropagateWeaponInformation(m_effects, weapon);
 		
-		@m_owner = owner;
 		if (m_owner !is null)
 		{
 			if (m_team == 1)
@@ -39,8 +75,10 @@ class LaserProjectile : RayProjectile
 		{
 			if (cast<PlayerBase>(results[i].GetScriptBehavior()) !is null)
 				continue;
-			if (!HitUnit(results[i], m_pos, nDir, 0, true))
-				break;
+			if (!HitUnit(results[i], m_pos, nDir, 0, false)) {
+                break;
+            }
+				
 		}
 
 		SetSeekTarget(target);
@@ -57,7 +95,7 @@ class LaserProjectile : RayProjectile
 			m_unit.Destroy();
 			return;
 		}
-	
+        
 		UpdateSeeking(m_dir, dt);
 		
 		vec2 from = m_pos;
@@ -68,7 +106,7 @@ class LaserProjectile : RayProjectile
 		{
 			RaycastResult res = results[i];
             Actor@ actor = cast<Actor>(res.FetchUnit(g_scene).GetScriptBehavior());
-            if (!actor.IsTargetable()) {
+            if (actor !is null && !actor.IsTargetable()) {
                 return;
             }
 			if (!HitUnit(res.FetchUnit(g_scene), res.point, res.normal, m_selfDmg, false))
@@ -108,6 +146,11 @@ class LaserProjectile : RayProjectile
 				{
 					m_lastCollision = unit;
 					ApplyEffects(m_effects, m_owner, unit, pos, m_dir, m_intensity * selfDmg, m_husk);
+                    if (m_laserUpgrade !is null || checkLaserUpgrade()) {
+                        for (uint j = 0; j < m_laserUpgrade.m_buffs.length(); j++) {
+                            cast<Actor>(unit.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[j], 1.0f, false));
+                        }
+                    }
 				}
 			}
 			else if (!(FilterAction(cast<Actor>(b), m_owner, m_selfDmg, m_teamDmg, 1, 1) > 0))
@@ -118,65 +161,17 @@ class LaserProjectile : RayProjectile
 		{
 			m_lastCollision = unit;
 			ApplyEffects(m_effects, m_owner, unit, pos, m_dir, m_intensity, m_husk);
+            if (m_laserUpgrade !is null || checkLaserUpgrade()) {
+                for (uint j = 0; j < m_laserUpgrade.m_buffs.length(); j++) {
+                    if (unit.IsValid()) {
+                        cast<Actor>(unit.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[j], 1.0f, false));
+                    }
+                }
+            }
 			shouldRetarget = true;
 		}
-		
-		if (bounce)
-		{
-			uint now = g_scene.GetTime();
-			if (m_lastBounceTime != now)
-			{
-				m_penetration--;
-				m_lastBounceTime = now;
-			}
-		
-			if (m_penetration <= 0)
-			{
-				PlaySound3D(m_soundHit, xyz(pos));
-				m_unit.Destroy();
-				return false;
-			}
-		
-			m_intensity *= m_penetrationIntensityMul;
-			m_speed *= m_bounceSpeedMul;
-			m_ttl = int(m_ttl * m_bounceSpeedMul + m_bounceTTLAdd);
-			
-			m_pos = pos;
-			PlaySound3D(m_soundBounce, xyz(pos));
-		
-			Actor@ target = null;
-			if (shouldRetarget)
-			{
-				auto possibleTargets = g_scene.FetchActorsWithOtherTeam(m_owner.Team, pos, uint(m_ttl * 1.5 + 10));
-				int minDist = 10000000;
-				
-				for (uint i = 0; i < possibleTargets.length(); i++)
-				{
-					Actor@ a = cast<Actor>(possibleTargets[i].GetScriptBehavior());
-					if (a.IsDead() || !a.IsTargetable())
-						continue;
-					
-					if (a.m_unit == unit)
-						continue;
-					
-					int d = distsq(m_owner, a);
-					if (d < minDist)
-					{
-						minDist = d;
-						@target = a;
-					}
-				}
-			}
-		
-			if (target !is null)
-			{
-				auto tpos = intercept(pos, xy(target.m_unit.GetPosition()), target.m_unit.GetMoveDir(), m_speed);
-				SetDirection(normalize(tpos - pos));
-			}
-			else if (!shoulPassThrough)
-				SetDirection(normal * -2 * dot(m_dir, normal) + m_dir);
-		}
 
+        m_unit.Destroy();
 		return false;
 	}
 

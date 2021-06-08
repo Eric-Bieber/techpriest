@@ -9,6 +9,8 @@ namespace Skills
 
 		UnitProducer@ m_prod;
 		string m_fxCharged;
+        string m_fxCharged_lvl2;
+        string m_fxCharged_lvl3;
 
 		int m_distance;
 
@@ -22,6 +24,8 @@ namespace Skills
 		EffectBehavior@ m_chargeFxBehavior;
 		EffectBehavior@ m_chargeFxFullBehavior;
 
+        LaserUpgrade@ m_laserUpgrade;
+
 		vec2 m_target;
 
 		ChargeLaser(UnitPtr unit, SValue& params)
@@ -34,6 +38,8 @@ namespace Skills
 
 			@m_prod = Resources::GetUnitProducer(GetParamString(unit, params, "unit"));
 			m_fxCharged = GetParamString(unit, params, "fx-charged", false, "");
+            m_fxCharged_lvl2 = GetParamString(unit, params, "fx-charged_lvl2", false, "");
+            m_fxCharged_lvl3 = GetParamString(unit, params, "fx-charged_lvl3", false, "");
 
 			m_distance = GetParamInt(unit, params, "distance", false, 200);
 		}
@@ -49,6 +55,15 @@ namespace Skills
 		{
 			Release(m_target);
 		}
+
+        bool checkLaserUpgrade() {
+            auto laserUpgrade = cast<Skills::LaserUpgrade>(cast<PlayerBase>(m_owner).m_skills[6]);
+            if (laserUpgrade !is null) {
+                @m_laserUpgrade = laserUpgrade;
+                return true;
+            }
+            return false;
+        }
 		
 		TargetingMode GetTargetingMode(int &out size) override { return TargetingMode::Channeling; }
 
@@ -62,7 +77,16 @@ namespace Skills
 
 		void StartFullChargeEffect()
 		{
-			m_chargeFullFx = PlayEffect(m_fxCharged, m_owner.m_unit, dictionary());
+            if (checkLaserUpgrade()) {
+                if (m_laserUpgrade.upgradeNum == 1) {
+                    m_chargeFullFx = PlayEffect(m_fxCharged_lvl2, m_owner.m_unit, dictionary());
+                }
+                if (m_laserUpgrade.upgradeNum == 2) {
+                    m_chargeFullFx = PlayEffect(m_fxCharged_lvl3, m_owner.m_unit, dictionary());
+                }
+            } else {
+                m_chargeFullFx = PlayEffect(m_fxCharged, m_owner.m_unit, dictionary());
+            }
 
 			@m_chargeFxFullBehavior = cast<EffectBehavior>(m_chargeFullFx.GetScriptBehavior());
 			m_chargeFxFullBehavior.m_looping = true;

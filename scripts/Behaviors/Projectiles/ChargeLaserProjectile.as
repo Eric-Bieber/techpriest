@@ -17,6 +17,8 @@ class ChargeLaserProjectile : RayProjectile
 	float m_angleStart;
 	array<UnitPtr> m_arrHit;
 
+    Skills::LaserUpgrade@ m_laserUpgrade;
+
 	string m_hitFx;
 	SoundEvent@ m_hitSnd;
 	
@@ -39,6 +41,15 @@ class ChargeLaserProjectile : RayProjectile
 
     UnitPtr m_beamFx;
     EffectBehavior@ m_beamFxBehavior;
+
+    string m_fxLaser_lvl2;
+    string m_fxLaser_lvl3;
+
+    UnitPtr m_beamFx_fade;
+    string m_fxLaser_fade_lvl1;
+    string m_fxLaser_fade_lvl2;
+    string m_fxLaser_fade_lvl3;
+    dictionary m_last_ePs;
 
     int timeToDie;
 
@@ -74,6 +85,13 @@ class ChargeLaserProjectile : RayProjectile
 		m_fxStart = GetParamBool(unit, params, "play-fx-start", false, true);
 		m_fxCount = GetParamInt(unit, params, "play-fx-count", false, -1);
 
+        m_fxLaser_lvl2 = GetParamString(unit, params, "fx-lvl2", false);
+        m_fxLaser_lvl3 = GetParamString(unit, params, "fx-lvl3", false);
+
+        m_fxLaser_fade_lvl1 = GetParamString(unit, params, "fx-fade-lvl1", false);
+        m_fxLaser_fade_lvl2 = GetParamString(unit, params, "fx-fade-lvl2", false);
+        m_fxLaser_fade_lvl3 = GetParamString(unit, params, "fx-fade-lvl3", false);
+
 		@m_sound = Resources::GetSoundEvent(GetParamString(unit, params, "snd", false));
 	}
 
@@ -104,6 +122,15 @@ class ChargeLaserProjectile : RayProjectile
 		}
 	}
 
+    bool checkLaserUpgrade() {
+        auto laserUpgrade = cast<Skills::LaserUpgrade>(cast<PlayerBase>(m_owner).m_skills[6]);
+        if (laserUpgrade !is null) {
+            @m_laserUpgrade = laserUpgrade;
+            return true;
+        }
+        return false;
+    }
+
 	void Destroyed() override
 	{
 		// RayProjectile::Destroyed();
@@ -120,7 +147,8 @@ class ChargeLaserProjectile : RayProjectile
             timeToDie -= dt;
 
             if (timeToDie < 0) {
-                print("Destroying");
+                PlayFadeEffect();
+                
                 m_beamFx.Destroy();
                 m_beamFx = UnitPtr();
 
@@ -162,6 +190,9 @@ class ChargeLaserProjectile : RayProjectile
 
 				if (unit == m_unit)
 					continue;
+                
+                if (unit == m_owner.m_unit)
+                    continue;
 
 				auto dmgTaker = cast<IDamageTaker>(unit.GetScriptBehavior());
 				if (dmgTaker !is null && dmgTaker.ShootThrough(m_owner, rayPos, rayDir))
@@ -216,6 +247,11 @@ class ChargeLaserProjectile : RayProjectile
 				m_effectsLocal.insertLast(Damage(m_unit, b.Build()));
 
 				ApplyEffects(m_effectsLocal, m_owner, unit, upos, dir, 1.0, m_huskLocal, 0, 0); // self/team/enemy dmg
+                if (m_laserUpgrade !is null || checkLaserUpgrade()) {
+                    for (uint j = 0; j < m_laserUpgrade.m_buffs.length(); j++) {
+                        cast<Actor>(unit.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[j], 1.0f, false));
+                    }
+                }
 
 				m_effectsLocal.removeLast();
 
@@ -265,9 +301,33 @@ class ChargeLaserProjectile : RayProjectile
             { 'angle', atan(dir.y, dir.x) },
             { 'length', length } 
         };
-		m_beamFx = PlayEffect(m_fx, xy(m_unit.GetPosition()), ePs);
+        m_last_ePs = ePs;
+        if (checkLaserUpgrade()) {
+            if (m_laserUpgrade.upgradeNum == 1) {
+                m_beamFx = PlayEffect(m_fxLaser_lvl2, xy(m_unit.GetPosition()), ePs);
+            }
+            if (m_laserUpgrade.upgradeNum == 2) {
+                m_beamFx = PlayEffect(m_fxLaser_lvl3, xy(m_unit.GetPosition()), ePs);
+            }
+        } else {
+            m_beamFx = PlayEffect(m_fx, xy(m_unit.GetPosition()), ePs);
+        }
+	
         @m_beamFxBehavior = cast<EffectBehavior>(m_beamFx.GetScriptBehavior());
 	}
+
+    void PlayFadeEffect() {
+        if (checkLaserUpgrade()) {
+            if (m_laserUpgrade.upgradeNum == 1) {
+                m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl2, xy(m_beamFx.GetPosition()), m_last_ePs);
+            }
+            if (m_laserUpgrade.upgradeNum == 2) {
+                m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl3, xy(m_beamFx.GetPosition()), m_last_ePs);
+            }
+        } else {
+            m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl1, xy(m_beamFx.GetPosition()), m_last_ePs);
+        }
+    }
 	
 	bool HitUnit(UnitPtr unit, vec2 pos, vec2 normal, float selfDmg, bool bounce, bool collide = true) override
 	{

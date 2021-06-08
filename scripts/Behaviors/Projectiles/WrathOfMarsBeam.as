@@ -215,7 +215,16 @@ namespace Skills
 						{ 'angle', m_holdDir },
 						{ 'length', m_holdLength }
 					};
-					m_unitBeamFx = PlayEffect(m_skill.m_fx, pos, ePs);
+                    if (checkLaserUpgrade()) {
+                        if (m_laserUpgrade.upgradeNum == 1) {
+                            m_unitBeamFx = PlayEffect(m_skill.m_fxLaser_lvl2, pos, ePs);
+                        }
+                        if (m_laserUpgrade.upgradeNum == 2) {
+                            m_unitBeamFx = PlayEffect(m_skill.m_fxLaser_lvl3, pos, ePs);
+                        }
+                    } else {
+                        m_unitBeamFx = PlayEffect(m_skill.m_fx, pos, ePs);
+                    }
 
 					if (m_skill.m_sound !is null)
 					{

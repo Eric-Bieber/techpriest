@@ -11,13 +11,15 @@
 		<!-- Level 1 -->
         <dict>
             <string name="class">Skills::LaserUpgrade</string>
+            <int name="upgradeNum">1</int>
             <string name="buff-0">players/techpriestbuffs.sval:laser-fire</string>
 		</dict>
 		
 		<!-- Level 2 -->
         <dict>
             <string name="class">Skills::LaserUpgrade</string>
-            
+
+            <int name="upgradeNum">2</int>
             <string name="buff-0">players/techpriestbuffs.sval:laser-fire-2</string>
             <string name="buff-1">players/techpriestbuffs.sval:laser-stun</string>
         </dict>

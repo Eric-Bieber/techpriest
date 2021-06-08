@@ -3,7 +3,7 @@
 	<param name="length" default="100" />
 	
 	<!-- Beam -->
-	<sprite looping="true" origin="0 8" texture="./wrath_of_mars_beam.png" material="system/default.mats:glow-both-bright-player"
+	<sprite looping="true" origin="0 8" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright-player"
 		angle="angle"
 		
 		color-a="saturate(5)"
@@ -16,7 +16,7 @@
 	</sprite>
 	
 	<!-- End circle -->
-	<sprite looping="true" origin="16 16" texture="./wrath_of_mars_beam.png" material="system/default.mats:glow-both-bright"
+	<sprite looping="true" origin="16 16" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright"
 		pos-x="cos(angle)*length"
 		pos-y="sin(angle)*length"
 		
@@ -29,7 +29,7 @@
 	</sprite>
 	
 	<!-- Dummy length -->
-	<sprite looping="false" origin="0 0" texture="./wrath_of_mars_beam.png" material="system/default.mats:glow-both-bright">
+	<sprite looping="false" origin="0 0" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright">
 		<frame time="500">0 0 0 0</frame>
 	</sprite>
 	

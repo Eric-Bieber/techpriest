@@ -1,5 +1,5 @@
 <effect looping="false" layer="1000">
-	<sprite looping="false" origin="0 0" texture="./mecharms_laser.png" material="system/default.mats:glow-both-bright"
+	<sprite looping="false" origin="0 0" texture="./Beams/mecharms_laser.png" material="system/default.mats:glow-both-bright"
 		color-r="1"
 		color-g="1"
 		color-b="1"

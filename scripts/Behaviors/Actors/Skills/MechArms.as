@@ -9,15 +9,10 @@ namespace Skills
 
 		vec2 m_offset;
 
-		vec2 m_overrideTarget;
-		bool m_overrideTargetSet;
-
 		UnitPtr m_target;
 		UnitPtr m_fire;
 
 		float targetDir;
-
-        LaserUpgrade@ m_laserUpgrade;
 
 		SoundInstance@ m_sndI;
 
@@ -41,8 +36,6 @@ namespace Skills
 
 		vec2 GetTargetPosition()
 		{
-			if (m_overrideTargetSet)
-				return m_overrideTarget;
 			return xy(m_target.GetPosition());
 		}
 
@@ -262,43 +255,40 @@ namespace Skills
 			vec2 armPos = GetArmPosition();
 
             if (m_skill.m_canFire == true) {
-                if (!m_overrideTargetSet)
+                // Find closest unit
+                float closestDistance = (m_skill.m_armRange * m_skill.m_armRange) + 1.0f;
+
+                array<UnitPtr>@ results = g_scene.FetchActorsWithOtherTeam(m_skill.m_owner.Team, armPos, m_skill.m_armRange);
+                for (uint i = 0; i < results.length(); i++)
                 {
-                    // Find closest unit
-                    float closestDistance = (m_skill.m_armRange * m_skill.m_armRange) + 1.0f;
+                    Actor@ actor = cast<Actor>(results[i].GetScriptBehavior());
+                    if (!actor.IsTargetable())
+                        continue;
 
-                    array<UnitPtr>@ results = g_scene.FetchActorsWithOtherTeam(m_skill.m_owner.Team, armPos, m_skill.m_armRange);
-                    for (uint i = 0; i < results.length(); i++)
+                    bool canSee = true;
+                    auto canSeeRes = g_scene.Raycast(armPos, xy(results[i].GetPosition()), ~0, RaycastType::Shot);
+                    for (uint j = 0; j < canSeeRes.length(); j++)
                     {
-                        Actor@ actor = cast<Actor>(results[i].GetScriptBehavior());
-                        if (!actor.IsTargetable())
-                            continue;
-
-                        bool canSee = true;
-                        auto canSeeRes = g_scene.Raycast(armPos, xy(results[i].GetPosition()), ~0, RaycastType::Shot);
-                        for (uint j = 0; j < canSeeRes.length(); j++)
-                        {
-                            UnitPtr canSeeUnit = canSeeRes[j].FetchUnit(g_scene);
-                            if (canSeeUnit == results[i])
-                                break;
-
-                            auto canSeeActor = cast<Actor>(canSeeUnit.GetScriptBehavior());
-                            if (canSeeActor is m_skill.m_owner)
-                                continue;
-
-                            canSee = false;
+                        UnitPtr canSeeUnit = canSeeRes[j].FetchUnit(g_scene);
+                        if (canSeeUnit == results[i])
                             break;
-                        }
-                        if (!canSee)
+
+                        auto canSeeActor = cast<Actor>(canSeeUnit.GetScriptBehavior());
+                        if (canSeeActor is m_skill.m_owner)
                             continue;
 
-                        vec2 actorPos = xy(results[i].GetPosition());
-                        float d = distsq(armPos, actorPos);
-                        if (d < closestDistance)
-                        {
-                            newTarget = results[i];
-                            closestDistance = d;
-                        }
+                        canSee = false;
+                        break;
+                    }
+                    if (!canSee)
+                        continue;
+
+                    vec2 actorPos = xy(results[i].GetPosition());
+                    float d = distsq(armPos, actorPos);
+                    if (d < closestDistance)
+                    {
+                        newTarget = results[i];
+                        closestDistance = d;
                     }
                 }
 
@@ -335,12 +325,6 @@ namespace Skills
 
                         m_intervalC += m_skill.m_effectInterval;
                         targetDir = atan(targetDirection.y, targetDirection.x);
-
-                        if (m_laserUpgrade !is null || checkLaserUpgrade()) {
-                            for (uint i = 0; i < m_laserUpgrade.m_buffs.length(); i++) {
-                                cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[i], 1.0f, false));
-                            }
-                        }
                         @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
                     }
                     m_fire.SetPosition(xyz(armPos));
@@ -349,22 +333,6 @@ namespace Skills
                 }
             }
 		}
-
-        bool checkLaserUpgrade() {
-            auto laserUpgrade = cast<Skills::LaserUpgrade>(cast<PlayerBase>(m_skill.m_owner).m_skills[6]);
-            if (laserUpgrade !is null) {
-                @m_laserUpgrade = laserUpgrade;
-                return true;
-            }
-            return false;
-        }
-
-        // bnb for above
-        // if (checkLaserUpgrade()) {
-        //     for (uint i = 0; i < m_laserUpgrade.m_buffs.length(); i++) {
-        //         cast<Actor>(m_target.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[i], 1.0f, false));
-        //     }
-        // }
 
         bool inRange() {
             bool inRange = false;

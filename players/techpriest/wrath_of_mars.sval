@@ -19,7 +19,9 @@
             <int name="mana-cost">0</int>
 
             <string name="anim">channeling 8</string>
-            <string name="fx">players/techpriest/wrath_of_mars_beam.effect</string>
+            <string name="fx">players/techpriest/Beams/wrath_of_mars_beam_lvl1.effect</string>
+            <string name="fx-lvl2">players/techpriest/Beams/wrath_of_mars_beam_lvl2.effect</string>
+            <string name="fx-lvl3">players/techpriest/Beams/wrath_of_mars_beam_lvl3.effect</string>
             <string name="snd">event:/player/priest/beam</string>
             <float name="speed-mul">1</float>
             <bool name="blocking">false</bool>
