@@ -1,10 +1,14 @@
 <effect looping="true" layer="0">
 	<param name="angle" default="0" />
 	<param name="length" default="100" />
+	<param name="x_offset" default="0" />
+	<param name="y_offset" default="0" />
 	
 	<!-- Beam -->
 	<sprite looping="true" origin="0 8" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright-player"
 		angle="angle"
+		pos-x="x_offset"
+		pos-y="y_offset"
 		
 		color-a="saturate(5)"
 		scale-y="saturate(5)"
@@ -17,8 +21,8 @@
 	
 	<!-- End circle -->
 	<sprite looping="true" origin="16 16" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright"
-		pos-x="cos(angle)*length"
-		pos-y="sin(angle)*length"
+		pos-x="cos(angle)*length + x_offset"
+		pos-y="sin(angle)*length + y_offset"
 		
 		color-a="saturate(5)"
 		scale-x="saturate(5)"
@@ -29,9 +33,9 @@
 	</sprite>
 	
 	<!-- Dummy length -->
-	<sprite looping="false" origin="0 0" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright">
+	<!-- <sprite looping="false" origin="0 0" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright">
 		<frame time="500">0 0 0 0</frame>
-	</sprite>
+	</sprite> -->
 	
 	<light 
 		

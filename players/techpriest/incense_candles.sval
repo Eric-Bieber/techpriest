@@ -1,8 +1,8 @@
 <dict>
-	<string name="name">.skills.techpriest.incense_candles</string>
+	<string name="name">.skills.techpriest.incense-candles</string>
 	<array name="icon">
-		<string>gui/icons_skills.png</string>
-		<int>100</int><vec4>48 120 24 24</vec4>
+		<string>gui/techpriest_skills.png</string>
+		<int>100</int><vec4>96 0 24 24</vec4>
 	</array>
 
 	<array name="skills">
@@ -15,7 +15,7 @@
                 <dict>
                     <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
-                    <float name="chance">1</float>
+                    <float name="chance">.20</float>
                     <bool name="target-self">false</bool>
                     <array name="effects">
                         <dict name="effect">
@@ -31,56 +31,91 @@
 		</dict>
 		
 		<!-- Level 2 -->
-		<dict>
-			<string name="class">Skills::CombustionSkill</string>
-			<array name="modifiers">
-				<dict>
-					<string name="class">Modifiers::CombustionTriggerEffect</string>
-					<dict name="effect">
-						<string name="class">ApplyBuff</string>
-						<string name="buff">players/buffs.sval:combust-2</string>
-					</dict>
-				</dict>
-			</array>
-		</dict>
+        <dict>
+            <string name="class">Skills::PassiveSkill</string>
+            <array name="modifiers">
+                <dict>
+                    <string name="class">Modifiers::TriggerEffect</string>
+                    <string name="trigger">kill</string>
+                    <float name="chance">.25</float>
+                    <bool name="target-self">false</bool>
+                    <array name="effects">
+                        <dict name="effect">
+                            <string name="class">SpawnUnit</string>
+                            <string name="unit">players/techpriest/incense_candles_area_2.unit</string>
+                            <bool name="safe-spawn">false</bool>
+                            <int name="spawn-dist">0</int>
+                            <vec2 name="offset">0 0</vec2>
+                        </dict>
+                    </array>
+                </dict>
+            </array>
+        </dict>
+        
 		<!-- Level 3 -->
-		<dict>
-			<string name="class">Skills::CombustionSkill</string>
-			<array name="modifiers">
-				<dict>
-					<string name="class">Modifiers::CombustionTriggerEffect</string>
-					<dict name="effect">
-						<string name="class">ApplyBuff</string>
-						<string name="buff">players/buffs.sval:combust-3</string>
-					</dict>
-				</dict>
-			</array>
-		</dict>
+        <dict>
+            <string name="class">Skills::PassiveSkill</string>
+            <array name="modifiers">
+                <dict>
+                    <string name="class">Modifiers::TriggerEffect</string>
+                    <string name="trigger">kill</string>
+                    <float name="chance">.30</float>
+                    <bool name="target-self">false</bool>
+                    <array name="effects">
+                        <dict name="effect">
+                            <string name="class">SpawnUnit</string>
+                            <string name="unit">players/techpriest/incense_candles_area_3.unit</string>
+                            <bool name="safe-spawn">false</bool>
+                            <int name="spawn-dist">0</int>
+                            <vec2 name="offset">0 0</vec2>
+                        </dict>
+                    </array>
+                </dict>
+            </array>
+        </dict>
+        
 		<!-- Level 4 -->
-		<dict>
-			<string name="class">Skills::CombustionSkill</string>
-			<array name="modifiers">
-				<dict>
-					<string name="class">Modifiers::CombustionTriggerEffect</string>
-					<dict name="effect">
-						<string name="class">ApplyBuff</string>
-						<string name="buff">players/buffs.sval:combust-4</string>
-					</dict>
-				</dict>
-			</array>
-		</dict>
+        <dict>
+            <string name="class">Skills::PassiveSkill</string>
+            <array name="modifiers">
+                <dict>
+                    <string name="class">Modifiers::TriggerEffect</string>
+                    <string name="trigger">kill</string>
+                    <float name="chance">.35</float>
+                    <bool name="target-self">false</bool>
+                    <array name="effects">
+                        <dict name="effect">
+                            <string name="class">SpawnUnit</string>
+                            <string name="unit">players/techpriest/incense_candles_area_4.unit</string>
+                            <bool name="safe-spawn">false</bool>
+                            <int name="spawn-dist">0</int>
+                            <vec2 name="offset">0 0</vec2>
+                        </dict>
+                    </array>
+                </dict>
+            </array>
+        </dict>
+        
 		<!-- Level 5 -->
-		<dict>
-			<string name="class">Skills::CombustionSkill</string>
-			<array name="modifiers">
-				<dict>
-					<string name="class">Modifiers::CombustionTriggerEffect</string>
-					<dict name="effect">
-						<string name="class">ApplyBuff</string>
-						<string name="buff">players/buffs.sval:combust-5</string>
-					</dict>
-				</dict>
-			</array>
-		</dict>
+        <dict>
+            <string name="class">Skills::PassiveSkill</string>
+            <array name="modifiers">
+                <dict>
+                    <string name="class">Modifiers::TriggerEffect</string>
+                    <string name="trigger">kill</string>
+                    <float name="chance">.40</float>
+                    <bool name="target-self">false</bool>
+                    <array name="effects">
+                        <dict name="effect">
+                            <string name="class">SpawnUnit</string>
+                            <string name="unit">players/techpriest/incense_candles_area_5.unit</string>
+                            <bool name="safe-spawn">false</bool>
+                            <int name="spawn-dist">0</int>
+                            <vec2 name="offset">0 0</vec2>
+                        </dict>
+                    </array>
+                </dict>
+            </array>
+        </dict>
 	</array>
 </dict>

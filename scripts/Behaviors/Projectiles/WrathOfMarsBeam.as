@@ -155,11 +155,6 @@ namespace Skills
 			if (withEffects)
 			{
 				m_intervalC += m_skill.m_interval;
-				if (!m_skill.m_owner.SpendCost(m_skill.m_costMana, m_skill.m_costStamina, m_skill.m_costHealth))
-				{
-					m_skill.Release(target);
-					return;
-				}
 			}
 
 			vec2 pos = GetArmPosition();

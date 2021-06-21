@@ -5,7 +5,7 @@
         <string name="anim-lvl3">lvl-3</string>
 		<float name="speed">6</float>
 		<int name="penetration">1</int>
-		<float name="penetration-intensity-mul">1.1</float>
+		<float name="penetration-intensity-mul">1</float>
 		<float name="bounce-speed-mul">1</float>
 		<int name="bounce-ttl-add">0</int>
         <bool name="bounce-on-collide">false</bool>
@@ -17,7 +17,7 @@
 		<array name="effects">
 			<dict>
 				<string name="class">Damage</string>
-				<int name="magical">3</int>
+				<int name="magical">5</int>
 			</dict>
 			
 			<dict name="effect">

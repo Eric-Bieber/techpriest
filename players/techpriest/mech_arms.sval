@@ -1,8 +1,8 @@
 <dict>
-	<string name="name">.skills.priest.mech-arms</string>
+	<string name="name">.skills.techpriest.mechanical-arms</string>
 	<array name="icon">
-		<string>gui/icons_skills.png</string>
-		<int>100</int><vec4>144 96 24 24</vec4>
+		<string>gui/techpriest_skills.png</string>
+		<int>100</int><vec4>120 0 24 24</vec4>
 	</array>
 
 	<array name="skills">
@@ -12,7 +12,7 @@
 		<dict>
 			<string name="class">Skills::MechArms</string>
 
-			<int name="num-arms">2</int>
+			<int name="num-arms">1</int>
 
 			<int name="arm-range">70</int>
 			<string name="fire-fx">players/techpriest/mecharms_fire.effect</string>
@@ -45,22 +45,111 @@
 		</dict>
 		
 		<!-- Level 2 -->
-		<dict>
-			<string name="class">Skills::CelestialOrbs</string>
+        <dict>
+            <string name="class">Skills::MechArms</string>
 
-			<int name="num-orbs">3</int>
+            <int name="num-arms">2</int>
 
-			<float name="orb-distance">10</float>
-			<int name="orb-range">40</int>
-			<string name="orb-fx">effects/players/priest_orb.effect</string>
-			<string name="orb-beam-fx">effects/players/priest_orb_beam.effect</string>
-			<string name="orb-snd">event:/player/priest/orb_beam</string>
+            <int name="arm-range">70</int>
+            <string name="fire-fx">players/techpriest/mecharms_fire.effect</string>
+            <string name="projectile">players/techpriest/mecharms_laser_1.unit</string>
+            <string name="fire-snd">sound/techpriest.sbnk:mecharms_fire</string>
 
-			<int name="effect-interval">250</int>
-			<dict name="effect">
-				<string name="class">Damage</string>
-				<int name="magical">12</int>
-			</dict>
-		</dict>
+            <string name="S_Left">s-left 8</string>
+            <string name="S_Right">s-right 8</string>
+
+            <string name="SW_Left">sw-left 8</string>
+            <string name="SW_Right">sw-right 8</string>
+
+            <string name="W_Left">w-left 8</string>
+
+            <string name="NW_Left">nw-left 8</string>
+            <string name="NW_Right">nw-right 8</string>
+
+            <string name="N_Left">n-left 8</string>
+            <string name="N_Right">n-right 8</string>
+
+            <string name="NE_Left">ne-left 8</string>
+            <string name="NE_Right">ne-right 8</string>
+
+            <string name="E_Right">e-right 8</string>
+
+            <string name="SE_Left">se-left 8</string>
+            <string name="SE_Right">se-right 8</string>
+
+            <int name="effect-interval">350</int>
+        </dict>
+
+        <!-- Level 3 -->
+        <dict>
+            <string name="class">Skills::MechArms</string>
+
+            <int name="num-arms">2</int>
+
+            <int name="arm-range">80</int>
+            <string name="fire-fx">players/techpriest/mecharms_fire.effect</string>
+            <string name="projectile">players/techpriest/mecharms_laser_2.unit</string>
+            <string name="fire-snd">sound/techpriest.sbnk:mecharms_fire</string>
+
+            <string name="S_Left">s-left 8</string>
+            <string name="S_Right">s-right 8</string>
+
+            <string name="SW_Left">sw-left 8</string>
+            <string name="SW_Right">sw-right 8</string>
+
+            <string name="W_Left">w-left 8</string>
+
+            <string name="NW_Left">nw-left 8</string>
+            <string name="NW_Right">nw-right 8</string>
+
+            <string name="N_Left">n-left 8</string>
+            <string name="N_Right">n-right 8</string>
+
+            <string name="NE_Left">ne-left 8</string>
+            <string name="NE_Right">ne-right 8</string>
+
+            <string name="E_Right">e-right 8</string>
+
+            <string name="SE_Left">se-left 8</string>
+            <string name="SE_Right">se-right 8</string>
+
+            <int name="effect-interval">350</int>
+        </dict>
+
+        <!-- Level 4 -->
+        <dict>
+            <string name="class">Skills::MechArms</string>
+
+            <int name="num-arms">2</int>
+
+            <int name="arm-range">90</int>
+            <string name="fire-fx">players/techpriest/mecharms_fire.effect</string>
+            <string name="projectile">players/techpriest/mecharms_laser_3.unit</string>
+            <string name="fire-snd">sound/techpriest.sbnk:mecharms_fire</string>
+
+            <string name="S_Left">s-left 8</string>
+            <string name="S_Right">s-right 8</string>
+
+            <string name="SW_Left">sw-left 8</string>
+            <string name="SW_Right">sw-right 8</string>
+
+            <string name="W_Left">w-left 8</string>
+
+            <string name="NW_Left">nw-left 8</string>
+            <string name="NW_Right">nw-right 8</string>
+
+            <string name="N_Left">n-left 8</string>
+            <string name="N_Right">n-right 8</string>
+
+            <string name="NE_Left">ne-left 8</string>
+            <string name="NE_Right">ne-right 8</string>
+
+            <string name="E_Right">e-right 8</string>
+
+            <string name="SE_Left">se-left 8</string>
+            <string name="SE_Right">se-right 8</string>
+
+            <int name="effect-interval">280</int>
+        </dict>
 	</array>
 </dict>

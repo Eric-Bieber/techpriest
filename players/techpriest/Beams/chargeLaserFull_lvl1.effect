@@ -1,6 +1,8 @@
 <effect looping="true" layer="0">
 	<param name="angle" default="0" />
 	<param name="length" default="100" />
+	<param name="x_offset" default="0" />
+	<param name="y_offset" default="0" />
 	
 	<!-- Beam -->
 	<!-- <sprite looping="true" origin="0 8" texture="./wrath_of_mars_beam.png" material="system/default.mats:glow-both-bright-player"
@@ -17,8 +19,8 @@
 	
 	<!-- Front circle -->
 	<sprite looping="true" origin="16 16" texture="players/techpriest/Beams/wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright"
-		pos-x="cos(angle)*3"
-		pos-y="sin(angle)*3"
+		pos-x="cos(angle)*3 + x_offset"
+		pos-y="sin(angle)*3 + y_offset"
 		
 		color-a="saturate(5)"
 		scale-x="saturate(5)"

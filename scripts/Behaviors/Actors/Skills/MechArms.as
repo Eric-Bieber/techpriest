@@ -12,6 +12,8 @@ namespace Skills
 		UnitPtr m_target;
 		UnitPtr m_fire;
 
+        bool m_fireAtTarget = false;
+
 		float targetDir;
 
 		SoundInstance@ m_sndI;
@@ -88,7 +90,7 @@ namespace Skills
 				}
 
 				// SE
-				if (dir >= .38 && dir < 1.18) {
+				if (dir >= .39 && dir < 1.18) {
 					auto sceneTempLeft = GetArmScene(m_skill.SE_Left);
 					scene.AddScene(sceneTempLeft, 0, vec2(0, -3), -1, 0);
 				}
@@ -108,7 +110,7 @@ namespace Skills
 				}
 				
 				// E
-				if (dir >= -.38 && dir < .38) {
+				if (dir >= -.38 && dir < .39) {
 					auto sceneTempRight = GetArmScene(m_skill.E_Right);
 					scene.AddScene(sceneTempRight, 0, vec2(-3, -3), 1, 0);
 				}
@@ -132,7 +134,7 @@ namespace Skills
 				}
 
 				// SE
-				if (dir >= .38 && dir < 1.18) {
+				if (dir >= .39 && dir < 1.18) {
 					auto sceneTempRight = GetArmScene(m_skill.SE_Right);
 					scene.AddScene(sceneTempRight, 0, vec2(2, -6), -1, 0);
 				}				
@@ -301,35 +303,40 @@ namespace Skills
                 vec2 shootPos = GetArmPosition();
 
                 // Maybe apply effects
-                
-                if (inRange()) {
-                    m_intervalC -= dt;
-                    if (m_intervalC <= 0)
-                    {
-                        auto proj = ProduceProjectile(shootPos);
-                        if (!proj.IsValid())
-                            return;
-                        
-                        auto p = cast<IProjectile>(proj.GetScriptBehavior());
-                        if (p is null)
-                            return;
-                        
-                        p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
-                        m_fire = PlayEffect(m_skill.m_firefx, armPos);
-                        auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
-                        behavior.m_looping = true;
+                if (!prevTarget.IsValid() && newTarget.IsValid()) {
+                    m_fireAtTarget = true;
+                } else if (prevTarget.IsValid() && !newTarget.IsValid()) {
+				    m_fireAtTarget = false;
+                } else if (m_fireAtTarget) {
+                    if (inRange()) {
+                        m_intervalC -= dt;
+                        if (m_intervalC <= 0)
+                        {
+                            auto proj = ProduceProjectile(shootPos);
+                            if (!proj.IsValid())
+                                return;
+                            
+                            auto p = cast<IProjectile>(proj.GetScriptBehavior());
+                            if (p is null)
+                                return;
+                            
+                            p.Initialize(m_skill.m_owner, targetDirection, 1.0f, false, m_target, 0);
+                            m_fire = PlayEffect(m_skill.m_firefx, armPos);
+                            auto behavior = cast<EffectBehavior>(m_fire.GetScriptBehavior());
+                            behavior.m_looping = true;
 
-                        auto pp = cast<Projectile>(p);
-                        if (pp !is null)
-                            pp.m_liveRangeSq *= m_skill.m_armRange;
+                            auto pp = cast<Projectile>(p);
+                            if (pp !is null)
+                                pp.m_liveRangeSq *= m_skill.m_armRange;
 
-                        m_intervalC += m_skill.m_effectInterval;
-                        targetDir = atan(targetDirection.y, targetDirection.x);
-                        @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
+                            m_intervalC += m_skill.m_effectInterval;
+                            targetDir = atan(targetDirection.y, targetDirection.x);
+                            @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
+                        }
+                        m_fire.SetPosition(xyz(armPos));
+                    } else {
+                        m_intervalC = m_skill.m_effectInterval;
                     }
-                    m_fire.SetPosition(xyz(armPos));
-                } else {
-                    m_intervalC = m_skill.m_effectInterval;
                 }
             }
 		}
@@ -339,7 +346,7 @@ namespace Skills
             vec2 targetPos = GetTargetPosition();
             vec2 ownerPos = GetOwnerPosition();
             float distance = dist(ownerPos, targetPos);
-            inRange = distance <= 70;
+            inRange = distance <= m_skill.m_armRange;
             return inRange;
         }
 	}

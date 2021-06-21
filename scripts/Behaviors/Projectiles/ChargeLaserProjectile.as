@@ -39,6 +39,8 @@ class ChargeLaserProjectile : RayProjectile
 	int m_damageMin;
 	int m_damageMax;	
 
+	vec2 m_offset;
+
     UnitPtr m_beamFx;
     EffectBehavior@ m_beamFxBehavior;
 
@@ -289,17 +291,69 @@ class ChargeLaserProjectile : RayProjectile
 		}
 	}
 
+	vec2 findOffset(float dir) {
+		vec2 tempOffset;
+		// S
+		if (dir >= 1.18 && dir < 1.96) {
+			tempOffset = vec2(-3, 9);
+		}
+
+		// SW
+		if (dir >= 1.96 && dir < 2.75) {
+			tempOffset = vec2(-12, 7);
+		}
+		
+		// W
+		if (dir >= 2.75 || dir < -2.75) {
+			tempOffset = vec2(-13, 0);
+		}
+
+		// NW
+		if (dir >= -2.75 && dir < -1.96) {
+			tempOffset = vec2(-9, -11);
+		}
+
+		// N
+		if (dir >= -1.96 && dir < -1.18) {
+			tempOffset = vec2(4, -16);
+		}
+
+		// NE
+		if (dir >= -1.18 && dir < -.38) {
+			tempOffset = vec2(14, -10);
+		}
+
+		// E
+		if (dir >= -.38 && dir < .38) {
+			tempOffset = vec2(14, 0);
+		}
+
+		// SE
+		if (dir >= .38 && dir < 1.18) {
+			tempOffset = vec2(6, 9);
+		}
+		return tempOffset;
+	}
+
 	void PlaySkillEffect(vec2 dir, dictionary ePs = { })
 	{
 		PlaySound3D(m_sound, m_unit.GetPosition());
 	
 		if (m_fx == "")
 			return;
+
+		auto input = GetInput();
+		auto aimDir = input.AimDir;
+		float direct = atan(aimDir.y, aimDir.x);
+
+		m_offset = findOffset(direct);
 		
-        float length = dist(xy(m_owner.m_unit.GetPosition()), endPoint);
+        float length = dist(xy(m_owner.m_unit.GetPosition()) + m_offset, endPoint);
         ePs = { 
             { 'angle', atan(dir.y, dir.x) },
-            { 'length', length } 
+            { 'length', length },
+			{ 'x_offset', m_offset.x },
+			{ 'y_offset', m_offset.y }
         };
         m_last_ePs = ePs;
         if (checkLaserUpgrade()) {
@@ -319,13 +373,13 @@ class ChargeLaserProjectile : RayProjectile
     void PlayFadeEffect() {
         if (checkLaserUpgrade()) {
             if (m_laserUpgrade.upgradeNum == 1) {
-                m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl2, xy(m_beamFx.GetPosition()), m_last_ePs);
+                m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl2, xy(m_beamFx.GetPosition()) + m_offset, m_last_ePs);
             }
             if (m_laserUpgrade.upgradeNum == 2) {
-                m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl3, xy(m_beamFx.GetPosition()), m_last_ePs);
+                m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl3, xy(m_beamFx.GetPosition()) + m_offset, m_last_ePs);
             }
         } else {
-            m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl1, xy(m_beamFx.GetPosition()), m_last_ePs);
+            m_beamFx_fade = PlayEffect(m_fxLaser_fade_lvl1, xy(m_beamFx.GetPosition()) + m_offset, m_last_ePs);
         }
     }
 	

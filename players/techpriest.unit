@@ -1,7 +1,7 @@
 <unit netsync="position" slot="actor">
 	<scenes start="idle-0 idle-1 idle-2 idle-3 idle-4 idle-5 idle-6 idle-7">
 		<scene name="idle-0">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:bright-noxray">
+			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame>0 0 24 24</frame>
 			</sprite>
 		</scene>
@@ -106,105 +106,113 @@
 
 		<scene name="attack-0">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">0 72 24 24</frame>
-				<frame time="75">0 96 24 24</frame>
+				<frame time="200">0 96 24 24</frame>
+				<frame time="200">0 120 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-7">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">24 72 24 24</frame>
-				<frame time="75">24 96 24 24</frame>
+				<frame time="200">24 96 24 24</frame>
+				<frame time="200">0 0 0 0</frame>
+			</sprite>
+			<sprite origin="12 16" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="200">0 0 0 0</frame>
+				<frame time="200">24 120 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-6">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">48 72 24 24</frame>
-				<frame time="75">48 96 24 24</frame>
+				<frame time="200">48 96 24 24</frame>
+				<frame time="200">0 0 0 0</frame>
+			</sprite>
+			<sprite origin="12 18" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="200">0 0 0 0</frame>
+				<frame time="200">48 120 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-5">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">72 72 24 24</frame>
-				<frame time="75">72 96 24 24</frame>
+				<frame time="200">72 96 24 24</frame>
+				<frame time="200">72 120 20 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-4">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">96 72 24 24</frame>
-				<frame time="75">96 96 24 24</frame>
+				<frame time="200">96 96 24 24</frame>
+				<frame time="200">96 120 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-3">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">120 72 24 24</frame>
-				<frame time="75">120 96 24 24</frame>
+				<frame time="200">120 96 24 24</frame>
+				<frame time="200">120 120 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-2">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">144 72 24 24</frame>
-				<frame time="75">144 96 24 24</frame>
+				<frame time="200">144 96 24 24</frame>
+				<frame time="200">144 120 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-1">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="75">168 72 24 24</frame>
-				<frame time="75">168 96 24 24</frame>
+				<frame time="200">168 96 24 24</frame>
+				<frame time="200">168 120 24 24</frame>
 			</sprite>
 		</scene>
 		
 		<scene name="charge-0">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">0 120 24 24</frame>
+			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">0 157 30 30</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-7">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">24 120 24 24</frame>
+			<sprite origin="9 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">27 157 28 30</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-6">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">48 120 24 24</frame>
+			<sprite origin="10 19" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">50 152 24 40</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-5">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">72 120 24 24</frame>
+			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">72 157 15 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-4">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">96 120 24 24</frame>
+			<sprite origin="17 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">90 157 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-3">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">120 120 24 24</frame>
+			<sprite origin="15 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">117 157 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-2">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">144 120 24 24</frame>
+			<sprite origin="11 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">144 158 24 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="charge-1">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="150">168 120 24 24</frame>
+			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="150">168 157 24 24</frame>
 			</sprite>
 		</scene>
 		
@@ -219,19 +227,6 @@
 				<frame time="125">216 24 24 24</frame>
 				<frame time="125">216 48 24 24</frame>
 				<frame time="550">216 72 24 24</frame>
-			</sprite>
-		</scene>
-
-		<scene name="channeling">
-			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="30">0 72 24 24</frame>
-				<frame time="30">24 72 24 24</frame>
-				<frame time="30">48 72 24 24</frame>
-				<frame time="30">72 72 24 24</frame>
-				<frame time="30">96 72 24 24</frame>
-				<frame time="30">120 72 24 24</frame>
-				<frame time="30">144 72 24 24</frame>
-				<frame time="30">168 72 24 24</frame>
 			</sprite>
 		</scene>
 	</scenes>

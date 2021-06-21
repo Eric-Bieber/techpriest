@@ -2,7 +2,7 @@
 	<array name="skills">
 		<string>players/techpriest/axe.sval</string>
 		<string>players/techpriest/charge_laser.sval</string>
-		<string>players/techpriest/blast_wave.sval</string>
+		<string>players/techpriest/graviton_device.sval</string>
         <string>players/techpriest/wrath_of_mars.sval</string>
 		
 		<string>players/techpriest/incense_candles.sval</string>
@@ -10,8 +10,9 @@
 		<string>players/techpriest/laser_upgrade.sval</string>
 	</array>
 
-	<int name="face-y">120</int>
-	<int name="face-count">5</int>
+	<string name="face-file">gui/techpriest_faces.tif</string>
+	<int name="face-y">0</int>
+	<int name="face-count">4</int>
 
 	<float name="base-health">65</float>
 	<float name="base-mana">75</float>

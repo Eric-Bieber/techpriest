@@ -19,6 +19,11 @@ namespace Skills
 		UnitPtr m_chargeFx;
 		UnitPtr m_chargeFullFx;
 
+		string m_fxCharge_lvl2;
+		string m_fxCharge_lvl3;
+
+		vec2 m_offset;
+
         float m_length;
 
 		EffectBehavior@ m_chargeFxBehavior;
@@ -41,6 +46,9 @@ namespace Skills
             m_fxCharged_lvl2 = GetParamString(unit, params, "fx-charged_lvl2", false, "");
             m_fxCharged_lvl3 = GetParamString(unit, params, "fx-charged_lvl3", false, "");
 
+            m_fxCharge_lvl2 = GetParamString(unit, params, "fx-charge_lvl2", false, "");
+            m_fxCharge_lvl3 = GetParamString(unit, params, "fx-charge_lvl3", false, "");
+
 			m_distance = GetParamInt(unit, params, "distance", false, 200);
 		}
 
@@ -56,6 +64,50 @@ namespace Skills
 			Release(m_target);
 		}
 
+		vec2 findOffset(float dir) {
+			vec2 tempOffset;
+			// S
+			if (dir >= 1.18 && dir < 1.96) {
+				tempOffset = vec2(-3, 9);
+			}
+
+			// SW
+			if (dir >= 1.96 && dir < 2.75) {
+				tempOffset = vec2(-12, 7);
+			}
+			
+			// W
+			if (dir >= 2.75 || dir < -2.75) {
+				tempOffset = vec2(-13, 0);
+			}
+
+			// NW
+			if (dir >= -2.75 && dir < -1.96) {
+				tempOffset = vec2(-9, -11);
+			}
+
+			// N
+			if (dir >= -1.96 && dir < -1.18) {
+				tempOffset = vec2(4, -16);
+			}
+
+			// NE
+			if (dir >= -1.18 && dir < -.38) {
+				tempOffset = vec2(14, -10);
+			}
+
+			// E
+			if (dir >= -.38 && dir < .38) {
+				tempOffset = vec2(14, 0);
+			}
+
+			// SE
+			if (dir >= .38 && dir < 1.18) {
+				tempOffset = vec2(6, 9);
+			}
+			return tempOffset;
+		}
+
         bool checkLaserUpgrade() {
             auto laserUpgrade = cast<Skills::LaserUpgrade>(cast<PlayerBase>(m_owner).m_skills[6]);
             if (laserUpgrade !is null) {
@@ -69,7 +121,17 @@ namespace Skills
 
 		void StartChargeEffect()
 		{
-			m_chargeFx = PlayEffect(m_fx, m_owner.m_unit, dictionary());
+
+			if (checkLaserUpgrade()) {
+                if (m_laserUpgrade.upgradeNum == 1) {
+                    m_chargeFx = PlayEffect(m_fxCharge_lvl2, m_owner.m_unit, dictionary());
+                }
+                if (m_laserUpgrade.upgradeNum == 2) {
+                    m_chargeFx = PlayEffect(m_fxCharge_lvl3, m_owner.m_unit, dictionary());
+                }
+            } else {
+                m_chargeFx = PlayEffect(m_fx, m_owner.m_unit, dictionary());
+            }
 
 			@m_chargeFxBehavior = cast<EffectBehavior>(m_chargeFx.GetScriptBehavior());
 			m_chargeFxBehavior.m_looping = true;
@@ -296,8 +358,19 @@ namespace Skills
             }
 				
 
-			if (m_chargeFxFullBehavior !is null) 
-				m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+			if (m_chargeFxFullBehavior !is null) {
+				auto input = GetInput();
+				auto aimDir = input.AimDir;
+				float dir = atan(aimDir.y, aimDir.x);
+
+				m_offset = findOffset(dir);
+
+				if (m_chargeFxFullBehavior !is null) {
+					m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+					m_chargeFxFullBehavior.SetParam("x_offset", m_offset.x);
+					m_chargeFxFullBehavior.SetParam("y_offset", m_offset.y);
+				}
+			}
 		}
         
         bool checkHitUnit(UnitPtr unit)

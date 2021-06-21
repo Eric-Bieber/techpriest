@@ -1,0 +1,95 @@
+<dict>
+	<string name="name">.skills.techpriest.graviton-field</string>
+	<array name="icon">
+		<string>gui/techpriest_skills.png</string>
+		<int>100</int><vec4>48 0 24 24</vec4>
+	</array>
+
+	<array name="skills">
+		<null />
+		
+		<!-- Level 1 -->
+        <dict>
+            <string name="class">Skills::DropDevice</string>
+
+            <int name="cooldown">20000</int>
+            <int name="castpoint">0</int>
+            <int name="wait">1800</int>
+
+            <int name="mana-cost">30</int>
+
+            <string name="unit">players/techpriest/graviton_device_area_1.unit</string>
+            <int name="max-count">1</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/graviton_device_deploy.effect</string>
+            <string name="snd">sound/techpriest.sbnk:graviton_device</string>
+            <float name="speed-mul">0</float>
+            <bool name="safe-spawn">true</bool>
+            <int name="spawn-dist">10</int>
+        </dict>
+		
+		<!-- Level 2 -->
+        <dict>
+            <string name="class">Skills::DropDevice</string>
+
+            <int name="cooldown">20000</int>
+            <int name="castpoint">0</int>
+            <int name="wait">1800</int>
+
+            <int name="mana-cost">40</int>
+
+            <string name="unit">players/techpriest/graviton_device_area_2.unit</string>
+            <int name="max-count">1</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/graviton_device_deploy.effect</string>
+            <string name="snd">sound/techpriest.sbnk:graviton_device</string>
+            <float name="speed-mul">0</float>
+            <bool name="safe-spawn">true</bool>
+            <int name="spawn-dist">10</int>
+        </dict>
+        
+		<!-- Level 3 -->
+        <dict>
+            <string name="class">Skills::DropDevice</string>
+
+            <int name="cooldown">20000</int>
+            <int name="castpoint">0</int>
+            <int name="wait">1800</int>
+
+            <int name="mana-cost">50</int>
+
+            <string name="unit">players/techpriest/graviton_device_area_3.unit</string>
+            <int name="max-count">1</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/graviton_device_deploy.effect</string>
+            <string name="snd">sound/techpriest.sbnk:graviton_device</string>
+            <float name="speed-mul">0</float>
+            <bool name="safe-spawn">true</bool>
+            <int name="spawn-dist">10</int>
+        </dict>
+        
+		<!-- Level 4 -->
+        <dict>
+            <string name="class">Skills::DropDevice</string>
+
+            <int name="cooldown">20000</int>
+            <int name="castpoint">0</int>
+            <int name="wait">1800</int>
+
+            <int name="mana-cost">60</int>
+
+            <string name="unit">players/techpriest/graviton_device_area_4.unit</string>
+            <int name="max-count">1</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/graviton_device_deploy.effect</string>
+            <string name="snd">sound/techpriest.sbnk:graviton_device</string>
+            <float name="speed-mul">0</float>
+            <bool name="safe-spawn">true</bool>
+            <int name="spawn-dist">10</int>
+        </dict>
+	</array>
+</dict>

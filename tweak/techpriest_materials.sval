@@ -2,26 +2,11 @@
 <dict>
 	<dict name="mapping">
         <array name="techpriest">
-            <array>
-                <string>skin</string>
-                <string>.materials.skin</string>
-            </array>
-            <array>
-                <string>hair</string>
-                <string>.materials.hair</string>
-            </array>
-            <array>
-                <string>cloth</string>
-                <string>.materials.wizard.category.1</string>
-            </array>
-            <array>
-                <string>cloth</string>
-                <string>.materials.wizard.category.2</string>
-            </array>
-            <array>
-                <string>metal</string>
-                <string>.materials.wizard.category.3</string>
-            </array>
+            <array><string>skin</string><string>.materials.skin</string></array>
+            <array><string>metal</string><string>Eyes</string></array>
+            <array><string>cloth</string><string>Cloak</string></array>
+            <array><string>cloth</string><string>Trim</string></array>
+            <array><string>metal</string><string>Axe</string></array>
         </array>
 	</dict>
 </dict>

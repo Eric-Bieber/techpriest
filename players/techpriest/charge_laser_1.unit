@@ -3,7 +3,7 @@
         <string name="anim">idle</string>
 
         <string name="snd">sound/techpriest.sbnk:chargeLaserShot</string>
-        <string name="hit-snd">event:/player/warlock/dagger-hit</string>
+        <string name="hit-snd">sound/techpriest.sbnk:charge_laser_hit</string>
         <string name="fx">players/techpriest/Beams/charge_laser_beam_lvl1.effect</string>
         <string name="fx-lvl2">players/techpriest/Beams/charge_laser_beam_lvl2.effect</string>
         <string name="fx-lvl3">players/techpriest/Beams/charge_laser_beam_lvl3.effect</string>
@@ -20,11 +20,11 @@
         <int name="rays">8</int>
         <int name="duration">.1</int>
 
-        <int name="dist">1000</int>
+        <int name="dist">150</int>
         <int name="ttl">200</int>
 
-        <int name="damage-min">20</int>
-        <int name="damage-max">100</int>
+        <int name="damage-min">10</int>
+        <int name="damage-max">30</int>
     </behavior>
     <scenes>
 		<scene>
