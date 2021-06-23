@@ -178,8 +178,6 @@
         <float name="speed-mul">0.8</float>
         <float name="resistance-mul">.8</float>
 
-        <string name="icon">doodads/special/icons/slow.unit</string>
-
         <dict name="tick">
             <int name="freq">1000</int>
             <dict name="effect">
@@ -199,8 +197,6 @@
         <bool name="debuff">true</bool>
         <float name="speed-mul">0.7</float>
         <float name="resistance-mul">.7</float>
-
-        <string name="icon">doodads/special/icons/slow.unit</string>
 
         <dict name="tick">
             <int name="freq">1000</int>
@@ -222,8 +218,6 @@
         <float name="speed-mul">0.6</float>
         <float name="resistance-mul">.6</float>
 
-        <string name="icon">doodads/special/icons/slow.unit</string>
-
         <dict name="tick">
             <int name="freq">1000</int>
             <dict name="effect">
@@ -243,8 +237,6 @@
         <bool name="debuff">true</bool>
         <float name="speed-mul">0.5</float>
         <float name="resistance-mul">.5</float>
-
-        <string name="icon">doodads/special/icons/slow.unit</string>
 
         <dict name="tick">
             <int name="freq">1000</int>

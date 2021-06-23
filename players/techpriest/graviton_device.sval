@@ -12,7 +12,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">20000</int>
+            <int name="cooldown">40000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 
@@ -33,7 +33,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">20000</int>
+            <int name="cooldown">40000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 
@@ -54,7 +54,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">20000</int>
+            <int name="cooldown">40000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 
@@ -75,7 +75,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">20000</int>
+            <int name="cooldown">40000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 

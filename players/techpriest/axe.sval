@@ -11,7 +11,7 @@
 
         <!-- Level 1 -->
         <dict>
-            <string name="class">Skills::MeleeSwing</string>
+            <string name="class">Skills::AxeSwing</string>
 
             <int name="cooldown">1000</int>
             <int name="castpoint">200</int>
@@ -35,7 +35,7 @@
 
         <!-- Level 2 -->
         <dict>
-            <string name="class">Skills::MeleeSwing</string>
+            <string name="class">Skills::AxeSwing</string>
 
             <int name="cooldown">900</int>
             <int name="castpoint">200</int>
@@ -59,7 +59,7 @@
 
         <!-- Level 3 -->
         <dict>
-            <string name="class">Skills::MeleeSwing</string>
+            <string name="class">Skills::AxeSwing</string>
 
             <int name="cooldown">800</int>
             <int name="castpoint">200</int>
@@ -83,7 +83,7 @@
 
         <!-- Level 4 -->
         <dict>
-            <string name="class">Skills::MeleeSwing</string>
+            <string name="class">Skills::AxeSwing</string>
 
             <int name="cooldown">700</int>
             <int name="castpoint">200</int>
@@ -107,7 +107,7 @@
 
         <!-- Level 5 -->
         <dict>
-            <string name="class">Skills::MeleeSwing</string>
+            <string name="class">Skills::AxeSwing</string>
 
             <int name="cooldown">600</int>
             <int name="castpoint">200</int>
@@ -131,7 +131,7 @@
 
         <!-- Level 6 -->
         <dict>
-            <string name="class">Skills::MeleeSwing</string>
+            <string name="class">Skills::AxeSwing</string>
 
             <int name="cooldown">500</int>
             <int name="castpoint">200</int>

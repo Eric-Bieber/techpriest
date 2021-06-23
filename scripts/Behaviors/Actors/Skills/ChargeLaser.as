@@ -121,7 +121,6 @@ namespace Skills
 
 		void StartChargeEffect()
 		{
-
 			if (checkLaserUpgrade()) {
                 if (m_laserUpgrade.upgradeNum == 1) {
                     m_chargeFx = PlayEffect(m_fxCharge_lvl2, m_owner.m_unit, dictionary());

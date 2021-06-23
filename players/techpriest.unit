@@ -216,17 +216,16 @@
 			</sprite>
 		</scene>
 		
-
 		<scene name="death">
-			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="125">192 0 24 24</frame>
-				<frame time="125">192 24 24 24</frame>
-				<frame time="125">192 48 24 24</frame>
-				<frame time="175">192 72 24 24</frame>
-				<frame time="125">216 0 24 24</frame>
-				<frame time="125">216 24 24 24</frame>
-				<frame time="125">216 48 24 24</frame>
-				<frame time="550">216 72 24 24</frame>
+			<sprite origin="12 25" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="125">0 192 24 32</frame>
+				<frame time="125">24 192 24 32</frame>
+				<frame time="125">50 192 24 32</frame>
+				<frame time="125">71 192 24 32</frame>
+				<frame time="125">94 192 24 32</frame>
+				<frame time="125">120 193 24 32</frame>
+				<frame time="125">144 192 24 32</frame>
+				<frame time="500">170 192 24 32</frame>
 			</sprite>
 		</scene>
 	</scenes>

@@ -1,0 +1,46 @@
+class:
+	--hurt volume down 20->12, 2->1
+	add 3rd frame to walk anim
+	Base health and mana too high
+	audio is full volume anywhere on the map
+	NW and N axe cutoff
+	--Add death anim
+	portraits dont work
+	  -don't show properly in multiplayer?
+	  -portrait selection in character customization doesn't register
+
+Auto attack:
+	--axe volume down 3->2
+	global
+
+Ability 1:
+	--fire volume down 1->.7
+	--charge sound match finish
+	can auto attack while charging the laser
+	laser doesnt charge or fire visually in multiplayer
+
+Ability 2:
+	--sound down 7->5
+	--opacity -15%, 65->50%
+	--get rid of crosshair
+	--cooldown doubled to 40, 20->40
+	--no icon for slow
+	?grayscale enemies?
+
+Ability 3:
+	
+
+Passive 1:
+	make it show up on the buff bar akin to paladin heal / thief auto
+	your candles buff allies
+	increases healing received, not healing regen
+
+Passive 2:
+	global
+	multiple tech priests change arm directions of all
+	tier 1: one arm
+	tier 2: buff that arm
+	tier 3: two arms
+	tier 4: buff those arms
+
+Passive 3:

@@ -22,10 +22,10 @@
 	
 	<string name="skills.techpriest.graviton-field">Graviton Field</string>
 	<string name="skills.techpriest.graviton-field.create">The Tech-Priest deploys a gravity manipulating device that slows and debuffs enemies.</string>
-	<string name="skills.techpriest.graviton-field.1">The device's field slows and reduces enemies resistance by 20% and inflicts 2 damage.</string>
-	<string name="skills.techpriest.graviton-field.2">The device's field slows and reduces enemies resistance by 30% and inflicts 4 damage.</string>
-	<string name="skills.techpriest.graviton-field.3">The device's field slows and reduces enemies resistance by 40% and inflicts 6 damage.</string>
-	<string name="skills.techpriest.graviton-field.4">The device's field slows and reduces enemies resistance by 60% and inflicts 8 damage.</string>
+	<string name="skills.techpriest.graviton-field.1">The device's field slows and reduces enemies resistance by 10% and inflicts 2 damage.</string>
+	<string name="skills.techpriest.graviton-field.2">The device's field slows and reduces enemies resistance by 20% and inflicts 4 damage.</string>
+	<string name="skills.techpriest.graviton-field.3">The device's field slows and reduces enemies resistance by 30% and inflicts 6 damage.</string>
+	<string name="skills.techpriest.graviton-field.4">The device's field slows and reduces enemies resistance by 40% and inflicts 8 damage.</string>
 	
 	<string name="skills.techpriest.wrath-of-mars">Wrath of Mars</string>
 	<string name="skills.techpriest.wrath-of-mars.create">The techpriest releases powerful beams from the Mechanical Arms destroying all surrounding matter.</string>
@@ -38,11 +38,11 @@ The beams spin thrice around the Tech-Priest damaging each enemy for 35 damage, 
 	
 	<string name="skills.techpriest.incense-candles">Incense Candles</string>
 	<string name="skills.techpriest.incense-candles.create">Drops a candle on enemy death that dispenses a rich incense that buffs allies.</string>
-	<string name="skills.techpriest.incense-candles.1">A candle has a 20% chance to drop and dispenses an incense giving a 20% attack speed and healing buff to all allies for 3 seconds..</string>
-	<string name="skills.techpriest.incense-candles.2">A candle has a 25% chance to drop and dispenses an incense giving a 30% attack speed and healing buff to all allies for 3.5 seconds.</string>
-	<string name="skills.techpriest.incense-candles.3">A candle has a 30% chance to drop and dispenses an incense giving a 40% attack speed and healing buff to all allies for 4 seconds.</string>
-	<string name="skills.techpriest.incense-candles.4">A candle has a 35% chance to drop and dispenses an incense giving a 50% attack speed and healing buff to all allies for 4.5 seconds.</string>
-	<string name="skills.techpriest.incense-candles.5">A candle has a 40% chance to drop and dispenses an incense giving a 60% attack speed and healing buff to all allies for 5 seconds.</string>
+	<string name="skills.techpriest.incense-candles.1">A candle has a 10% chance to drop on enemy death and dispenses an incense giving a 20% attack speed and healing buff to all allies for 3 seconds.</string>
+	<string name="skills.techpriest.incense-candles.2">A candle has a 15% chance to drop on enemy death and dispenses an incense giving a 30% attack speed and healing buff to all allies for 3.5 seconds.</string>
+	<string name="skills.techpriest.incense-candles.3">A candle has a 20% chance to drop on enemy death and dispenses an incense giving a 40% attack speed and healing buff to all allies for 4 seconds.</string>
+	<string name="skills.techpriest.incense-candles.4">A candle has a 25% chance to drop on enemy death and dispenses an incense giving a 50% attack speed and healing buff to all allies for 4.5 seconds.</string>
+	<string name="skills.techpriest.incense-candles.5">A candle has a 30% chance to drop on enemy death and dispenses an incense giving a 60% attack speed and healing buff to all allies for 5 seconds.</string>
 	
 	<string name="skills.techpriest.mechanical-arms">Mechanical Arms</string>
 	<string name="skills.techpriest.mechanical-arms.create">The Tech-Priest mounts Mechanical arms on his back which scan the surrounding area and blast all enemies within their range.</string>
