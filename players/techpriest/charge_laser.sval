@@ -25,9 +25,9 @@
 
             <string name="anim">charge 8</string>
 
-            <int name="cooldown">5000</int>
+            <int name="cooldown">7000</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
+            <bool name="blocking">true</bool>
             <float name="speed-mul">.5</float>
 
             <int name="mana-cost">20</int>
@@ -52,12 +52,12 @@
 
             <string name="anim">charge 8</string>
 
-            <int name="cooldown">4500</int>
+            <int name="cooldown">6500</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
+            <bool name="blocking">true</bool>
             <float name="speed-mul">.55</float>
 
-            <int name="mana-cost">25</int>
+            <int name="mana-cost">30</int>
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
@@ -79,12 +79,12 @@
 
             <string name="anim">charge 8</string>
 
-            <int name="cooldown">4000</int>
+            <int name="cooldown">6000</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
-            <float name="speed-mul">.6</float>
+            <bool name="blocking">true</bool>
+            <float name="speed-mul">.60</float>
 
-            <int name="mana-cost">30</int>
+            <int name="mana-cost">40</int>
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
@@ -106,12 +106,12 @@
 
             <string name="anim">charge 8</string>
 
-            <int name="cooldown">3500</int>
+            <int name="cooldown">5500</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
+            <bool name="blocking">true</bool>
             <float name="speed-mul">.65</float>
 
-            <int name="mana-cost">35</int>
+            <int name="mana-cost">50</int>
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
@@ -133,12 +133,12 @@
 
             <string name="anim">charge 8</string>
 
-            <int name="cooldown">3500</int>
+            <int name="cooldown">5000</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
+            <bool name="blocking">true</bool>
             <float name="speed-mul">.7</float>
 
-            <int name="mana-cost">35</int>
+            <int name="mana-cost">60</int>
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
@@ -160,12 +160,12 @@
 
             <string name="anim">charge 8</string>
 
-            <int name="cooldown">3500</int>
+            <int name="cooldown">4500</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
+            <bool name="blocking">true</bool>
             <float name="speed-mul">.75</float>
 
-            <int name="mana-cost">40</int>
+            <int name="mana-cost">70</int>
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>

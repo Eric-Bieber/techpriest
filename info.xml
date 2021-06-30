@@ -10,10 +10,14 @@
 			<string name="description">An adept of the Martian priesthood, sworn to seek out lost knowledge.</string>
 		</dict>
 	</array>
-
+	<dict name="classmaps">
+		<array name="behaviors">
+			<array><string>ChargeUnit</string><string>ChargeLaser</string></array>
+		</array>
+	</dict>
 	<array name="levels">
 		<dict>
-			<string name="name">testlevel</string>
+			<string name="name">Test area</string>
 			<string name="description">testlevel</string>
 			<string name="file">levels/testlvl.lvl</string>
 		</dict>

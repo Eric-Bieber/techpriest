@@ -10,8 +10,6 @@
         <string name="fx-fade-lvl1">players/techpriest/Beams/charge_laser_fade_lvl1.effect</string>
         <string name="fx-fade-lvl2">players/techpriest/Beams/charge_laser_fade_lvl2.effect</string>
         <string name="fx-fade-lvl3">players/techpriest/Beams/charge_laser_fade_lvl3.effect</string>
-        %//<string name="hit-fx">players/warlock/dagger_hit.effect</string>
-        <float name="speed-mul">0.75</float>
 
         <bool name="play-fx-start">false</bool>
         <int name="play-fx-count">1</int>
@@ -20,11 +18,11 @@
         <int name="rays">8</int>
         <int name="duration">.1</int>
 
-        <int name="dist">350</int>
+        <int name="dist">325</int>
         <int name="ttl">200</int>
 
         <int name="damage-min">50</int>
-        <int name="damage-max">130</int>
+        <int name="damage-max">150</int>
     </behavior>
     <scenes>
 		<scene>

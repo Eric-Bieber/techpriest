@@ -29,7 +29,7 @@
             <int name="duration">120</int>
             <dict name="effect">
                 <string name="class">Damage</string>
-                <int name="physical">5</int>
+                <int name="physical">7</int>
             </dict>
         </dict>
 

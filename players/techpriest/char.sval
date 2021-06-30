@@ -12,19 +12,19 @@
 
 	<string name="face-file">gui/techpriest_faces.tif</string>
 	<int name="face-y">0</int>
-	<int name="face-count">4</int>
+	<int name="face-count">5</int>
 
-	<float name="base-health">65</float>
-	<float name="base-mana">75</float>
+	<float name="base-health">55</float>
+	<float name="base-mana">65</float>
 	<float name="base-health-regen">.2</float>
-	<float name="base-mana-regen">.2</float>
+	<float name="base-mana-regen">.4</float>
 	<float name="base-armor">5</float>
 	<float name="base-resistance">2</float>
 	
-	<float name="level-health">7</float>
-	<float name="level-mana">15</float>
+	<float name="level-health">6</float>
+	<float name="level-mana">12</float>
 	<float name="level-health-regen">0.025</float>
-	<float name="level-mana-regen">0.1</float>
-	<float name="level-armor">0.6</float>
+	<float name="level-mana-regen">0..075</float>
+	<float name="level-armor">0.5</float>
 	<float name="level-resistance">0.1</float>
 </dict>

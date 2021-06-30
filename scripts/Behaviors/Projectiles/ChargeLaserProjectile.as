@@ -21,6 +21,7 @@ class ChargeLaserProjectile : RayProjectile
 
 	string m_hitFx;
 	SoundEvent@ m_hitSnd;
+	SoundInstance@ m_hitsndI;
 	
 	UnitScene@ m_fxBlockProjectile;
 
@@ -31,6 +32,7 @@ class ChargeLaserProjectile : RayProjectile
 	bool m_hitSomething = false;
 
 	SoundEvent@ m_sound;
+	SoundInstance@ m_soundI;
 
 	int m_dist;
 	int m_distMin;
@@ -99,10 +101,10 @@ class ChargeLaserProjectile : RayProjectile
 
 	void Initialize(Actor@ owner, vec2 dir, float intensity, bool husk, Actor@ target, uint weapon) override
 	{
-		StartBeam(dir, false);
+		StartBeam(dir, husk);
 		m_intensityLocal = intensity;
 
-		RayProjectile::Initialize(owner, dir, intensity, husk, target, weapon);
+		RayProjectile::Initialize(owner, dir, intensity, false, target, weapon);
 	}
 
 	void StartBeam(vec2 dir, bool husk)
@@ -157,6 +159,30 @@ class ChargeLaserProjectile : RayProjectile
 				@m_beamFxBehavior = null;
             }
         }
+
+        if (m_soundI !is null) {
+			vec3 uPos = m_owner.m_unit.GetPosition();
+			int mod = 0;
+			if (uPos.y >= 0) {
+				mod = -40;
+			} else {
+				mod = +40;
+			}
+
+			m_soundI.SetPosition(vec3(uPos.x, uPos.y+mod, uPos.z));
+		}
+
+		if (m_hitsndI !is null) {
+			vec3 uPos = m_owner.m_unit.GetPosition();
+			int mod = 0;
+			if (uPos.y >= 0) {
+				mod = -40;
+			} else {
+				mod = +40;
+			}
+
+			m_hitsndI.SetPosition(vec3(uPos.x, uPos.y+mod, uPos.z));
+		}
 
 		if (m_raysC <= 0)
 			return;        
@@ -251,21 +277,27 @@ class ChargeLaserProjectile : RayProjectile
 				ApplyEffects(m_effectsLocal, m_owner, unit, upos, dir, 1.0, m_huskLocal, 0, 0); // self/team/enemy dmg
                 if (m_laserUpgrade !is null || checkLaserUpgrade()) {
                     for (uint j = 0; j < m_laserUpgrade.m_buffs.length(); j++) {
-                        cast<Actor>(unit.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[j], 1.0f, false));
+                    	Actor@ actor = cast<Actor>(unit.GetScriptBehavior());
+                    	if (actor.Team != m_owner.Team)
+                        	actor.ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[j], 1.0f, false));
                     }
                 }
 
 				m_effectsLocal.removeLast();
-
-				dictionary ePs = { { 'angle', m_angle } };
-				PlayEffect(m_hitFx, rayResults[i].point, ePs);
 
 				if (dmgTaker !is null)
 					hitSomething = true;
 			}
 
 			if (hitSomething) {
-				PlaySound3D(m_hitSnd, m_unit.GetPosition());
+				vec3 uPos = m_owner.m_unit.GetPosition();
+				int mod = 0;
+				if (uPos.y >= 0) {
+					mod = -40;
+				} else {
+					mod = +40;
+				}
+				@m_hitsndI = m_hitSnd.PlayTracked(vec3(uPos.x, uPos.y+mod, uPos.z));
 				m_hitSomething = true;
 			}
 					
@@ -336,17 +368,26 @@ class ChargeLaserProjectile : RayProjectile
 	}
 
 	void PlaySkillEffect(vec2 dir, dictionary ePs = { })
-	{
-		PlaySound3D(m_sound, m_unit.GetPosition());
-	
+	{	 
+		if (!m_huskLocal) {
+			// I hate this sound system wtffffffff
+			vec3 uPos = m_owner.m_unit.GetPosition();
+			int mod = 0;
+			if (uPos.y >= 0) {
+				mod = -40;
+			} else {
+				mod = +40;
+			}
+			@m_soundI = m_sound.PlayTracked(vec3(uPos.x, uPos.y+mod, uPos.z));
+		} else if (m_huskLocal) {
+			PlaySound3D(m_sound, m_unit.GetPosition());
+		}
+		
+
 		if (m_fx == "")
 			return;
 
-		auto input = GetInput();
-		auto aimDir = input.AimDir;
-		float direct = atan(aimDir.y, aimDir.x);
-
-		m_offset = findOffset(direct);
+		m_offset = findOffset(m_angle);
 		
         float length = dist(xy(m_owner.m_unit.GetPosition()) + m_offset, endPoint);
         ePs = { 

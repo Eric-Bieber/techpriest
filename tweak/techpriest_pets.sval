@@ -1,0 +1,21 @@
+<loader>Pets::LoadPets</loader>
+<array>
+	<dict>
+		<string name="id">servo-skull</string>
+		<string name="name">Servo Skull</string>
+
+		<int name="cost">25000</int>
+
+		<array name="skins">
+			<dict>
+				<string name="name">Servo Skull</string>
+
+				<string name="unit">players/pets/servo_skull.unit</string>
+				<array name="icon">
+					<string>gui/techpriest_pets.png</string>
+					<int>100</int><vec4>0 0 24 24</vec4>
+				</array>
+			</dict>
+		</array>
+	</dict>
+</array>

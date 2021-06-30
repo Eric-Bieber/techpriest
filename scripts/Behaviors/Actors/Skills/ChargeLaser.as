@@ -26,6 +26,8 @@ namespace Skills
 
         float m_length;
 
+        float m_dir;
+
 		EffectBehavior@ m_chargeFxBehavior;
 		EffectBehavior@ m_chargeFxFullBehavior;
 
@@ -167,6 +169,8 @@ namespace Skills
 
 				StartChargeEffect();
 
+				@m_soundHoldI = m_soundHold.PlayTracked(m_owner.m_unit.GetPosition());
+
 				return true;
 			}
 
@@ -204,13 +208,14 @@ namespace Skills
 			{
 				StartFullChargeEffect();
 
-				if (m_chargeFxFullBehavior !is null)
+				if (m_chargeFxFullBehavior !is null) {
 					m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+				}
 			}
 						
 			m_tmCharge = min(m_tmChargeMax, m_tmCharge + g_wallDelta);
 
-			ActiveSkill::Hold(dt, target);
+			//ActiveSkill::Hold(dt, target);
 		}
 
 		void NetHold(int dt, vec2 target) override
@@ -218,14 +223,21 @@ namespace Skills
 			if (m_holdFrame != -1)
 				m_owner.m_unit.SetUnitSceneTime(m_holdFrame);
 
+			m_owner.SetUnitScene(m_animation, true);
+
 			m_target = target;
+
+			if (m_tmCharge >= m_tmChargeMax && m_chargeFx.IsValid()) {
+                m_chargeFx.Destroy();
+            }
 
 			if (m_tmCharge < m_tmChargeMax && m_tmCharge + g_wallDelta >= m_tmChargeMax)
 			{
 				StartFullChargeEffect();
 
-				if (m_chargeFxFullBehavior !is null)
+				if (m_chargeFxFullBehavior !is null) {
 					m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+				}
 			}
 
 			m_tmCharge = min(m_tmChargeMax, m_tmCharge + g_wallDelta);
@@ -262,10 +274,9 @@ namespace Skills
 			m_pressOk = false;
 			m_tmCharge = 0;
 
-			(Network::Message("PlayerChargeUnit") << m_skillId << charge << target << unit.GetId()).SendToAll();
+			(Network::Message("PlayerChargeLaser") << m_skillId << charge << target << unit.GetId()).SendToAll();
 			
-			
-			m_owner.SetUnitScene(m_animation, true);
+			m_owner.SetUnitScene(m_animation, false);			
 		}
 
 		void NetRelease(vec2 target) override
@@ -290,7 +301,7 @@ namespace Skills
 
 			m_tmCharge = 0;
 
-			m_owner.SetUnitScene(m_animation, true);
+			m_owner.SetUnitScene(m_animation, false);
 		}
 
 		UnitPtr DoShoot(float charge, vec2 target, int id = 0)
@@ -312,90 +323,30 @@ namespace Skills
 			if (m_isActive)
 				m_animCountdown += dt;
 
+			if (m_soundHoldI !is null) {
+				vec3 uPos = m_owner.m_unit.GetPosition();
+				int mod = 0;
+				if (uPos.y >= 0) {
+					mod = -40;
+				} else {
+					mod = +40;
+				}
+
+				m_soundHoldI.SetPosition(vec3(uPos.x, uPos.y+mod, uPos.z));
+			}
+
 			if (m_chargeFxBehavior !is null) {
-                vec2 pos = xy(m_owner.m_unit.GetPosition());
-                vec2 posEndpoint = pos + m_target * m_distance;
-                auto ray = g_scene.Raycast(pos, posEndpoint, ~0, RaycastType::Shot);
-
-                vec2 posHit = posEndpoint;
-                array<BeamRayResult2> m_unitsHit;
-                for (uint i = 0; i < ray.length(); i++)
-                {
-                    UnitPtr unit = ray[i].FetchUnit(g_scene);
-
-                    BeamRayResult2 result;
-                    result.m_distSq = int(distsq(pos, ray[i].point));
-                    result.m_point = ray[i].point;
-                    result.m_unit = unit;
-                    m_unitsHit.insertLast(result);
-                }
-
-                bool m_isUnitHit = false;
-                m_length = dist(pos, posHit);
-                m_unitsHit.sortAsc();
-                for (uint i = 0; i < m_unitsHit.length(); i++)
-                {
-                    Skills::BeamRayResult2@ res = m_unitsHit[i];
-                    
-                    if (checkHitUnit(res.m_unit)) {
-                        posHit = res.m_point;
-
-                        if (m_isUnitHit == false)
-                        {
-                            m_length = dist(pos, posHit);
-                        }
-                        
-                        m_isUnitHit = true;							
-                            
-                        if(res.m_unit.GetCollisionTeam() == 0)
-                            break;
-                    }
-                }
-
                 m_chargeFxBehavior.SetParam("angle", atan(m_target.y, m_target.x));
-                m_chargeFxBehavior.SetParam("length", m_length);
             }
 				
-
 			if (m_chargeFxFullBehavior !is null) {
-				auto input = GetInput();
-				auto aimDir = input.AimDir;
-				float dir = atan(aimDir.y, aimDir.x);
+				m_dir = atan(m_target.y, m_target.x);
 
-				m_offset = findOffset(dir);
-
-				if (m_chargeFxFullBehavior !is null) {
-					m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
-					m_chargeFxFullBehavior.SetParam("x_offset", m_offset.x);
-					m_chargeFxFullBehavior.SetParam("y_offset", m_offset.y);
-				}
+				m_offset = findOffset(m_dir);
+				m_chargeFxFullBehavior.SetParam("angle", atan(m_target.y, m_target.x));
+				m_chargeFxFullBehavior.SetParam("x_offset", m_offset.x);
+				m_chargeFxFullBehavior.SetParam("y_offset", m_offset.y);
 			}
 		}
-        
-        bool checkHitUnit(UnitPtr unit)
-		{
-			auto actor = cast<Actor>(unit.GetScriptBehavior());
-
-			if (actor !is null && actor.Team != m_owner.Team) {
-                return true;
-            }	
-
-			return (cast<IDamageTaker>(unit.GetScriptBehavior()) is null);
-		}
-
-        bool PreRender(int idt) override
-		{
-            if (!m_chargeFx.IsValid())
-                return true;
-
-            vec3 uPos = m_owner.m_unit.GetInterpolatedPosition(idt);
-            m_chargeFx.SetPosition(uPos);
-
-            float mul = idt / 33.0f;
-            m_chargeFxBehavior.SetParam("angle", atan(m_target.y, m_target.x));
-            m_chargeFxBehavior.SetParam("length", m_length);
-
-            return false;
-        } 
 	}
 }

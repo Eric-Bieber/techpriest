@@ -16,11 +16,13 @@
 
         <array name="skills">
             <dict>
-                <string name="class">CompositeActorAuraSkill</string>
+                <string name="class">CandleAura</string>
                 <string name="buff">players/techpriestbuffs.sval:incense-candles-2</string>
                 <bool name="friendly">true</bool>
-                <int name="freq">.01</int>
+                <int name="freq">1</int>
                 <int name="range">25</int>
+                <int name="duration">3000</int>
+                <int name="ttl">15000</int>
             </dict>
         </array>
 

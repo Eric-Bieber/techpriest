@@ -16,7 +16,11 @@ namespace Skills
 
 		float targetDir;
 
-		SoundInstance@ m_sndI;
+		SoundInstance@ m_sndI1;
+		SoundInstance@ m_sndI2;
+		bool m_switch = false;
+
+		vec2 armPos;
 
 		MechArm(int index, MechArms@ skill)
 		{
@@ -47,10 +51,9 @@ namespace Skills
 			if (m_offset.y < 0)
 				layerOffset = -1;
 
-			auto input = GetInput();
-			auto aimDir = input.AimDir;
-			float dir = atan(aimDir.y, aimDir.x);
+			auto player = cast<PlayerBase>(m_skill.m_owner.m_unit.GetScriptBehavior());
 
+			float dir = player.m_dirAngle;
 			// Left
 			if (m_index == 0) {
 				// S
@@ -254,7 +257,7 @@ namespace Skills
 			
 			m_offset = findOffset(dir);
 
-			vec2 armPos = GetArmPosition();
+			armPos = GetArmPosition();
 
             if (m_skill.m_canFire == true) {
                 // Find closest unit
@@ -331,7 +334,22 @@ namespace Skills
 
                             m_intervalC += m_skill.m_effectInterval;
                             targetDir = atan(targetDirection.y, targetDirection.x);
-                            @m_sndI = m_skill.m_snd.PlayTracked(xyz(armPos));
+							int mod = 0;
+							if (armPos.y >= 0) {
+								mod = -40;
+							} else {
+								mod = +40;
+							}
+
+							if (m_switch) {
+								@m_sndI1 = m_skill.m_snd.PlayTracked(vec3(armPos.x, armPos.y+mod, 0));
+								m_switch = !m_switch;
+							} else {
+								@m_sndI2 = m_skill.m_snd.PlayTracked(vec3(armPos.x, armPos.y+mod, 0));
+								m_switch = !m_switch;
+							}
+
+                            
                         }
                         m_fire.SetPosition(xyz(armPos));
                     } else {
@@ -339,6 +357,19 @@ namespace Skills
                     }
                 }
             }
+            int mod = 0;
+            if (armPos.y >= 0) {
+				mod = -40;
+			} else {
+				mod = +40;
+			}
+
+			if (m_sndI1 !is null) {
+				m_sndI1.SetPosition(vec3(armPos.x, armPos.y+mod, 0));
+			}
+			if (m_sndI2 !is null) {
+				m_sndI2.SetPosition(vec3(armPos.x, armPos.y+mod, 0));
+			}
 		}
 
         bool inRange() {
@@ -450,6 +481,19 @@ namespace Skills
 
 			for (uint i = 0; i < m_arms.length(); i++)
 				m_arms[i].Update(dt);
+		}
+
+		bool Activate(vec2 target) override {
+			print("activate");
+			return true;
+		}
+
+		void Hold(int dt, vec2 target) override {
+			print("hold");
+		}
+
+		void Release(vec2 target) override {
+			print("release");
 		}
 	}
 }

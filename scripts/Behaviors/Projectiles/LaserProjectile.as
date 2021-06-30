@@ -7,6 +7,9 @@ class LaserProjectile : RayProjectile
     AnimString@ m_laser_lvl2;
     AnimString@ m_laser_lvl3;
 
+	string m_hitFx_lvl2;
+	string m_hitFx_lvl3;
+
 	LaserProjectile(UnitPtr unit, SValue& params)
 	{
 		super(unit, params);
@@ -14,11 +17,27 @@ class LaserProjectile : RayProjectile
 		m_bounceTTLAdd = GetParamInt(unit, params, "bounce-ttl-add", false, 0);
         @m_laser_lvl2 = AnimString(GetParamString(unit, params, "anim-lvl2"));
         @m_laser_lvl3 = AnimString(GetParamString(unit, params, "anim-lvl3"));
+
+		m_hitFx_lvl2 = GetParamString(unit, params, "fx_lvl2", false);
+		m_hitFx_lvl3 = GetParamString(unit, params, "fx_lvl3", false);
 	}
 
     void Collide(UnitPtr unit, vec2 pos, vec2 normal) override
 	{
         HitUnit(unit, pos, normal, m_selfDmg, m_bounceOnCollide);
+	}
+
+	void Destroyed() override{
+		if (checkLaserUpgrade()) {
+	        if (m_laserUpgrade.upgradeNum == 1) {
+	            PlayEffect(m_hitFx_lvl2, xy(m_unit.GetPosition()));
+	        }
+	        if (m_laserUpgrade.upgradeNum == 2) {
+	            PlayEffect(m_hitFx_lvl3, xy(m_unit.GetPosition()));
+	        }
+	    } else {
+	        PlayEffect(m_fx, xy(m_unit.GetPosition()));
+	    }
 	}
 
     bool checkLaserUpgrade() {

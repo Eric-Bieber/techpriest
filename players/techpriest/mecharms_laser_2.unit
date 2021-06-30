@@ -11,7 +11,9 @@
         <bool name="bounce-on-collide">false</bool>
 		
 		%//<string name="bounce-snd">event:/player/sorcerer/shard_hit</string>
-		<string name="fx">effects/animations/impact_ice.effect</string>
+		<string name="fx">players/techpriest/mecharms_hit_lvl1.effect</string>
+        <string name="fx_lvl2">players/techpriest/mecharms_hit_lvl2.effect</string>
+        <string name="fx_lvl3">players/techpriest/mecharms_hit_lvl3.effect</string>
 		<int name="ttl">120</int>
 		
 		<array name="effects">

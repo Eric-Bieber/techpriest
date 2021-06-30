@@ -56,7 +56,6 @@ namespace Skills
 
 		void DoActivate(SValueBuilder@ builder, vec2 target) override
 		{
-            m_owner.SpendCost(m_costMana, m_costStamina, m_costHealth);
 			if (checkNumArms()) {
                 for (uint i = 0; i < m_beams.length(); i++)
 				    m_beams[i].StartSpin(false, target);;
@@ -65,7 +64,6 @@ namespace Skills
 
 		void NetDoActivate(SValue@ param, vec2 target) override
 		{
-            m_owner.SpendCost(m_costMana, m_costStamina, m_costHealth);
             if (checkNumArms()) {
                 for (uint i = 0; i < m_beams.length(); i++)
 				    m_beams[i].StartSpin(true, target);;

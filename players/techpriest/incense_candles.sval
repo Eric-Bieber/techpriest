@@ -15,7 +15,7 @@
                 <dict>
                     <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
-                    <float name="chance">.20</float>
+                    <float name="chance">.1</float>
                     <bool name="target-self">false</bool>
                     <array name="effects">
                         <dict name="effect">
@@ -37,7 +37,7 @@
                 <dict>
                     <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
-                    <float name="chance">.25</float>
+                    <float name="chance">.15</float>
                     <bool name="target-self">false</bool>
                     <array name="effects">
                         <dict name="effect">
@@ -59,7 +59,7 @@
                 <dict>
                     <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
-                    <float name="chance">.30</float>
+                    <float name="chance">.2</float>
                     <bool name="target-self">false</bool>
                     <array name="effects">
                         <dict name="effect">
@@ -81,7 +81,7 @@
                 <dict>
                     <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
-                    <float name="chance">.35</float>
+                    <float name="chance">.25</float>
                     <bool name="target-self">false</bool>
                     <array name="effects">
                         <dict name="effect">
@@ -103,7 +103,7 @@
                 <dict>
                     <string name="class">Modifiers::TriggerEffect</string>
                     <string name="trigger">kill</string>
-                    <float name="chance">.40</float>
+                    <float name="chance">.30</float>
                     <bool name="target-self">false</bool>
                     <array name="effects">
                         <dict name="effect">

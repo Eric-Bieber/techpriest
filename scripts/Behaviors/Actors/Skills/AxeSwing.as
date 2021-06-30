@@ -29,7 +29,8 @@ namespace Skills
 		bool m_fxStart;
 		int m_fxCount;
 		int m_fxCountC;
-		
+
+		SoundInstance@ m_soundI;
 
 		AxeSwing(UnitPtr unit, SValue& params)
 		{
@@ -72,10 +73,12 @@ namespace Skills
 		void DoActivate(SValueBuilder@ builder, vec2 target) override
 		{
 			StartSwing(target, false);
+			@m_soundI = m_sound.PlayTracked(m_owner.m_unit.GetPosition());
 		}
 
 		void NetDoActivate(SValue@ param, vec2 target) override
 		{
+			PlaySound3D(m_sound, m_owner.m_unit.GetPosition());
 			StartSwing(target, true);
 		}
 
@@ -97,12 +100,32 @@ namespace Skills
 			}
 		}
 
+		void PlaySkillEffect(vec2 dir, dictionary ePs = { }) override
+		{		
+			if (m_fx == "")
+				return;
+			
+			ePs["angle"] = atan(dir.y, dir.x);
+			PlayEffect(m_fx, xy(m_owner.m_unit.GetPosition()), ePs);
+		}
+
 		void DoUpdate(int dt) override
 		{
 			if (m_raysC <= 0)
 				return;
 
-			
+			if (m_soundI !is null) {
+				vec3 uPos = m_owner.m_unit.GetPosition();
+				int mod = 0;
+				if (uPos.y >= 0) {
+					mod = -40;
+				} else {
+					mod = +40;
+				}
+
+				m_soundI.SetPosition(vec3(uPos.x, uPos.y+mod, uPos.z));
+			}
+
 			m_intervalC -= dt;
 			while (m_intervalC <= 0)
 			{

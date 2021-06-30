@@ -52,6 +52,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">0 24 24 24</frame>
 				<frame time="125">0 48 24 24</frame>
+				<frame time="125">0 72 24 24</frame>
 			</sprite>
 		</scene>
 
@@ -59,6 +60,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">24 24 24 24</frame>
 				<frame time="125">24 48 24 24</frame>
+				<frame time="125">24 72 24 24</frame>
 			</sprite>
 		</scene>
 
@@ -66,6 +68,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">48 24 24 24</frame>
 				<frame time="125">48 48 24 24</frame>
+				<frame time="125">48 72 24 23</frame>
 			</sprite>
 		</scene>
 
@@ -73,6 +76,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">72 24 24 24</frame>
 				<frame time="125">72 48 24 24</frame>
+				<frame time="125">72 72 24 23</frame>
 			</sprite>
 		</scene>
 
@@ -80,6 +84,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">96 24 24 24</frame>
 				<frame time="125">96 48 24 24</frame>
+				<frame time="125">96 72 24 23</frame>
 			</sprite>
 		</scene>
 
@@ -87,6 +92,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">120 24 24 24</frame>
 				<frame time="125">120 48 24 24</frame>
+				<frame time="125">120 72 24 24</frame>
 			</sprite>
 		</scene>
 
@@ -94,6 +100,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">144 24 24 24</frame>
 				<frame time="125">144 48 24 24</frame>
+				<frame time="125">144 72 24 24</frame>
 			</sprite>
 		</scene>
 
@@ -101,6 +108,7 @@
 			<sprite origin="12 14" looping="true" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="125">168 24 24 24</frame>
 				<frame time="125">168 48 24 24</frame>
+				<frame time="125">168 72 24 24</frame>
 			</sprite>
 		</scene>
 
@@ -123,26 +131,26 @@
 		</scene>
 
 		<scene name="attack-6">
-			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="200">48 96 24 24</frame>
+			<sprite origin="12 18" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="200">48 92 24 25</frame>
 				<frame time="200">0 0 0 0</frame>
 			</sprite>
 			<sprite origin="12 18" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
 				<frame time="200">0 0 0 0</frame>
-				<frame time="200">48 120 24 24</frame>
+				<frame time="200">48 120 25 25</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-5">
-			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="200">72 96 24 24</frame>
-				<frame time="200">72 120 20 24</frame>
+			<sprite origin="12 18" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
+				<frame time="200">73 92 24 24</frame>
+				<frame time="200">72 117 20 24</frame>
 			</sprite>
 		</scene>
 
 		<scene name="attack-4">
 			<sprite origin="12 14" looping="false" texture="./techpriest.tif" material="system/default.mats:player">
-				<frame time="200">96 96 24 24</frame>
+				<frame time="200">95 96 24 24</frame>
 				<frame time="200">96 120 24 24</frame>
 			</sprite>
 		</scene>

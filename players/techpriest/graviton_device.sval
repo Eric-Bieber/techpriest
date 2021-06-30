@@ -12,11 +12,11 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">40000</int>
+            <int name="cooldown">30000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 
-            <int name="mana-cost">30</int>
+            <int name="mana-cost">35</int>
 
             <string name="unit">players/techpriest/graviton_device_area_1.unit</string>
             <int name="max-count">1</int>
@@ -33,7 +33,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">40000</int>
+            <int name="cooldown">30000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 
@@ -54,7 +54,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">40000</int>
+            <int name="cooldown">30000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 
@@ -75,7 +75,7 @@
         <dict>
             <string name="class">Skills::DropDevice</string>
 
-            <int name="cooldown">40000</int>
+            <int name="cooldown">30000</int>
             <int name="castpoint">0</int>
             <int name="wait">1800</int>
 

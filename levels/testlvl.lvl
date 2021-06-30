@@ -87,10 +87,249 @@
 	</dict>
 	<int name="version">1</int>
 	<dict name="units">
+		<array name="actors/mt/spawners/spawner_bats_mt.unit">
+			<vec2>336 -88</vec2>
+			<int>5</int>
+			<vec2>256 24</vec2>
+			<int>77</int>
+			<vec2>320 -40</vec2>
+			<int>78</int>
+			<vec2>336 -40</vec2>
+			<int>79</int>
+			<vec2>336 -56</vec2>
+			<int>80</int>
+			<vec2>304 -104</vec2>
+			<int>81</int>
+			<vec2>416 -56</vec2>
+			<int>82</int>
+			<vec2>272 -88</vec2>
+			<int>83</int>
+			<vec2>288 -88</vec2>
+			<int>84</int>
+			<vec2>416 -104</vec2>
+			<int>85</int>
+			<vec2>288 -8</vec2>
+			<int>86</int>
+			<vec2>384 -72</vec2>
+			<int>87</int>
+			<vec2>400 -88</vec2>
+			<int>88</int>
+			<vec2>400 -72</vec2>
+			<int>89</int>
+			<vec2>368 -72</vec2>
+			<int>90</int>
+			<vec2>368 -88</vec2>
+			<int>91</int>
+			<vec2>368 -104</vec2>
+			<int>92</int>
+			<vec2>384 -104</vec2>
+			<int>93</int>
+			<vec2>400 -104</vec2>
+			<int>94</int>
+			<vec2>416 -88</vec2>
+			<int>95</int>
+			<vec2>432 -56</vec2>
+			<int>46</int>
+			<vec2>448 -72</vec2>
+			<int>96</int>
+			<vec2>416 -72</vec2>
+			<int>97</int>
+			<vec2>432 -72</vec2>
+			<int>98</int>
+			<vec2>432 -104</vec2>
+			<int>99</int>
+			<vec2>432 -88</vec2>
+			<int>100</int>
+			<vec2>448 -88</vec2>
+			<int>101</int>
+			<vec2>448 -104</vec2>
+			<int>102</int>
+			<vec2>288 -72</vec2>
+			<int>103</int>
+			<vec2>256 -72</vec2>
+			<int>104</int>
+			<vec2>256 -88</vec2>
+			<int>105</int>
+			<vec2>256 -104</vec2>
+			<int>106</int>
+			<vec2>288 -104</vec2>
+			<int>108</int>
+			<vec2>304 -88</vec2>
+			<int>109</int>
+			<vec2>336 -72</vec2>
+			<int>110</int>
+			<vec2>304 -72</vec2>
+			<int>111</int>
+			<vec2>320 -72</vec2>
+			<int>112</int>
+			<vec2>320 -104</vec2>
+			<int>113</int>
+			<vec2>400 -56</vec2>
+			<int>3</int>
+			<vec2>320 -56</vec2>
+			<int>4</int>
+			<vec2>384 24</vec2>
+			<int>114</int>
+			<vec2>336 -104</vec2>
+			<int>6</int>
+			<vec2>304 -8</vec2>
+			<int>7</int>
+			<vec2>272 24</vec2>
+			<int>8</int>
+			<vec2>272 8</vec2>
+			<int>9</int>
+			<vec2>288 8</vec2>
+			<int>10</int>
+			<vec2>288 24</vec2>
+			<int>11</int>
+			<vec2>256 8</vec2>
+			<int>12</int>
+			<vec2>256 -8</vec2>
+			<int>13</int>
+			<vec2>272 -8</vec2>
+			<int>14</int>
+			<vec2>384 -88</vec2>
+			<int>15</int>
+			<vec2>304 8</vec2>
+			<int>16</int>
+			<vec2>336 24</vec2>
+			<int>17</int>
+			<vec2>304 24</vec2>
+			<int>18</int>
+			<vec2>320 24</vec2>
+			<int>19</int>
+			<vec2>320 -8</vec2>
+			<int>20</int>
+			<vec2>320 8</vec2>
+			<int>21</int>
+			<vec2>336 8</vec2>
+			<int>22</int>
+			<vec2>272 -72</vec2>
+			<int>23</int>
+			<vec2>336 -8</vec2>
+			<int>24</int>
+			<vec2>304 -56</vec2>
+			<int>25</int>
+			<vec2>272 -24</vec2>
+			<int>26</int>
+			<vec2>272 -40</vec2>
+			<int>27</int>
+			<vec2>288 -40</vec2>
+			<int>28</int>
+			<vec2>288 -24</vec2>
+			<int>29</int>
+			<vec2>256 -24</vec2>
+			<int>30</int>
+			<vec2>256 -40</vec2>
+			<int>31</int>
+			<vec2>256 -56</vec2>
+			<int>32</int>
+			<vec2>384 -24</vec2>
+			<int>33</int>
+			<vec2>384 -40</vec2>
+			<int>34</int>
+			<vec2>400 -40</vec2>
+			<int>35</int>
+			<vec2>400 -24</vec2>
+			<int>36</int>
+			<vec2>368 -24</vec2>
+			<int>37</int>
+			<vec2>368 -40</vec2>
+			<int>38</int>
+			<vec2>336 -24</vec2>
+			<int>39</int>
+			<vec2>384 -56</vec2>
+			<int>40</int>
+			<vec2>368 -56</vec2>
+			<int>41</int>
+			<vec2>416 -40</vec2>
+			<int>42</int>
+			<vec2>448 -24</vec2>
+			<int>43</int>
+			<vec2>416 -24</vec2>
+			<int>44</int>
+			<vec2>432 -24</vec2>
+			<int>45</int>
+			<vec2>272 -104</vec2>
+			<int>107</int>
+			<vec2>432 -40</vec2>
+			<int>47</int>
+			<vec2>448 -40</vec2>
+			<int>48</int>
+			<vec2>448 -56</vec2>
+			<int>49</int>
+			<vec2>416 -8</vec2>
+			<int>50</int>
+			<vec2>384 8</vec2>
+			<int>51</int>
+			<vec2>400 8</vec2>
+			<int>52</int>
+			<vec2>400 24</vec2>
+			<int>53</int>
+			<vec2>368 24</vec2>
+			<int>54</int>
+			<vec2>368 8</vec2>
+			<int>55</int>
+			<vec2>368 -8</vec2>
+			<int>56</int>
+			<vec2>384 -8</vec2>
+			<int>57</int>
+			<vec2>400 -8</vec2>
+			<int>58</int>
+			<vec2>320 -88</vec2>
+			<int>59</int>
+			<vec2>416 8</vec2>
+			<int>60</int>
+			<vec2>448 24</vec2>
+			<int>61</int>
+			<vec2>416 24</vec2>
+			<int>62</int>
+			<vec2>432 24</vec2>
+			<int>63</int>
+			<vec2>432 -8</vec2>
+			<int>64</int>
+			<vec2>432 8</vec2>
+			<int>65</int>
+			<vec2>448 8</vec2>
+			<int>66</int>
+			<vec2>448 -8</vec2>
+			<int>67</int>
+			<vec2>352 -56</vec2>
+			<int>68</int>
+			<vec2>352 -104</vec2>
+			<int>69</int>
+			<vec2>352 -88</vec2>
+			<int>70</int>
+			<vec2>352 -72</vec2>
+			<int>71</int>
+			<vec2>272 -56</vec2>
+			<int>72</int>
+			<vec2>288 -56</vec2>
+			<int>73</int>
+			<vec2>304 -40</vec2>
+			<int>74</int>
+			<vec2>304 -24</vec2>
+			<int>75</int>
+			<vec2>320 -24</vec2>
+			<int>76</int>
+		</array>
+		<array name="system/light_square_L.png">
+			<array>
+				<vec2>0 56</vec2>
+				<int>118</int>
+				<dict>
+					<int name="cast-shadows">0</int>
+					<float name="size">100000</float>
+					<vec4 name="color">1 1 1 0</vec4>
+					<bool name="overlay">f</bool>
+					<float name="overbright">1</float>
+				</dict>
+			</array>
+		</array>
 		<array name=":Physics_Rectangle">
 			<array>
 				<vec2>160 136</vec2>
-				<int>4</int>
+				<int>1</int>
 				<dict>
 					<bool name="active">t</bool>
 					<bool name="jam-through">t</bool>
@@ -102,7 +341,7 @@
 			</array>
 			<array>
 				<vec2>-8 -16</vec2>
-				<int>1</int>
+				<int>2</int>
 				<dict>
 					<bool name="active">t</bool>
 					<bool name="jam-through">t</bool>
@@ -113,111 +352,112 @@
 				</dict>
 			</array>
 		</array>
-		<array name="items/item_legendary.unit">
-			<vec2>-152 -72</vec2>
-			<int>-29</int>
-			<vec2>-144 -88</vec2>
-			<int>-28</int>
-			<vec2>-120 -88</vec2>
-			<int>-27</int>
-			<vec2>-104 -80</vec2>
-			<int>-26</int>
-			<vec2>-88 -72</vec2>
-			<int>-25</int>
-			<vec2>-80 -32</vec2>
-			<int>-24</int>
-			<vec2>-88 -16</vec2>
-			<int>-23</int>
-			<vec2>-112 0</vec2>
-			<int>-22</int>
-			<vec2>-144 8</vec2>
-			<int>-21</int>
-			<vec2>-168 -40</vec2>
-			<int>-20</int>
-			<vec2>-168 -40</vec2>
-			<int>-19</int>
-			<vec2>-176 8</vec2>
-			<int>-18</int>
-			<vec2>-160 40</vec2>
-			<int>-17</int>
-			<vec2>-120 32</vec2>
-			<int>-16</int>
-			<vec2>-96 24</vec2>
-			<int>-15</int>
-			<vec2>-120 80</vec2>
-			<int>-14</int>
-			<vec2>-136 80</vec2>
-			<int>-13</int>
-			<vec2>-128 72</vec2>
-			<int>-12</int>
-			<vec2>-80 40</vec2>
-			<int>-11</int>
-			<vec2>-72 8</vec2>
-			<int>-10</int>
-			<vec2>-64 -24</vec2>
-			<int>-9</int>
-			<vec2>-72 -56</vec2>
-			<int>-8</int>
-			<vec2>-112 -56</vec2>
-			<int>-7</int>
-			<vec2>-128 -48</vec2>
-			<int>-6</int>
-			<vec2>-160 -8</vec2>
-			<int>-5</int>
-			<vec2>-176 0</vec2>
-			<int>-4</int>
-			<vec2>-48 8</vec2>
-			<int>-3</int>
-			<vec2>-112 -24</vec2>
-			<int>-35</int>
-			<vec2>-96 64</vec2>
-			<int>-1</int>
-			<vec2>-184 72</vec2>
-			<int>-34</int>
-			<vec2>-144 40</vec2>
-			<int>-33</int>
-			<vec2>-80 56</vec2>
-			<int>-2</int>
-			<vec2>-136 16</vec2>
-			<int>-32</int>
-			<vec2>-144 -48</vec2>
-			<int>-31</int>
-			<vec2>-144 -48</vec2>
-			<int>-30</int>
+		<array name="actors/spawners/spawner_skeleton_1.unit">
+			<vec2>288 144</vec2>
+			<int>121</int>
+			<vec2>320 96</vec2>
+			<int>119</int>
+			<vec2>224 48</vec2>
+			<int>120</int>
+			<vec2>200 96</vec2>
+			<int>122</int>
+			<vec2>224 144</vec2>
+			<int>123</int>
+			<vec2>288 48</vec2>
+			<int>124</int>
 		</array>
-		<array name="doodads/generic/teleport.unit"><vec2>-8 -16</vec2><int>2</int></array>
-		<array name="actors/spawners/spawner_skeleton_1.unit"><vec2>200 104</vec2><int>5</int><vec2>200 144</vec2><int>3</int></array>
-		<array name="system/light_square_L.png">
-			<array>
-				<vec2>0 56</vec2>
-				<int>11</int>
-				<dict>
-					<int name="cast-shadows">0</int>
-					<float name="size">100000</float>
-					<vec4 name="color">1 1 1 0</vec4>
-					<bool name="overlay">f</bool>
-					<float name="overbright">1</float>
-				</dict>
-			</array>
+		<array name="doodads/generic/teleport.unit"><vec2>-8 -16</vec2><int>117</int></array>
+		<array name="actors/tiers/tower_nova_1_t2.unit"><vec2>-376 -64</vec2><int>116</int><vec2>-72 -256</vec2><int>115</int></array>
+		<array name="items/item_legendary.unit">
+			<vec2>-176 8</vec2>
+			<int>-23</int>
+			<vec2>-144 -88</vec2>
+			<int>-22</int>
+			<vec2>-160 40</vec2>
+			<int>-21</int>
+			<vec2>-104 -80</vec2>
+			<int>-20</int>
+			<vec2>-120 -88</vec2>
+			<int>-19</int>
+			<vec2>-120 80</vec2>
+			<int>-18</int>
+			<vec2>-128 72</vec2>
+			<int>-17</int>
+			<vec2>-72 8</vec2>
+			<int>-15</int>
+			<vec2>-64 -24</vec2>
+			<int>-14</int>
+			<vec2>-72 -56</vec2>
+			<int>-13</int>
+			<vec2>-96 24</vec2>
+			<int>-12</int>
+			<vec2>-128 -48</vec2>
+			<int>-11</int>
+			<vec2>-176 0</vec2>
+			<int>-10</int>
+			<vec2>-112 -56</vec2>
+			<int>-29</int>
+			<vec2>-168 -40</vec2>
+			<int>-8</int>
+			<vec2>-120 32</vec2>
+			<int>-7</int>
+			<vec2>-144 40</vec2>
+			<int>-6</int>
+			<vec2>-80 56</vec2>
+			<int>-5</int>
+			<vec2>-144 -48</vec2>
+			<int>-4</int>
+			<vec2>-144 -48</vec2>
+			<int>-3</int>
+			<vec2>-152 -72</vec2>
+			<int>-2</int>
+			<vec2>-136 80</vec2>
+			<int>-1</int>
+			<vec2>-48 8</vec2>
+			<int>-35</int>
+			<vec2>-88 -16</vec2>
+			<int>-34</int>
+			<vec2>-80 40</vec2>
+			<int>-16</int>
+			<vec2>-136 16</vec2>
+			<int>-33</int>
+			<vec2>-112 0</vec2>
+			<int>-32</int>
+			<vec2>-96 64</vec2>
+			<int>-31</int>
+			<vec2>-160 -8</vec2>
+			<int>-30</int>
+			<vec2>-112 -24</vec2>
+			<int>-9</int>
+			<vec2>-168 -40</vec2>
+			<int>-28</int>
+			<vec2>-184 72</vec2>
+			<int>-27</int>
+			<vec2>-144 8</vec2>
+			<int>-26</int>
+			<vec2>-80 -32</vec2>
+			<int>-25</int>
+			<vec2>-88 -72</vec2>
+			<int>-24</int>
 		</array>
 	</dict>
 	<array name="scripts">
-		<array><string>LevelStart</string><int>8</int><vec3>-80 128 0</vec3><bool>t</bool><int>-1</int><bool>f</bool></array>
+		<array><string>LevelStart</string><int>125</int><vec3>-80 128 0</vec3><bool>t</bool><int>-1</int><bool>f</bool></array>
 		<array>
 			<string>UseTrigger</string>
-			<int>9</int>
+			<int>126</int>
 			<vec3>64 -56 0</vec3>
 			<bool>t</bool>
 			<int>-1</int>
 			<bool>f</bool>
 			<dict>
-				<array name="Areas"><int>1</int></array>
+				<array name="Areas"><int>2</int></array>
 			</dict>
-			<array><int>10</int><int>0</int></array>
+			<array><int>127</int><int>0</int></array>
 		</array>
 		<array>
 			<string>LevelExit</string>
-			<int>10</int>
+			<int>127</int>
 			<vec3>120 0 0</vec3>
 			<bool>t</bool>
 			<int>-1</int>
@@ -227,5 +467,5 @@
 			</dict>
 		</array>
 	</array>
-	<array name="prefabs"></array>
+	<array name="prefabs"><string>prefabs/special/special_shrine.pfb</string><vec3>104 -24 0</vec3></array>
 </dict>
