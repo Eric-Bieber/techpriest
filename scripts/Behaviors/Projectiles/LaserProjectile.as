@@ -182,7 +182,7 @@ class LaserProjectile : RayProjectile
 			ApplyEffects(m_effects, m_owner, unit, pos, m_dir, m_intensity, m_husk);
             if (m_laserUpgrade !is null || checkLaserUpgrade()) {
                 for (uint j = 0; j < m_laserUpgrade.m_buffs.length(); j++) {
-                    if (unit.IsValid()) {
+                    if (unit.IsValid() && m_laserUpgrade.m_buffs !is null) {
                         cast<Actor>(unit.GetScriptBehavior()).ApplyBuff(ActorBuff(null, m_laserUpgrade.m_buffs[j], 1.0f, false));
                     }
                 }
