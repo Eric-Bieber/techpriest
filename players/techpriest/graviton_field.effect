@@ -1,0 +1,13 @@
+<effect looping="false" layer="-1">
+	<sprite looping="true" origin="75 75" texture="./graviton_field.png" material="effects/effects.mats:default"
+		color-r="1"
+		color-g="1"
+		color-b="1"
+		color-a="saturate(0.50)"
+	>
+		<frame time="150">0 0 149 149</frame>
+		<frame time="150">149 0 149 149</frame>
+		<frame time="150">0 149 149 149</frame> <!-- 1st row -->
+		<frame time="150">149 149 149 149</frame>
+	</sprite>
+</effect>

@@ -1,0 +1,27 @@
+<effect looping="false" layer="-1">
+	<sprite looping="false" origin="15 15" texture="./graviton_device.png" material="effects/effects.mats:default"
+		color-r="1"
+		color-g="1"
+		color-b="1"
+		color-a="1"
+	>
+		<frame time="100">0 0 32 32</frame> <!-- 1st row -->
+		<frame time="100">32 0 32 32</frame>
+		<frame time="100">64 0 32 32</frame>
+		<frame time="100">96 0 32 32</frame>
+		<frame time="100">128 0 32 32</frame>
+		<frame time="100">160 0 32 32</frame>
+		<frame time="100">192 0 32 32</frame>
+		<frame time="100">0 32 32 32</frame> <!-- 2nd row -->
+		<frame time="100">32 32 32 32</frame>
+		<frame time="100">64 32 32 32</frame>
+		<frame time="100">96 32 32 32</frame>
+		<frame time="100">128 32 32 32</frame>
+		<frame time="100">160 32 32 32</frame>
+		<frame time="100">192 32 32 32</frame>
+		<frame time="100">0 64 32 32</frame> <!-- 3rd row -->
+		<frame time="100">32 64 32 32</frame>
+		<frame time="100">64 64 32 32</frame>
+		<frame time="100">96 64 32 32</frame>
+	</sprite>
+</effect>

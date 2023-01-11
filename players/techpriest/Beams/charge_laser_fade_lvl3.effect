@@ -1,0 +1,19 @@
+<effect looping="false" layer="0">
+	<param name="angle" default="0" />
+	<param name="length" default="100" />
+	
+	<!-- Beam -->
+	<sprite looping="true" origin="0 8" texture="./wrath_of_mars_beam_lvl3.png" material="system/default.mats:glow-both-bright-player"
+		angle="angle"
+		
+		color-a="1-saturate(t+0.05)"
+		scale-y="1-saturate(t+l)/4"
+	>
+		<frame time="50" x="0" y="0" w="length" h="16" />
+		<frame time="50" x="0" y="16" w="length" h="16" />
+		<frame time="50" x="0" y="32" w="length" h="16" />
+		<frame time="50" x="0" y="48" w="length" h="16" />
+	</sprite>
+
+	<!-- cool "blink" effect scale-y="saturate(5-(t*5)) * (sin(5-t * 0.5)+7)/8" -->	
+</effect>

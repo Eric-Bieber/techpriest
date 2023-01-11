@@ -1,0 +1,123 @@
+<dict>
+    <string name="name">.skills.techpriest.wrath-of-mars</string>
+    <array name="icon">
+        <string>gui/techpriest_skills.png</string>
+        <int>100</int>
+        <vec4>72 0 24 24</vec4>
+    </array>
+
+    <array name="skills">
+        <null />
+
+        <!-- Level 1 -->
+        <dict>
+            <string name="class">Skills::WrathOfMars</string>
+
+            <int name="cooldown">15000</int>
+            <int name="castpoint">0</int>
+
+            <int name="mana-cost">80</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/Beams/wrath_of_mars_beam_lvl1.effect</string>
+            <string name="fx-lvl2">players/techpriest/Beams/wrath_of_mars_beam_lvl2.effect</string>
+            <string name="fx-lvl3">players/techpriest/Beams/wrath_of_mars_beam_lvl3.effect</string>
+            <string name="snd">event:/player/priest/beam</string>
+            <float name="speed-mul">1</float>
+            <bool name="blocking">false</bool>
+            <int name="spins">1</int>
+            <int name="duration">4</int>
+            <int name="per-revolution">360</int>
+            <int name="proj-delay">20</int>
+
+            <float name="distance">150</float>
+            <int name="interval">500</int>
+
+            <dict name="effect">
+                <string name="class">Explode</string>
+
+                <int name="radius">10</int>
+                <float name="dist-scaling">3</float>
+                <float name="team-dmg">0</float>
+                <dict name="effect">
+                    <string name="class">Damage</string>
+                    <int name="magical">5</int>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- Level 2 -->
+        <dict>
+            <string name="class">Skills::WrathOfMars</string>
+
+            <int name="cooldown">20000</int>
+            <int name="castpoint">0</int>
+
+            <int name="mana-cost">120</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/Beams/wrath_of_mars_beam_lvl1.effect</string>
+            <string name="fx-lvl2">players/techpriest/Beams/wrath_of_mars_beam_lvl2.effect</string>
+            <string name="fx-lvl3">players/techpriest/Beams/wrath_of_mars_beam_lvl3.effect</string>
+            <string name="snd">event:/player/priest/beam</string>
+            <float name="speed-mul">1</float>
+            <bool name="blocking">false</bool>
+            <int name="spins">2</int>
+            <int name="duration">4</int>
+            <int name="per-revolution">360</int>
+            <int name="proj-delay">20</int>
+
+            <float name="distance">150</float>
+            <int name="interval">500</int>
+
+            <dict name="effect">
+                <string name="class">Explode</string>
+
+                <int name="radius">10</int>
+                <float name="dist-scaling">3</float>
+                <float name="team-dmg">0</float>
+                <dict name="effect">
+                    <string name="class">Damage</string>
+                    <int name="magical">10</int>
+                </dict>
+            </dict>
+        </dict>
+
+        <!-- Level 3 -->
+        <dict>
+            <string name="class">Skills::WrathOfMars</string>
+
+            <int name="cooldown">25000</int>
+            <int name="castpoint">0</int>
+
+            <int name="mana-cost">150</int>
+
+            <string name="anim">idle 8</string>
+            <string name="fx">players/techpriest/Beams/wrath_of_mars_beam_lvl1.effect</string>
+            <string name="fx-lvl2">players/techpriest/Beams/wrath_of_mars_beam_lvl2.effect</string>
+            <string name="fx-lvl3">players/techpriest/Beams/wrath_of_mars_beam_lvl3.effect</string>
+            <string name="snd">event:/player/priest/beam</string>
+            <float name="speed-mul">1</float>
+            <bool name="blocking">false</bool>
+            <int name="spins">3</int>
+            <int name="duration">4</int>
+            <int name="per-revolution">360</int>
+            <int name="proj-delay">20</int>
+
+            <float name="distance">150</float>
+            <int name="interval">500</int>
+
+            <dict name="effect">
+                <string name="class">Explode</string>
+
+                <int name="radius">10</int>
+                <float name="dist-scaling">3</float>
+                <float name="team-dmg">0</float>
+                <dict name="effect">
+                    <string name="class">Damage</string>
+                    <int name="magical">15</int>
+                </dict>
+            </dict>
+        </dict>
+    </array>
+</dict>

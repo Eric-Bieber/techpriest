@@ -1,0 +1,73 @@
+<effect looping="true" layer="0">
+	<param name="angle" default="0" />
+	<param name="length" default="100" />
+	<param name="x_offset" default="0" />
+	<param name="y_offset" default="0" />
+	
+	<!-- Beam -->
+	<!-- <sprite looping="true" origin="0 8" texture="./wrath_of_mars_beam.png" material="system/default.mats:glow-both-bright-player"
+		angle="angle"
+		
+		color-a="saturate(5)"
+		scale-y="saturate(5)"
+	>
+		<frame time="50" x="0" y="0" w="length" h="16" />
+		<frame time="50" x="0" y="16" w="length" h="16" />
+		<frame time="50" x="0" y="32" w="length" h="16" />
+		<frame time="50" x="0" y="48" w="length" h="16" />
+	</sprite> -->
+	
+	<!-- Front circle -->
+	<sprite looping="true" origin="16 16" texture="players/techpriest/Beams/wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright"
+		pos-x="cos(angle)*3 + x_offset"
+		pos-y="sin(angle)*3 + y_offset"
+		
+		color-a="saturate(5)"
+		scale-x="saturate(5)"
+		scale-y="saturate(5)"
+	>
+		<frame time="50">0 64 32 32</frame>
+		<frame time="50">0 96 32 32</frame>
+	</sprite>
+	
+	<!-- End circle -->
+	<!-- <sprite looping="true" origin="16 16" texture="./wrath_of_mars_beam.png" material="system/default.mats:glow-both-bright"
+		pos-x="cos(angle)*length"
+		pos-y="sin(angle)*length"
+		
+		color-a="saturate(5)"
+		scale-x="saturate(5)"
+		scale-y="saturate(5)"
+	>
+		<frame time="50">0 64 32 32</frame>
+		<frame time="50">0 96 32 32</frame>
+	</sprite> -->
+	
+	<!-- Dummy length -->
+	<!-- <sprite looping="false" origin="0 0" texture="./wrath_of_mars_beam_lvl1.png" material="system/default.mats:glow-both-bright">
+		<frame time="500">0 0 0 0</frame>
+	</sprite> -->
+	
+	
+	<light 
+		
+		pos-x="cos(angle)*3"
+		pos-y="sin(angle)*3">
+		 
+		<sprite texture="system/light2_L.png">
+			<frame time="100">0 0 128 128</frame>
+		</sprite>
+		
+		<looping value="true" />
+		
+
+		<cast-shadows value="all" />
+		
+		<size value="saturate(t+l+0.3)*80" />
+		
+		<color-r value="1*3" />
+		<color-g value="0.8*2" />
+		<color-b value="0" />
+		<color-a value="0" />
+	</light>			
+</effect>

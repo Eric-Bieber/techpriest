@@ -1,0 +1,51 @@
+<unit netsync="none">
+	<behavior class="LaserProjectile">
+        <string name="anim">lvl-1</string>
+        <string name="anim-lvl2">lvl-2</string>
+        <string name="anim-lvl3">lvl-3</string>
+		<float name="speed">6</float>
+		<int name="penetration">1</int>
+		<float name="penetration-intensity-mul">1</float>
+		<float name="bounce-speed-mul">1</float>
+		<int name="bounce-ttl-add">0</int>
+        <bool name="bounce-on-collide">false</bool>
+		
+		%//<string name="bounce-snd">event:/player/sorcerer/shard_hit</string>
+		<string name="fx">players/techpriest/mecharms_hit_lvl1.effect</string>
+        <string name="fx_lvl2">players/techpriest/mecharms_hit_lvl2.effect</string>
+        <string name="fx_lvl3">players/techpriest/mecharms_hit_lvl3.effect</string>
+		<int name="ttl">120</int>
+		
+		<array name="effects">
+			<dict>
+				<string name="class">Damage</string>
+				<int name="magical">5</int>
+			</dict>
+        </array>
+
+        <dict name="effect-params">
+            <float name="height">3</float>
+        </dict>
+    </behavior>
+	
+	<scenes>
+        <scene name="lvl-1">
+            <effect src="players/techpriest/Beams/mecharms_laser_lvl1.effect" />
+            <collision static="false">
+                <circle offset="0 0" radius="2" projectile="true" />
+            </collision>
+        </scene>
+        <scene name="lvl-2">
+            <effect src="players/techpriest/Beams/mecharms_laser_lvl2.effect" />
+            <collision static="false">
+                <circle offset="0 0" radius="2" projectile="true" />
+            </collision>
+        </scene>
+        <scene name="lvl-3">
+            <effect src="players/techpriest/Beams/mecharms_laser_lvl3.effect" />
+            <collision static="false">
+                <circle offset="0 0" radius="2" projectile="true" />
+            </collision>
+        </scene>
+	</scenes>
+</unit>

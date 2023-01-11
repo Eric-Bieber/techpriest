@@ -14,57 +14,57 @@
 		<dict>
 			<string name="name">.titles.shared-1</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">5</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">.2</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.shared-2a</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">10</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">.4</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.techpriest-3</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">15</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">.7</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.techpriest-4</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">20</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">1</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.techpriest-5</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">25</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">1.5</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.techpriest-6</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">30</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">2</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.techpriest-7</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">35</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">2.5</float>
 			</dict>
 		</dict>
 		<dict>
 			<string name="name">.titles.techpriest-8</string>
 			<dict name="modifier">
-				<string name="class">Modifiers::Stats</string>
-				<int name="mana">40</int>
+				<string name="class">Modifiers::Regen</string>
+				<float name="mana">3</float>
 			</dict>
 		</dict>
 	</array>

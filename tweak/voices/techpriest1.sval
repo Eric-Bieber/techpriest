@@ -1,0 +1,11 @@
+<loader>Voices::AddVoiceFile</loader>
+<dict>
+	<string name="id">techpriest-1</string>
+	<string name="name">Tech-Priest 1</string>
+
+    <int name="num-chat-lines">1</int>
+    <string name="sound-chat-lines">sound/techpriest.sbnk:techpriest1line</string>
+    
+	<string name="sound-hurt">sound/techpriest.sbnk:techpriest1hurt</string>
+	<string name="sound-death">sound/techpriest.sbnk:techpriest1death</string>
+</dict>

@@ -1,21 +1,18 @@
 <dict>
-	<string name="name">Tech Priest Class</string>
+	<string name="name">Tech-Priest Class</string>
 	<string name="author">Retronyx</string>
-	<string name="description">Play as a Tech Priest</string>
+	<string name="description">Play as a Tech-Priest</string>
 	
 	<array name="custom-character-classes">
 		<dict>
 			<string name="id">techpriest</string>
-			<string name="name">Tech Priest</string>
+			<string name="name">Tech-Priest</string>
 			<string name="description">An adept of the Martian priesthood, sworn to seek out lost knowledge.</string>
 		</dict>
 	</array>
-
-	<array name="levels">
-		<dict>
-			<string name="name">testlevel</string>
-			<string name="description">testlevel</string>
-			<string name="file">levels/testlvl.lvl</string>
-		</dict>
-	</array>
+	<dict name="classmaps">
+		<array name="behaviors">
+			<array><string>ChargeUnit</string><string>ChargeLaser</string></array>
+		</array>
+	</dict>
 </dict>

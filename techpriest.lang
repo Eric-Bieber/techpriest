@@ -1,62 +1,65 @@
 <lang>
-	<string name="class.techpriest">TechPriest</string>
+	<string name="class.techpriest">Tech-Priest</string>
 	<string name="class.techpriest.desc">An adept of the Martian priesthood, sworn to seek out lost knowledge.</string>
 	
-	<string name="skills.techpriest.ray-of-enfeeblement">Ray of Enfeeblement</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.create">Releases energy spikes that deal Magical damage and ignore resistance.</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.1">Releases 3 energy spikes that deal 7 Magical damage each and ignore resistance by 2%.</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.2">Releases 3 energy spikes that deal 9 Magical damage each, pierce 1 enemy and ignore resistance by 4%.</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.3">Releases 3 energy spikes that deal 11 Magical damage each, pierce 2 enemies and ignore resistance by 8%.</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.4">Releases 3 energy spikes that deal 13 Magical damage each, pierce 3 enemies and ignore resistance by 12%.</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.5">Releases 3 energy spikes that deal 15 Magical damage each, pierce 4 enemies and ignore resistance by 16%.</string>
-	<string name="skills.techpriest.ray-of-enfeeblement.6">Releases 3 energy spikes that deal 17 Magical damage each, pierce 5 enemies and ignore resistance by 20%.</string>
+	<string name="skills.techpriest.omnissian-axe">Omnissian Axe</string>
+	<string name="skills.techpriest.omnissian-axe.create">A heavy slashing greataxe that slices projectiles.</string>
+	<string name="skills.techpriest.omnissian-axe.1">Cleaves all enemies for 7 damage.</string>
+	<string name="skills.techpriest.omnissian-axe.2">Cleaves all enemies for 10 physical damage and swings 10% faster.</string>
+	<string name="skills.techpriest.omnissian-axe.3">Cleaves all enemies for 15 physical damage and swings 20% faster.</string>
+	<string name="skills.techpriest.omnissian-axe.4">Cleaves all enemies for 20 physical damage and swings 30% faster.</string>
+	<string name="skills.techpriest.omnissian-axe.5">Cleaves all enemies for 25 physical damage and swings 40% faster.</string>
+	<string name="skills.techpriest.omnissian-axe.6">Cleaves all enemies for 30 physical damage and swings 50% faster.</string>
 	
-	<string name="skills.techpriest.poison-flask">Poison Flask</string>
-	<string name="skills.techpriest.poison-flask.create">The techpriest throws a poison flask, damaging several enemies at once and leaving a poison cloud behind it.</string>
-	<string name="skills.techpriest.poison-flask.1">Throws a poison flask that deals 14 Magical Damage in an area and leaves a poison cloud that lasts for 3 seconds and deals 2 Magical Damage per second.</string>
-	<string name="skills.techpriest.poison-flask.2">Throws a poison flask that deals 16 Magical Damage in an area and leaves a poison cloud that lasts for 4 seconds and deals 4 Magical Damage per second.</string>
-	<string name="skills.techpriest.poison-flask.3">Throws a poison flask that deals 18 Magical Damage in an area and leaves a poison cloud that lasts for 5 seconds and deals 6 Magical Damage per second.</string>
-	<string name="skills.techpriest.poison-flask.4">Throws a poison flask that deals 20 Magical Damage in an area and leaves a poison cloud that lasts for 6 seconds and deals 8 Magical Damage per second.</string>
-	<string name="skills.techpriest.poison-flask.5">Throws a poison flask that deals 22 Magical Damage in an area and leaves a poison cloud that lasts for 7 seconds and deals 10 Magical Damage per second.</string>
-	<string name="skills.techpriest.poison-flask.6">Throws a poison flask that deals 24 Magical Damage in an area and leaves a poison cloud that lasts for 8 seconds and deals 12 Magical Damage per second.</string>
+	<string name="skills.techpriest.solar-atomiser">Solar Atomiser</string>
+	<string name="skills.techpriest.solar-atomiser.create">The Tech-Priest charges a laser cannon with devastating power.</string>
+	<string name="skills.techpriest.solar-atomiser.1">The Tech-Priest charges the cannon up to a total of 2 seconds dealing a minimum of 10 and a maximum of 50 magic damage within 125 range</string>
+	<string name="skills.techpriest.solar-atomiser.2">The Tech-Priest charges the cannon up to a total of 2 seconds dealing a minimum of 20 and a maximum of 70 magic damage within 175 range.</string>
+	<string name="skills.techpriest.solar-atomiser.3">The Tech-Priest charges the cannon up to a total of 2 seconds dealing a minimum of 30 and a maximum of 90 magic damage within 225 range.</string>
+	<string name="skills.techpriest.solar-atomiser.4">The Tech-Priest charges the cannon up to a total of 2 seconds dealing a minimum of 40 and a maximum of 110 magic damage within 275 range.</string>
+	<string name="skills.techpriest.solar-atomiser.5">The Tech-Priest charges the cannon up to a total of 2 seconds dealing a minimum of 50 and a maximum of 150 magic damage within 325 range.</string>
+	<string name="skills.techpriest.solar-atomiser.6">The Tech-Priest charges the cannon up to a total of 2 seconds dealing a minimum of 60 and a maximum of 200 magic damage within 500 range.</string>
 	
-	<string name="skills.techpriest.summon-skeletons">Summon Skeletons</string>
-	<string name="skills.techpriest.summon-skeletons.create">The techpriest summons skeletons creatures.</string>
-	<string name="skills.techpriest.summon-skeletons.1">The techpriest summons 2 Skeleton Footmen for 15 seconds.</string>
-	<string name="skills.techpriest.summon-skeletons.2">The techpriest summons 3 Skeleton Soldiers for 30 seconds.</string>
-	<string name="skills.techpriest.summon-skeletons.3">The techpriest summons 4 Skeleton Warriors for 45 seconds.</string>
-	<string name="skills.techpriest.summon-skeletons.4">The techpriest summons 4 Guardian Berzerkers for 60 seconds.</string>
+	<string name="skills.techpriest.graviton-field">Graviton Field</string>
+	<string name="skills.techpriest.graviton-field.create">The Tech-Priest deploys a gravity manipulating device that slows and debuffs enemies.</string>
+	<string name="skills.techpriest.graviton-field.1">The device's field slows and reduces enemies resistance by 20% and inflicts 3 magic damage per second to all enemies within the field.</string>
+	<string name="skills.techpriest.graviton-field.2">The device's field slows and reduces enemies resistance by 30% and inflicts 5 magic damage per second to all enemies within the field.</string>
+	<string name="skills.techpriest.graviton-field.3">The device's field slows and reduces enemies resistance by 40% and inflicts 7 magic damage per second to all enemies within the field.</string>
+	<string name="skills.techpriest.graviton-field.4">The device's field slows and reduces enemies resistance by 50% and inflicts 9 magic damage per second to all enemies within the field.</string>
 	
-	<string name="skills.techpriest.summon-captain">Summon Captain</string>
-	<string name="skills.techpriest.summon-captain.create">The techpriest summons a powerful Skeleton Captain.</string>
-	<string name="skills.techpriest.summon-captain.1">The techpriest summons a powerful Skeleton Captain with 400 Health, 10 armor and 10 resistance.</string>
-	<string name="skills.techpriest.summon-captain.2">The techpriest summons a powerful Skeleton Captain with 600 Health, 25 armor and 15 resistance.</string>
-	<string name="skills.techpriest.summon-captain.3">The techpriest summons a powerful Skeleton Captain with 800 Health, 50 armor and 20 resistance.</string>
+	<string name="skills.techpriest.wrath-of-mars">Wrath of Mars</string>
+	<string name="skills.techpriest.wrath-of-mars.create">The techpriest releases powerful beams from the Mechanical Arms destroying all surrounding matter.</string>
+	<string name="skills.techpriest.wrath-of-mars.1">THIS REQUIRES AT LEAST ONE MECHANICAL ARM!! 
+The beams spin once around the Tech-Priest damaging each enemy for 5 magic damage, sometimes multiple times depending on their size.</string>
+	<string name="skills.techpriest.wrath-of-mars.2">THIS REQUIRES AT LEAST ONE MECHANICAL ARM!!
+The beams spin twice around the Tech-Priest damaging each enemy for 10 magic damage, sometimes multiple times depending on their size.</string>
+	<string name="skills.techpriest.wrath-of-mars.3">THIS REQUIRES AT LEAST ONE MECHANICAL ARM!!
+The beams spin thrice around the Tech-Priest damaging each enemy for 15 magic damage, sometimes multiple times depending on their size.</string>
 	
-	<string name="skills.techpriest.incense_candles">Incense Candles</string>
-	<string name="skills.techpriest.incense_candles.create">Drops a candle</string>
-	<string name="skills.techpriest.incense_candles.1">The techpriest blocks 10 Hybrid Damage and poisons all nearby enemies with 4 Magical damage for 4 seconds. 5 seconds cooldown.</string>
-	<string name="skills.techpriest.death-armor.2">The techpriest blocks 20 Hybrid Damage and poisons all nearby enemies with 6 Magical damage for 4 seconds. 5 seconds cooldown.</string>
-	<string name="skills.techpriest.death-armor.3">The techpriest blocks 30 Hybrid Damage and poisons all nearby enemies with 8 Magical damage for 4 seconds. 5 seconds cooldown.</string>
-	<string name="skills.techpriest.death-armor.4">The techpriest blocks 40 Hybrid Damage and poisons all nearby enemies with 10 Magical damage for 4 seconds. 5 seconds cooldown.</string>
-	<string name="skills.techpriest.death-armor.5">The techpriest blocks 50 Hybrid Damage and poisons all nearby enemies with 12 Magical damage for 4 seconds. 5 seconds cooldown.</string>
+	<string name="skills.techpriest.incense-candles">Incense Candles</string>
+	<string name="skills.techpriest.incense-candles.create">Drops a candle on enemy death that dispenses a rich incense that buffs allies.</string>
+	<string name="skills.techpriest.incense-candles.1">A candle has a 10% chance to drop on enemy death and dispenses an incense giving a 10% attack speed and healing received buff to all allies for 3 seconds.</string>
+	<string name="skills.techpriest.incense-candles.2">A candle has a 15% chance to drop on enemy death and dispenses an incense giving a 15% attack speed and healing received buff to all allies for 3.5 seconds.</string>
+	<string name="skills.techpriest.incense-candles.3">A candle has a 20% chance to drop on enemy death and dispenses an incense giving a 20% attack speed and healing received buff to all allies for 4 seconds.</string>
+	<string name="skills.techpriest.incense-candles.4">A candle has a 25% chance to drop on enemy death and dispenses an incense giving a 25% attack speed and healing received buff to all allies for 4.5 seconds.</string>
+	<string name="skills.techpriest.incense-candles.5">A candle has a 30% chance to drop on enemy death and dispenses an incense giving a 30% attack speed and healing received buff to all allies for 5 seconds.</string>
 	
-	<string name="skills.techpriest.raise-undead">Raise Undead</string>
-	<string name="skills.techpriest.raise-undead.create">Enemies killed have a chance of return to the living as a zombie.</string>
-	<string name="skills.techpriest.raise-undead.1">Dead enemies have a 5% chance to return to the living as a zombie.</string>
-	<string name="skills.techpriest.raise-undead.2">Dead enemies have a 10% chance to return to the living as a zombie.</string>
-	<string name="skills.techpriest.raise-undead.3">Dead enemies have a 15% chance to return to the living as a zombie.</string>
-	<string name="skills.techpriest.raise-undead.4">Dead enemies have a 20% chance to return to the living as a zombie.</string>
+	<string name="skills.techpriest.mechanical-arms">Mechanical Arms</string>
+	<string name="skills.techpriest.mechanical-arms.create">The Tech-Priest mounts Mechanical arms on his back which scan the surrounding area and blast all enemies within their range.</string>
+	<string name="skills.techpriest.mechanical-arms.1">An arm blasts an enemy within 70 range, firing every .35 seconds and dealing 5 magic damage per shot.</string>
+	<string name="skills.techpriest.mechanical-arms.2">Two arms blast enemies within 70 range, firing every .35 seconds and dealing 5 magic damage per shot.</string>
+	<string name="skills.techpriest.mechanical-arms.3">Two arms blast enemies within 80 range, firing every .35 seconds and dealing 10 magic damage per shot.</string>
+	<string name="skills.techpriest.mechanical-arms.4">Two arms blast enemies within 90 range, firing every .28 seconds and dealing 15 magic damage per shot.</string>
 	
-	<string name="skills.techpriest.miasma">Miasma</string>
-	<string name="skills.techpriest.miasma.create">The techpriest leaves a trail of miasma while moving that drains mana and life from enemies.</string>
-	<string name="skills.techpriest.miasma.1">Leaves a trail of miasma while moving that lasts for 2 seconds and drains mana and life from enemies.</string>
-	<string name="skills.techpriest.miasma.2">Leaves a trail of miasma while moving that lasts for 4 seconds and drains mana and life from enemies.</string>
+	<string name="skills.techpriest.laser-upgrades">Laser upgrades</string>
+	<string name="skills.techpriest.laser-upgrades.create">The Tech-Priest upgrades all his laser and beam weapons to further destroy his enemy.</string>
+	<string name="skills.techpriest.laser-upgrades.1">All laser and beam weapons change their visuals and now singe enemies they hit for 4 magic damage every .5 seconds for 1.5 seconds.</string>
+	<string name="skills.techpriest.laser-upgrades.2">All laser and beam weapons change their visuals again and now singe enemies they hit for 8 magic damage every .5 seconds for 1.5 seconds and stun enemies for .5 seconds.</string>
 	
-	<string name="titles.techpriest-3">Dark Servant</string>
-	<string name="titles.techpriest-4">Bone Charmer</string>
-	<string name="titles.techpriest-5">Summoner</string>
-	<string name="titles.techpriest-6">Theurgist</string>
-	<string name="titles.techpriest-7">Doomguide</string>
-	<string name="titles.techpriest-8">Lich King</string>
+	<string name="titles.techpriest-3">Initiate</string>
+	<string name="titles.techpriest-4">Neophyte</string>
+	<string name="titles.techpriest-5">Enginseer</string>
+	<string name="titles.techpriest-6">Magos</string>
+	<string name="titles.techpriest-7">Arch-Magos</string>
+	<string name="titles.techpriest-8">Magos Dominus</string>
 </lang>

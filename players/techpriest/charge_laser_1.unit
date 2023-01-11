@@ -3,32 +3,26 @@
         <string name="anim">idle</string>
 
         <string name="snd">sound/techpriest.sbnk:chargeLaserShot</string>
-        <string name="hit-snd">event:/player/warlock/dagger-hit</string>
-        <string name="fx">players/warlock/trail_dagger.effect</string>
-        <string name="hit-fx">players/warlock/dagger_hit.effect</string>
-        <float name="speed-mul">0.75</float>
+        <string name="hit-snd">sound/techpriest.sbnk:charge_laser_hit</string>
+        <string name="fx">players/techpriest/Beams/charge_laser_beam_lvl1.effect</string>
+        <string name="fx-lvl2">players/techpriest/Beams/charge_laser_beam_lvl2.effect</string>
+        <string name="fx-lvl3">players/techpriest/Beams/charge_laser_beam_lvl3.effect</string>
+        <string name="fx-fade-lvl1">players/techpriest/Beams/charge_laser_fade_lvl1.effect</string>
+        <string name="fx-fade-lvl2">players/techpriest/Beams/charge_laser_fade_lvl2.effect</string>
+        <string name="fx-fade-lvl3">players/techpriest/Beams/charge_laser_fade_lvl3.effect</string>
 
         <bool name="play-fx-start">false</bool>
         <int name="play-fx-count">1</int>
 
         <int name="arc">0</int>
         <int name="rays">8</int>
-        <int name="duration">1</int>
+        <int name="duration">.1</int>
 
-        %// FOR INF RANGE LASER
-        <int name="dist">300</int>
+        <int name="dist">125</int>
+        <int name="ttl">200</int>
 
-        <!--%// FOR GROWING LASER
-        <int name="dist-min">20</int>
-        <int name="dist-max">300</int>-->
-
-        <int name="damage-min">20</int>
-        <int name="damage-max">100</int>
-        
-        <dict name="effect-params">
-            <float name="height">3</float>
-            <float name="radius">22</float>
-        </dict>
+        <int name="damage-min">10</int>
+        <int name="damage-max">50</int>
     </behavior>
     <scenes>
 		<scene>

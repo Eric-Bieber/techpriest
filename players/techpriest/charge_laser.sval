@@ -1,9 +1,9 @@
 <dict>
-    <string name="name">.skills.techpriest.charge_laser</string>
+    <string name="name">.skills.techpriest.solar-atomiser</string>
     <array name="icon">
-        <string>gui/icons_skills.png</string>
+        <string>gui/techpriest_skills.png</string>
         <int>100</int>
-        <vec4>24 168 24 24</vec4>
+        <vec4>24 0 24 24</vec4>
     </array>
 
     <array name="skills">
@@ -14,137 +14,162 @@
             <string name="class">Skills::ChargeLaser</string>
 
             <string name="unit">players/techpriest/charge_laser_1.unit</string>
-            <string name="fx">players/techpriest/chargeLaser.effect</string>
-            <string name="fx-charged">players/techpriest/chargeLaserFull.effect</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charge_lvl2">players/techpriest/Beams/chargeLaser_lvl2.effect</string>
+            <string name="fx-charge_lvl3">players/techpriest/Beams/chargeLaser_lvl3.effect</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
             <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
-            <string name="anim">attack 8</string>
+            <string name="anim">charge 8</string>
 
-            <int name="cooldown">400</int>
+            <int name="cooldown">7000</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
+            <bool name="blocking">true</bool>
             <float name="speed-mul">.5</float>
 
-            <int name="mana-cost">0</int>
+            <int name="mana-cost">20</int>
 
             <int name="hold-frame">30</int>
             <int name="charge-max">2000</int>
-            <float name="dist">4</float>
+            <int name="distance">500</int>
         </dict>
 
         <!-- Level 2 -->
         <dict>
-            <string name="class">Skills::ChargeUnit</string>
+            <string name="class">Skills::ChargeLaser</string>
 
-            <string name="unit">players/gladiator/net_2.unit</string>
-            <string name="fx">players/gladiator/net_aim.effect</string>
-            <string name="fx-charged">players/gladiator/net_aim_attack.effect</string>
-            <string name="snd-hold">event:/player/gladiator/net_charge</string>
+            <string name="unit">players/techpriest/charge_laser_2.unit</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charge_lvl2">players/techpriest/Beams/chargeLaser_lvl2.effect</string>
+            <string name="fx-charge_lvl3">players/techpriest/Beams/chargeLaser_lvl3.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
+            <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
-            <string name="anim">channeling 8</string>
+            <string name="anim">charge 8</string>
 
-            <int name="cooldown">400</int>
+            <int name="cooldown">6500</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
-            <float name="speed-mul">1</float>
+            <bool name="blocking">true</bool>
+            <float name="speed-mul">.55</float>
 
-            <int name="mana-cost">12</int>
+            <int name="mana-cost">30</int>
 
             <int name="hold-frame">30</int>
-            <int name="charge-max">700</int>
-            <float name="dist">4</float>
+            <int name="charge-max">2000</int>
+            <int name="distance">500</int>
         </dict>
 
         <!-- Level 3 -->
         <dict>
-            <string name="class">Skills::ChargeUnit</string>
+            <string name="class">Skills::ChargeLaser</string>
 
-            <string name="unit">players/gladiator/net_3.unit</string>
-            <string name="fx">players/gladiator/net_aim.effect</string>
-            <string name="fx-charged">players/gladiator/net_aim_attack.effect</string>
-            <string name="snd-hold">event:/player/gladiator/net_charge</string>
+            <string name="unit">players/techpriest/charge_laser_3.unit</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charge_lvl2">players/techpriest/Beams/chargeLaser_lvl2.effect</string>
+            <string name="fx-charge_lvl3">players/techpriest/Beams/chargeLaser_lvl3.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
+            <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
-            <string name="anim">channeling 8</string>
+            <string name="anim">charge 8</string>
 
-            <int name="cooldown">400</int>
+            <int name="cooldown">6000</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
-            <float name="speed-mul">1</float>
+            <bool name="blocking">true</bool>
+            <float name="speed-mul">.60</float>
 
-            <int name="mana-cost">15</int>
+            <int name="mana-cost">40</int>
 
             <int name="hold-frame">30</int>
-            <int name="charge-max">700</int>
-            <float name="dist">4</float>
+            <int name="charge-max">2000</int>
+            <int name="distance">500</int>
         </dict>
 
         <!-- Level 4 -->
         <dict>
-            <string name="class">Skills::ChargeUnit</string>
+            <string name="class">Skills::ChargeLaser</string>
 
-            <string name="unit">players/gladiator/net_4.unit</string>
-            <string name="fx">players/gladiator/net_aim.effect</string>
-            <string name="fx-charged">players/gladiator/net_aim_attack.effect</string>
-            <string name="snd-hold">event:/player/gladiator/net_charge</string>
+            <string name="unit">players/techpriest/charge_laser_4.unit</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charge_lvl2">players/techpriest/Beams/chargeLaser_lvl2.effect</string>
+            <string name="fx-charge_lvl3">players/techpriest/Beams/chargeLaser_lvl3.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
+            <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
-            <string name="anim">channeling 8</string>
+            <string name="anim">charge 8</string>
 
-            <int name="cooldown">400</int>
+            <int name="cooldown">5500</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
-            <float name="speed-mul">1</float>
+            <bool name="blocking">true</bool>
+            <float name="speed-mul">.65</float>
 
-            <int name="mana-cost">18</int>
+            <int name="mana-cost">50</int>
 
             <int name="hold-frame">30</int>
-            <int name="charge-max">700</int>
-            <float name="dist">4</float>
+            <int name="charge-max">2000</int>
+            <int name="distance">500</int>
         </dict>
 
         <!-- Level 5 -->
         <dict>
-            <string name="class">Skills::ChargeUnit</string>
+            <string name="class">Skills::ChargeLaser</string>
 
-            <string name="unit">players/gladiator/net_5.unit</string>
-            <string name="fx">players/gladiator/net_aim.effect</string>
-            <string name="fx-charged">players/gladiator/net_aim_attack.effect</string>
-            <string name="snd-hold">event:/player/gladiator/net_charge</string>
+            <string name="unit">players/techpriest/charge_laser_5.unit</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charge_lvl2">players/techpriest/Beams/chargeLaser_lvl2.effect</string>
+            <string name="fx-charge_lvl3">players/techpriest/Beams/chargeLaser_lvl3.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
+            <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
-            <string name="anim">channeling 8</string>
+            <string name="anim">charge 8</string>
 
-            <int name="cooldown">400</int>
+            <int name="cooldown">5000</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
-            <float name="speed-mul">1</float>
+            <bool name="blocking">true</bool>
+            <float name="speed-mul">.7</float>
 
-            <int name="mana-cost">21</int>
+            <int name="mana-cost">60</int>
 
             <int name="hold-frame">30</int>
-            <int name="charge-max">700</int>
-            <float name="dist">4</float>
+            <int name="charge-max">2000</int>
+            <int name="distance">500</int>
         </dict>
 
         <!-- Level 6 -->
         <dict>
-            <string name="class">Skills::ChargeUnit</string>
+            <string name="class">Skills::ChargeLaser</string>
 
-            <string name="unit">players/gladiator/net_6.unit</string>
-            <string name="fx">players/gladiator/net_aim.effect</string>
-            <string name="fx-charged">players/gladiator/net_aim_attack.effect</string>
-            <string name="snd-hold">event:/player/gladiator/net_charge</string>
+            <string name="unit">players/techpriest/charge_laser_6.unit</string>
+            <string name="fx">players/techpriest/Beams/chargeLaser_lvl1.effect</string>
+            <string name="fx-charge_lvl2">players/techpriest/Beams/chargeLaser_lvl2.effect</string>
+            <string name="fx-charge_lvl3">players/techpriest/Beams/chargeLaser_lvl3.effect</string>
+            <string name="fx-charged">players/techpriest/Beams/chargeLaserFull_lvl1.effect</string>
+            <string name="fx-charged_lvl2">players/techpriest/Beams/chargeLaserFull_lvl2.effect</string>
+            <string name="fx-charged_lvl3">players/techpriest/Beams/chargeLaserFull_lvl3.effect</string>
+            <string name="snd-hold">sound/techpriest.sbnk:chargeLaser</string>
 
-            <string name="anim">channeling 8</string>
+            <string name="anim">charge 8</string>
 
-            <int name="cooldown">400</int>
+            <int name="cooldown">4500</int>
             <int name="castpoint">0</int>
-            <bool name="blocking">false</bool>
-            <float name="speed-mul">1</float>
+            <bool name="blocking">true</bool>
+            <float name="speed-mul">.75</float>
 
-            <int name="mana-cost">24</int>
+            <int name="mana-cost">70</int>
 
             <int name="hold-frame">30</int>
-            <int name="charge-max">700</int>
-            <float name="dist">4</float>
+            <int name="charge-max">2000</int>
+            <int name="distance">500</int>
         </dict>
     </array>
 </dict>

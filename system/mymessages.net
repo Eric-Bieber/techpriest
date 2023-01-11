@@ -1,0 +1,15 @@
+<!--
+	Unreliable
+	UnreliableSequenced
+	ReliableUnordered
+	ReliableSequenced
+	ReliableOrdered
+-->
+<network>
+	<message name="PlayerChargeLaser" namespace="PlayerHandler" delivery="ReliableOrdered">
+		<int /> <!-- Skill ID -->
+		<float /> <!-- Charge -->
+		<vec2dir /> <!-- Target -->
+		<int /> <!-- Unit ID -->
+	</message>
+</network>

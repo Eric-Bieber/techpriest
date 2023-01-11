@@ -1,8 +1,38 @@
 <soundbank>
-  <sound category="sfx" name="chargeLaser" volume="1" is3d="false" looping="false">
+  <sound category="sfx" name="chargeLaser" volume="1.1" is3d="true" looping="false">
     <source res="sound/chargeLaser.wav" />
   </sound>
-  <sound category="sfx" name="chargeLaserShot" volume="1" is3d="false" looping="false">
+  <sound category="sfx" name="chargeLaserShot" volume="1" is3d="true" looping="false">
     <source res="sound/chargeLaserShot.wav" />
+  </sound>
+  <sound category="sfx" name="techpriest1line" volume="14" is3d="false" looping="false">
+    <source res="sound/techpriest1line.wav" />
+  </sound>
+  <sound category="sfx" name="techpriest1hurt" volume="1" is3d="false" looping="false">
+    <source res="sound/techpriest1hurt.wav" />
+  </sound>
+  <sound category="sfx" name="techpriest1death" volume="14" is3d="false" looping="false">
+    <source res="sound/techpriest1death.wav" />
+  </sound>
+  <sound category="sfx" name="techpriest2line" volume="14" is3d="false" looping="false">
+    <source res="sound/techpriest2line.wav" />
+  </sound>
+  <sound category="sfx" name="techpriest2hurt" volume="10" is3d="false" looping="false">
+    <source res="sound/techpriest2hurt.wav" />
+  </sound>
+  <sound category="sfx" name="techpriest2death" volume="14" is3d="false" looping="false">
+    <source res="sound/techpriest2death.wav" />
+  </sound>
+  <sound category="sfx" name="mecharms_fire" volume=".35" is3d="true" looping="false">
+    <source res="sound/mecharms_fire.wav" />
+  </sound>
+  <sound category="sfx" name="graviton_device" volume="4" is3d="true" looping="false">
+    <source res="sound/graviton_device.wav" />
+  </sound>
+  <sound category="sfx" name="axe" volume="1.7" is3d="true" looping="false">
+    <source res="sound/axe.wav" />
+  </sound>
+  <sound category="sfx" name="charge_laser_hit" volume=".4" is3d="true" looping="false">
+    <source res="sound/charge_laser_hit.wav" />
   </sound>
 </soundbank>
